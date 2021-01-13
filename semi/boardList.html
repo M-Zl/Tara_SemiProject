@@ -10,8 +10,7 @@
 section #board-container {
     width: 900px;
 	margin:0 auto; 
-	text-align:center;
-  
+	text-align:center; 
 }
 
 
@@ -21,18 +20,18 @@ section h1 {
 }
 
 #board-table{
-    width: 900px;
-    height: 450px;
-   padding: 30px;
-   
+    width:100%; 
+	margin:0 auto; 
+    padding: 30px;
 }
+
 
 .list-btn{
     font-size:25px;
     font-weight: 700;
     width: 100px;
-     margin-inline: 90px;
-     border-radius:0.5em;
+    margin-inline: 90px;
+    border-radius:0.5em;
 }
 
 #inquiry1{
@@ -41,7 +40,6 @@ section h1 {
    
 }   
 #inquiry2{
-    
     font-size:15px;
 }
 #search{
@@ -52,16 +50,32 @@ section h1 {
 }
 
 
-.board-post img{
+.board-count{
+ width:100%; 
+ margin:0 auto; 
+
+
+}
+.board-imgcount{
+    display: inline;
+    margin-inline-start: 15px; 
+      
+}
+
+.boardimg{
     width: 160px;
     height: 160px;
+   
+}
 
+.imgcount{
+    width: 20px;
+    height: 20px;
 }
 
 button#btn-add { 
 	float:right; 
 
-   
 }
 
 /*페이지바*/
@@ -81,9 +95,9 @@ div#pageBar {
 
     <section id="content">
         <div id="board-container">
-            <h1 >숙박 </h1>
+            <h1 >강원도 </h1>
            <div >
-               <button class="list-btn"><a href=""></a> 메인</button>
+               <button class="list-btn"><a href=""></a>숙박</button>
                <button class="list-btn"><a href=""></a>맛집</button>
                <button class="list-btn"><a href=""></a>포토존</button>   
            </div> 
@@ -101,99 +115,156 @@ div#pageBar {
                     <option value="">내용</option>
                     <option selected>정렬</option>
              </select> 
-           
              <input type="text" id="searchtext" placeholder="내용을 입력하세요">
              <button type="submit">검색</button>
-           
             </form>
            </div>
-            <br><br><br>
+            <br>
 
+            <tbody>
            <table id="board-table">
             
-               <tr class="board-post" valign="top" height= "250px">
-               <td>
-                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" ></a>
-                 <br>
+               <tr class="board-post" height= "250px">
+               <td >
+                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" class="boardimg" ></a>
+
+                 <div class="board-count" >
+                     <div class="board-imgcount" ><img src="../image/하트1.jpg" class="imgcount">22</div>
+                     <div class="board-imgcount"><img src="../image/댓글2.png" class="imgcount">12</div>
+                     <div class="board-imgcount"><img src="../image/조회수.png" class="imgcount">13</div>
+                 </div>
+                
                  <span>여기 숙박 시설은 너무나</span>
-                 <br>
-              </td>
-              <td >
-                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" ></a>
-                 <br>
+        
+               </td>
+               <td >
+                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" class="boardimg" ></a>
+
+                 <div class="board-count" >
+                     <div class="board-imgcount" ><img src="../image/하트1.jpg" class="imgcount">11</div>
+                     <div class="board-imgcount"><img src="../image/댓글2.png" class="imgcount">1</div>
+                     <div class="board-imgcount"><img src="../image/조회수.png" class="imgcount">1</div>
+                 </div>
+                
                  <span>여기 숙박 시설은 너무나</span>
-                 <br>
-              </td>
-               <td>
-                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" ></a>
-                 <br>
+        
+               </td>
+         
+               <td >
+                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" class="boardimg" ></a>
+
+                 <div class="board-count" >
+                     <div class="board-imgcount" ><img src="../image/하트1.jpg" class="imgcount">11</div>
+                     <div class="board-imgcount"><img src="../image/댓글2.png" class="imgcount">1</div>
+                     <div class="board-imgcount"><img src="../image/조회수.png" class="imgcount">1</div>
+                 </div>
+                
                  <span>여기 숙박 시설은 너무나</span>
-                 <br>
-              </td>
-               <td>
-                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" ></a>
-                 <br>
+        
+               </td>
+         
+               <td >
+                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" class="boardimg" ></a>
+
+                 <div class="board-count" >
+                     <div class="board-imgcount" ><img src="../image/하트1.jpg" class="imgcount">11</div>
+                     <div class="board-imgcount"><img src="../image/댓글2.png" class="imgcount">1</div>
+                     <div class="board-imgcount"><img src="../image/조회수.png" class="imgcount">1</div>
+                 </div>
+                
                  <span>여기 숙박 시설은 너무나</span>
-                 <br>
-              </td>
-            
-               </tr>
-               <tr class="board-post" valign="top"  height= "250px">
-                <td>
-                    <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" ></a>
-                   <br>
-                   <span>여기 숙박 시설은 너무나</span>
-                   <br>
-                </td>
-                <td>
-                    <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" ></a>
-                   <br>
-                   <span>여기 숙박 시설은 너무나</span>
-                   <br>
-                </td>
-                <td>
-                    <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" ></a>
-                   <br>
-                   <span>여기 숙박 시설은 너무나</span>
-                   <br>
-                </td>
-                <td>
-                    <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" ></a>
-                   <br>
-                   <span>여기 숙박 시설은 너무나</span>
-                   <br>
-                </td>
-             
-               </tr>
+        
+               </td>
+         
+              </tr>
+              
+               <tr class="board-post" height= "250px">
+               <td >
+                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" class="boardimg" ></a>
+
+                 <div class="board-count" >
+                     <div class="board-imgcount" ><img src="../image/하트1.jpg" class="imgcount">22</div>
+                     <div class="board-imgcount"><img src="../image/댓글2.png" class="imgcount">12</div>
+                     <div class="board-imgcount"><img src="../image/조회수.png" class="imgcount">13</div>
+                 </div>
+                
+                 <span>여기 숙박 시설은 너무나</span>
+        
+               </td>
+               <td >
+                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" class="boardimg" ></a>
+
+                 <div class="board-count" >
+                     <div class="board-imgcount" ><img src="../image/하트1.jpg" class="imgcount">11</div>
+                     <div class="board-imgcount"><img src="../image/댓글2.png" class="imgcount">1</div>
+                     <div class="board-imgcount"><img src="../image/조회수.png" class="imgcount">1</div>
+                 </div>
+                
+                 <span>여기 숙박 시설은 너무나</span>
+        
+               </td>
+         
+               <td >
+                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" class="boardimg" ></a>
+
+                 <div class="board-count" >
+                     <div class="board-imgcount" ><img src="../image/하트1.jpg" class="imgcount">11</div>
+                     <div class="board-imgcount"><img src="../image/댓글2.png" class="imgcount">1</div>
+                     <div class="board-imgcount"><img src="../image/조회수.png" class="imgcount">1</div>
+                 </div>
+                
+                 <span>여기 숙박 시설은 너무나</span>
+        
+               </td>
+         
+               <td >
+                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" class="boardimg" ></a>
+
+                 <div class="board-count" >
+                     <div class="board-imgcount" ><img src="../image/하트1.jpg" class="imgcount">11</div>
+                     <div class="board-imgcount"><img src="../image/댓글2.png" class="imgcount">1</div>
+                     <div class="board-imgcount"><img src="../image/조회수.png" class="imgcount">1</div>
+                 </div>
+                
+                 <span>여기 숙박 시설은 너무나</span>
+        
+               </td>
+         
+              </tr>
+              
+              
            
 
-           </table>
-           <br><br> 
-           
-            <div id="pageBar">
-                <!-- 맨 처음으로 -->
-                <button onclick="location.href='<%= request.getContextPath() %>/board/list?page=1'">&lt;&lt;</button>
-                <!-- 이전 페이지로 -->
-                <button>&lt;</button>
-                <!--  10개 페이지 목록 -->
-                <button disabled>1</button>
-                <button onclick="location.href='<%= request.getContextPath() %>/board/list?page=2'">2</button>
-                <button onclick="location.href='<%= request.getContextPath() %>/board/list?page=3'">3</button>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>10</button>
-                <!-- 다음 페이지로 -->
-                <button >&gt;</button>
-                <!-- 맨 끝으로 -->
-                <button>&gt;&gt;</button>
-                <button type="button" id="btn-add"
-                onclick="">글쓰기</button>
-            </div>
+               
+            </table>
+        </tbody>
+        
+        <br><br> 
+        <div id="pageBar">
+            <!-- 맨 처음으로 -->
+            <button onclick="location.href='<%= request.getContextPath() %>/board/list?page=1'">&lt;&lt;</button>
+            <!-- 이전 페이지로 -->
+            <button>&lt;</button>
+            <!--  10개 페이지 목록 -->
+            <button disabled>1</button>
+            <button onclick="location.href='<%= request.getContextPath() %>/board/list?page=2'">2</button>
+            <button onclick="location.href='<%= request.getContextPath() %>/board/list?page=3'">3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>10</button>
+            <!-- 다음 페이지로 -->
+            <button >&gt;</button>
+            <!-- 맨 끝으로 -->
+            <button>&gt;&gt;</button>
             
+            <button type="button" id="btn-add"
+            onclick="">글쓰기</button>
+        </div>
+        
           
         </div>
     </section>
