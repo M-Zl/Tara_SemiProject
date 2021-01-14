@@ -1,0 +1,160 @@
+section #board-container {
+    width: 900px;
+	margin:0 auto; 
+	text-align:center; 
+}
+
+
+section h1 {
+    font-size:  45px;
+    text-align: left;
+    margin-bottom: 5px;
+    color: white;
+    text-shadow:   -1px -1px 1px royalblue,
+    0px 0px 8px royalblue, 3px 3px 1px royalblue, 5px 5px 1px #42a5f5;
+    font-weight: 900;
+    text-shadow:  0px 0px 8px royalblue, 3px 3px 1px royalblue;
+    
+}
+section h2 {
+    font-size:  40px;
+    color: white;
+    text-align:center;
+    text-shadow:   -1px -1px 1px royalblue,
+    0px 0px 8px royalblue, 3px 3px 1px royalblue, 5px 5px 1px #42a5f5;
+    font-weight: 900;
+    text-shadow:  0px 0px 8px royalblue, 3px 3px 1px royalblue;
+}
+
+#board-table{
+    width:100%; 
+	margin:0 auto; 
+    padding: 30px;
+}
+
+
+.list-btn{
+    font-size:25px;
+    font-weight: 700;
+    width: 100px;
+    margin-inline: 90px;
+    border-radius:0.5em;
+   
+}
+
+#inquiry1{
+    float:left; 
+    font-size:15px;
+   
+}   
+#inquiry2{
+    font-size:15px;
+}
+#search{
+    float:right; 
+}
+#searchtext{
+    font-size:15px;
+}
+
+
+.board-count{
+    width:100%; 
+    display: inline-block;
+
+}
+.board-imgcount{
+    display: inline;
+    margin-inline-start: 15px; 
+      
+}
+
+.board-img{
+    width: 160px;
+    height: 160px;
+   
+}
+
+.imgcount{
+    width: 20px;
+    height: 20px;
+}
+
+button#btn-add { 
+	float:right; 
+
+}
+
+div#pageBar {
+	margin-top:10px; 
+	text-align:center; 
+}
+
+
+.board-list-img{
+    width: 225px;
+    height: 180px;
+}
+#board-div-img{
+    width: 220px;
+    height: 180px;
+}
+
+.board-div{
+    width: 100%;
+    height: 180px;
+    background-color: whitesmoke;
+    display: inline-block;
+    margin-top: 15px;
+
+
+
+}
+
+#board_div_text{
+    width: 55%;
+    height: 160px;
+    float: right;
+    color: black;
+}
+  
+#board_div_text_title{
+    font-size: 18px;
+    
+}
+
+#board_div_text_content{
+    width: 90%;
+    height: 65px;
+    display: inline-block;
+    overflow: hidden;
+ 
+}
+
+#board_div_count p{
+    width: 32px;
+    font-size: 15px;
+    float: right;
+    overflow: hidden;
+    text-align:center;
+ }
+
+
+#board_div_count{
+    width: 8%;
+    height: 160px;
+ 
+    float: right;
+   
+}
+
+.board_img_count{
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+}
+
+.board_div_img_count{
+    width: 100%;
+    height: 55px;
+}
