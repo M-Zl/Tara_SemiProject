@@ -9,4 +9,13 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- vistor 리스너 등록 -->
+   <listener>
+        <listener-class>visit.action.VisitSessionListener</listener-class>
+   </listener>
+
+
+
+  
 </web-app>
