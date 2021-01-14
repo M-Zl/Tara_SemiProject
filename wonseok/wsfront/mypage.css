@@ -3,6 +3,11 @@ section {
     justify-content: center;
     align-items: center;
 }
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .main {
     display: flex;
     flex-direction: column;
@@ -49,8 +54,14 @@ section {
     align-items: center;
     height: 60%;
 }
-.profile__photo button {
+.profile__photo span {
     margin-top: 10px;
+}
+.profile__photo span i:hover {
+    color: gray;
+}
+.profile__photo span i:hover {
+    color: gray;
 }
 .profile__info {
     display: flex;
@@ -76,6 +87,12 @@ section {
 .board-write {
     height: 50%;
     padding: 20px;
+}
+.board-write__title,
+.board-like__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .board-write__list {
     display: flex;
@@ -108,7 +125,13 @@ section {
     width: 15%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 30px 0px;
+    font-size: 18px;
+}
+i:hover {
+    color: darkgray;
 }
 .board-like {
     padding: 20px;
@@ -119,7 +142,7 @@ section {
     justify-content: space-between;
     height: 60%;
 }
-.board-like span {
+.board-like > span {
     display: flex;
     justify-content: center;
     padding-top: 20px;
@@ -133,9 +156,4 @@ section {
     width: 110px;
     height: 110px;
     border: 1px solid black;
-}
-button {
-    width: 50px;
-    height: 25px;
-    margin: 5px;
 }
