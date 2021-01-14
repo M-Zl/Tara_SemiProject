@@ -1,7 +1,7 @@
-section #board-container {
+section #board_container {
     width: 900px;
 	margin:0 auto; 
-	text-align:center; 
+	
 }
 
 
@@ -26,18 +26,19 @@ section h2 {
     text-shadow:  0px 0px 8px royalblue, 3px 3px 1px royalblue;
 }
 
-#board-table{
+#board_table{
     width:100%; 
-	margin:0 auto; 
-    padding: 30px;
+    margin-top: 10px;
+    text-align:center; 
+    background-color: whitesmoke;
 }
 
 
-.list-btn{
+.list_btn{
     font-size:25px;
     font-weight: 700;
     width: 100px;
-    margin-inline: 90px;
+    margin-inline: 96px;
     border-radius:0.5em;
    
 }
@@ -58,57 +59,66 @@ section h2 {
 }
 
 
-.board-count{
-    width:100%; 
+.board_list_div{
+    width: 200px;
+    height: 220px;
     display: inline-block;
-
-}
-.board-imgcount{
-    display: inline;
-    margin-inline-start: 15px; 
-      
-}
-
-.board-img{
-    width: 160px;
-    height: 160px;
+    background-color: white;
    
 }
 
-.imgcount{
-    width: 20px;
-    height: 20px;
+.board_list_image{
+    width: 100%;
+    height: 160px;
 }
 
-button#btn-add { 
-	float:right; 
-
+.board_list_count{
+    display: inline-block;
+    color: black;
+    overflow: hidden;
+}
+.board_list_count span{
+    width: 34px;
+    overflow: hidden;
+    display: inline-block;
+    text-align: center;
+    font-size: 12px;
+}
+#board_list_count3{
+    margin-top: 1px;
 }
 
-div#pageBar {
-	margin-top:10px; 
-	text-align:center; 
+.board_list_div_span{
+    color: black;
+    font-size: 15px;
+    width: 165px;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
-
-.board-list-img{
+.board_list_count_img{
+   width: 20px;
+   margin-left: 5px;
+   margin-top: 5px;
+  
+}
+.board_list_img{
     width: 225px;
     height: 180px;
 }
-#board-div-img{
+#board_div_img{
     width: 220px;
     height: 180px;
 }
 
-.board-div{
+.board_div{
     width: 100%;
     height: 180px;
-    background-color: whitesmoke;
+   
     display: inline-block;
     margin-top: 15px;
-
-
-
 }
 
 #board_div_text{
@@ -158,3 +168,14 @@ div#pageBar {
     width: 100%;
     height: 55px;
 }
+
+button#btn-add { 
+	float:right; 
+
+}
+
+div#pageBar {
+	margin-top:10px; 
+	text-align:center; 
+}
+

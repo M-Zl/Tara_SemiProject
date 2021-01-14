@@ -4,25 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-   <link rel="stylesheet" href="../semi/boardstyle.css">
-    
-
+    <link rel="stylesheet" href="../semi/boardstyle.css">
 </head>
 <body>
     
 
 
     <section id="content">
-        <div id="board-container">
+        <div id="board_container">
             <h1 >강원도 </h1>
             <h2>숙박</h2>
            <div >
-               <button class="list-btn"><a href=""></a>메인</button>
-               <button class="list-btn"><a href=""></a>맛집</button>
-               <button class="list-btn"><a href=""></a>포토존</button>   
+               <button class="list_btn"><a href=""></a>메인</button>
+               <button class="list_btn"><a href=""></a>맛집</button>
+               <button class="list_btn"><a href=""></a>포토존</button>   
            </div> 
-           <br><br>
-           <div id="board-search">
+           <br>
+           <div>
             <select name="" id="inquiry1">
                 <option value="">최신순</option>
                 <option value="">추천순</option>
@@ -42,68 +40,153 @@
             <br>
             <hr>
 
-            <tbody>
-           <table id="board-table">
-            
-               <tr class="board-post" height= "250px">
-               <td >
-                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" class="board-img" ></a>
-
-                 <div  class="board-count" >
-                     <div class="board-imgcount" ><img src="../image/하트1.jpg" class="imgcount">22</div>
-                     <div class="board-imgcount"><img src="../image/댓글2.png" class="imgcount">12</div>
-                     <div class="board-imgcount"><img src="../image/조회수.png" class="imgcount">13</div>
-                 </div>
-                
-                 <span>여기 숙박 시설은 너무나</span>
-        
-               </td>
-               <td >
-                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" class="board-img" ></a>
-
-                 <div class="board-count" >
-                     <div class="board-imgcount" ><img src="../image/하트1.jpg" class="imgcount">11</div>
-                     <div class="board-imgcount"><img src="../image/댓글2.png" class="imgcount">1</div>
-                     <div class="board-imgcount"><img src="../image/조회수.png" class="imgcount">1</div>
-                 </div>
-                
-                 <span>여기 숙박 시설은 너무나</span>
-        
-               </td>
-         
-               <td >
-                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" class="board-img" ></a>
-
-                 <div class="board-count" >
-                     <div class="board-imgcount" ><img src="../image/하트1.jpg" class="imgcount">11</div>
-                     <div class="board-imgcount"><img src="../image/댓글2.png" class="imgcount">1</div>
-                     <div class="board-imgcount"><img src="../image/조회수.png" class="imgcount">1</div>
-                 </div>
-                
-                 <span>여기 숙박 시설은 너무나</span>
-        
-               </td>
-         
-               <td >
-                  <a class="imgbox" href=""><img src="../resources/image/flower1.PNG" class="board-img" ></a>
-
-                 <div class="board-count" >
-                     <div class="board-imgcount" ><img src="../image/하트1.jpg" class="imgcount">11</div>
-                     <div class="board-imgcount"><img src="../image/댓글2.png" class="imgcount">1</div>
-                     <div class="board-imgcount"><img src="../image/조회수.png" class="imgcount">1</div>
-                 </div>
-                
-                 <span>여기 숙박 시설은 너무나</span>
-        
-               </td>
-         
-              </tr>
-              
-
-            </table>
-        </tbody>
+           <table id="board_table">
+                <tr >
+                    <td>
+                       <a href=""> <div class="board_list_div">
+                           <div>
+                               <img src="../image/해변.jpg" class="board_list_image">
+                           </div>          
+                           <div class="board_list_count">
+                            <img src="../image/하트1.jpg" class="board_list_count_img"> <span>1111111</span>
+                          </div>
+                          <div class="board_list_count">
+                            <img src="../image/댓글1.png" class="board_list_count_img"><span>1111</span>
+                          </div>
+                          <div class="board_list_count" id="board_list_count3">
+                            <img src="../image/조회수.png" class="board_list_count_img" ><span>1111</span>
+                           </div>
+                            <span class="board_list_div_span">안목 해변 후기입니다. 다들 잘</span>
+                        </div></a>
+                   </td>            
+                    <td>
+                       <a href=""> <div class="board_list_div">
+                           <div>
+                               <img src="../image/해변.jpg" class="board_list_image">
+                           </div>          
+                           <div class="board_list_count">
+                            <img src="../image/하트1.jpg" class="board_list_count_img"> <span>1111111</span>
+                          </div>
+                          <div class="board_list_count">
+                            <img src="../image/댓글1.png" class="board_list_count_img"><span>1111</span>
+                          </div>
+                          <div class="board_list_count" id="board_list_count3">
+                            <img src="../image/조회수.png" class="board_list_count_img" ><span>1111</span>
+                           </div>
+                            <span class="board_list_div_span">안목 해변 후기입니다. 다들 잘</span>
+                        </div></a>
+                   </td>            
+                    <td>
+                       <a href=""> <div class="board_list_div">
+                           <div>
+                               <img src="../image/해변.jpg" class="board_list_image">
+                           </div>          
+                           <div class="board_list_count">
+                            <img src="../image/하트1.jpg" class="board_list_count_img"> <span>1111111</span>
+                          </div>
+                          <div class="board_list_count">
+                            <img src="../image/댓글1.png" class="board_list_count_img"><span>1111</span>
+                          </div>
+                          <div class="board_list_count" id="board_list_count3">
+                            <img src="../image/조회수.png" class="board_list_count_img" ><span>1111</span>
+                           </div>
+                            <span class="board_list_div_span">안목 해변 후기입니다. 다들 잘</span>
+                        </div></a>
+                   </td>            
+                    <td>
+                       <a href=""> <div class="board_list_div">
+                           <div>
+                               <img src="../image/해변.jpg" class="board_list_image">
+                           </div>          
+                           <div class="board_list_count">
+                            <img src="../image/하트1.jpg" class="board_list_count_img"> <span>1111111</span>
+                          </div>
+                          <div class="board_list_count">
+                            <img src="../image/댓글1.png" class="board_list_count_img"><span>1111</span>
+                          </div>
+                          <div class="board_list_count" id="board_list_count3">
+                            <img src="../image/조회수.png" class="board_list_count_img" ><span>1111</span>
+                           </div>
+                            <span class="board_list_div_span">안목 해변 후기입니다. 다들 잘</span>
+                        </div></a>
+                   </td>            
+                </tr>
+                <tr >
+                    <td>
+                       <a href=""> <div class="board_list_div">
+                           <div>
+                               <img src="../image/해변.jpg" class="board_list_image">
+                           </div>          
+                           <div class="board_list_count">
+                            <img src="../image/하트1.jpg" class="board_list_count_img"> <span>1111111</span>
+                          </div>
+                          <div class="board_list_count">
+                            <img src="../image/댓글1.png" class="board_list_count_img"><span>1111</span>
+                          </div>
+                          <div class="board_list_count" id="board_list_count3">
+                            <img src="../image/조회수.png" class="board_list_count_img" ><span>1111</span>
+                           </div>
+                            <span class="board_list_div_span">안목 해변 후기입니다. 다들 잘</span>
+                        </div></a>
+                   </td>            
+                    <td>
+                       <a href=""> <div class="board_list_div">
+                           <div>
+                               <img src="../image/해변.jpg" class="board_list_image">
+                           </div>          
+                           <div class="board_list_count">
+                            <img src="../image/하트1.jpg" class="board_list_count_img"> <span>1111111</span>
+                          </div>
+                          <div class="board_list_count">
+                            <img src="../image/댓글1.png" class="board_list_count_img"><span>1111</span>
+                          </div>
+                          <div class="board_list_count" id="board_list_count3">
+                            <img src="../image/조회수.png" class="board_list_count_img" ><span>1111</span>
+                           </div>
+                            <span class="board_list_div_span">안목 해변 후기입니다. 다들 잘</span>
+                        </div></a>
+                   </td>            
+                    <td>
+                       <a href=""> <div class="board_list_div">
+                           <div>
+                               <img src="../image/해변.jpg" class="board_list_image">
+                           </div>          
+                           <div class="board_list_count">
+                            <img src="../image/하트1.jpg" class="board_list_count_img"> <span>1111111</span>
+                          </div>
+                          <div class="board_list_count">
+                            <img src="../image/댓글1.png" class="board_list_count_img"><span>1111</span>
+                          </div>
+                          <div class="board_list_count" id="board_list_count3">
+                            <img src="../image/조회수.png" class="board_list_count_img" ><span>1111</span>
+                           </div>
+                            <span class="board_list_div_span">안목 해변 후기입니다. 다들 잘</span>
+                        </div></a>
+                   </td>            
+                    <td>
+                       <a href=""> <div class="board_list_div">
+                           <div>
+                               <img src="../image/해변.jpg" class="board_list_image">
+                           </div>          
+                           <div class="board_list_count">
+                            <img src="../image/하트1.jpg" class="board_list_count_img"> <span>1111111</span>
+                          </div>
+                          <div class="board_list_count">
+                            <img src="../image/댓글1.png" class="board_list_count_img"><span>1111</span>
+                          </div>
+                          <div class="board_list_count" id="board_list_count3">
+                            <img src="../image/조회수.png" class="board_list_count_img" ><span>1111</span>
+                           </div>
+                            <span class="board_list_div_span">안목 해변 후기입니다. 다들 잘</span>
+                        </div></a>
+                   </td>            
+                </tr>
+         </table>
+     
         <br>
         <hr>
+        <br>
+        <br>
         <div id="pageBar">
          
             <button >&lt;&lt;</button>
@@ -128,8 +211,8 @@
             <button type="button" id="btn-add"
             onclick="">글쓰기</button>
         </div>
-        
-          
+        <br>
+        <br>
         </div>
     </section>
 
