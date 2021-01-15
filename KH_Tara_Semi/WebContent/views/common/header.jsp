@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="/KH_Tara_Semi/css/style.css" type="text/css">
+<link rel="stylesheet" href="<%= request.getContextPath()%>/css/style.css" type="text/css">
+<link rel="stylesheet" href="<%= request.getContextPath()%>/css/boardListStyle.css"type="text/css">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
