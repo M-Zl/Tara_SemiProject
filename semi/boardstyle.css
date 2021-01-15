@@ -1,17 +1,20 @@
+
+
+/* section크기 */
 section #board_container {
     width: 900px;
-	margin:0 auto; 
-	
+	margin:0 auto; 	
 }
 
-
+/* 지역 제목 */
 #title_local{
-    font-size: 35px;
+    font-size: 45px;
     color: royalblue;
     font-weight: 900;  
     margin-bottom: 5px;
-}
-  
+}  
+
+/* 게시판 제목*/
 #title_menu{
     margin-top: 5px;
     font-size:  30px;
@@ -21,16 +24,12 @@ section #board_container {
     text-align: center;
 }
 
-
-
-#board_table{
-    width:100%; 
-    margin-top: 10px;
-    text-align:center; 
-    background-color: whitesmoke;
-}
-
-
+/* boardListColumns rows 전환 버튼  */
+#sort{
+    float: left;
+   
+} 
+/* 상단 버튼 css */
 .list_btn{
     font-size:25px;
     font-weight: 700;
@@ -41,6 +40,7 @@ section #board_container {
     background-color: royalblue;
 }
 
+/* 검색기능 css */
 #inquiry1{
     float:left; 
     font-size:15px;
@@ -56,6 +56,15 @@ section #board_container {
     font-size:15px;
 }
 
+/*boardListColumns 테이블 css  */
+#board_table{
+    width:100%; 
+    margin-top: 10px;
+    text-align: center;
+    background-color: whitesmoke;
+}
+
+
 .board_list_div{
     width: 200px;
     height: 220px;
@@ -67,24 +76,20 @@ section #board_container {
 	padding-bottom: 2px;
 }
 
-
-
 .board_list_image{
     width: 100%;
     height: 160px;
 }
 
 .board_list_count{
-
     display: inline-block;
     overflow: hidden;
     padding: 2px;
 }
+
 .board_list_count_img{
    width: 20px;
-   
-   
-  
+
 }
 .board_list_count span{
     width: 34px;
@@ -93,6 +98,7 @@ section #board_container {
     text-align: center;
     font-size: 12px;
 }
+
 #board_list_count3{
     margin-top: 1px;
 }
@@ -107,22 +113,47 @@ section #board_container {
     text-overflow: ellipsis;
 }
 
-.board_list_img{
-    width: 225px;
-    height: 180px;
-}
-#board_div_img{
-    width: 220px;
-    height: 180px;
-}
 
+/* boardListRows css */
 .board_div{
     width: 100%;
     height: 180px;
-   
     display: inline-block;
     margin-top: 15px;
 }
+
+/* 게시판 좋아요 조회수 댓글 css */
+#board_div_count{
+    width: 9%;
+    height: 160px;
+    float: right;
+    padding-left: 1px;
+}
+
+.board_div_img_count{
+    width: 70px;
+    height: 30px;
+    padding-left: 0px;
+}
+
+.board_img_count{
+    width: 30px;
+    height: 30px;
+    margin-boittom: 3px;
+}
+
+#board_div_count p{
+    width: 32px;
+    font-size: 15px;
+    float: right;
+    overflow: hidden;
+    text-align:center;
+ }
+ .board_div_img_count p{
+    margin-top: 2.5px;
+}
+
+/* 게시물 텍스트 css */
 
 #board_div_text{
     width: 55%;
@@ -130,7 +161,7 @@ section #board_container {
     float: right;
     color: black;
 }
-  
+
 #board_div_text_title{
     font-size: 18px;
     
@@ -143,34 +174,20 @@ section #board_container {
     overflow: hidden;
  
 }
-
-#board_div_count p{
-    width: 32px;
-    font-size: 15px;
-    float: right;
-    overflow: hidden;
-    text-align:center;
- }
-
-
-#board_div_count{
-    width: 8%;
-    height: 160px;
-    float: right;
-   
+/* 게시물 img css */
+#board_div_img{
+    width: 220px;
+    height: 180px;
+    padding-top: 2px;
 }
 
-.board_img_count{
-    width: 30px;
-    height: 30px;
-    margin-top: 10px;
+.board_list_img{
+    width: 225px;
+    height: 180px;
 }
 
-.board_div_img_count{
-    width: 100%;
-    height: 55px;
-}
 
+/* 페이지바 */
 button#btn-add { 
 	float:right; 
 
