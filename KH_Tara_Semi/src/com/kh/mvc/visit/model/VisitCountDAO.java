@@ -40,9 +40,6 @@ public class VisitCountDAO {
 	            // 커넥션을 가져온다.
 	            conn = JDBCTemplate.getConnection();
 	                        
-	            // 자동 커밋을 false로 한다.
-	            conn.setAutoCommit(false);
-	            
 	            pstmt = conn.prepareStatement(sql.toString());
 	            // 쿼리 실행
 	            pstmt.executeUpdate();

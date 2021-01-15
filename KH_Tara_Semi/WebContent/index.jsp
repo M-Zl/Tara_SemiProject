@@ -5,7 +5,7 @@
 
 <section>
 	<div class="map_info">
-		<img src="<%= request.getContextPath()%>/logo/map3.png"/>
+		<img src="<%= request.getContextPath()%>/images/logo/map3.png"/>
 		<div id="map_board">
 			<ul id="Gyeonggi">
 				<li><a href="<%=request.getContextPath()%>/views/board/boardListColumns.jsp?local=경기도">경기도</a>
