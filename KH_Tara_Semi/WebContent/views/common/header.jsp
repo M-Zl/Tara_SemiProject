@@ -23,10 +23,11 @@
 			</ul>
 		</form>
 	</div>
-	<span>총 방문자 수 : <%=session.getAttribute("totalCount") %></span>
-	<span>오늘 방문자 수 : <%=session.getAttribute("todayCount") %></span>
 	<div class= "main_logo">
 		<a href="<%= request.getContextPath()%>"><img src="<%= request.getContextPath()%>/logo/logo3.png"/></a>
 	</div>
-	
+	<div class="main_visit">
+		<span>총 방문자 수 : <%=session.getAttribute("totalCount") %>명</span> &nbsp;
+		<span>오늘 방문자 수 : <%=session.getAttribute("todayCount") %>명  </span>
+	</div>
 </header>

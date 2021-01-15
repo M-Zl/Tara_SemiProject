@@ -12,7 +12,7 @@
   
   <!-- vistor 리스너 등록 -->
    <listener>
-        <listener-class>visit.action.VisitSessionListener</listener-class>
+        <listener-class>com.kh.mvc.visit.action.VisitSessionListener</listener-class>
    </listener>
 
 
