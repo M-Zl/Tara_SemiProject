@@ -1,0 +1,245 @@
+/* div 영역 전체 */
+.Transportation_all {
+    /* border: 1px solid; */
+    margin-top: 7%;
+    display: flex;
+    justify-content: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+}
+
+/* div 각 영역  */
+.Transportation {
+    /* border: 1px solid; */
+    width: 100px;
+    height: 120px;
+    margin-top: 35px;
+    /* margin-left: 4%; */
+    /* margin-bottom: 35px; */
+    display: inline-block;
+}
+
+/* 이미지 위치 설정 */
+#Img_span1 {
+    margin-left: 33%;
+}
+
+#Img_span2 {
+    margin-left: 30%;
+}
+
+#Img_span3 {
+    margin-left: 30%;
+    margin-top: 10px;
+}
+
+#Img_span4 {
+    margin-left: 30%;
+    margin-top: 10px;
+}
+
+/* 교통수단 텍스트 */
+#Tpt_span_car {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+#Tpt_span_train {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#Tpt_span_walking {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#Tpt_span_airplane {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* 교통수단 라디오 버튼 위치 */
+#Tpt_choice{
+    display: flex;
+    justify-content: center;
+}
+
+/* 경비를 입력해주세요 */
+p {
+    height: 30px;
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+#yourEval_ment {
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.inputMoney {
+    display: flex;
+    justify-content: center;
+}
+
+#moneyRange {
+    /* width: 40%;
+    max-width: 45%;
+    min-width: 40%; */
+    width: 400px;
+}
+
+.infoMoney {
+    display: flex;
+    font-size: 15px;
+    margin-top: 30px;
+    justify-content: center;
+    font-family: 'Noto Sans KR', sans-serif; 
+}
+
+#money {
+    /* border: 1px solid; */
+    width: 70px;
+    height: 30px;
+}
+
+/* 별점 영역 */
+.yourEval {
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+/* 하단 버튼 */
+.row_btn {
+    display: flex;
+    justify-content: center;
+}
+
+#row_1 {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#row_2 {
+    display: flex;
+    justify-content: center;
+    /* margin-right: 16%; */
+}
+
+#spanBtn {
+    width: 250px;
+}
+
+/* 취소 */
+#row_btn1 {
+    width: 70px;
+    height: 40px;
+    border: 1px solid #636363;
+    background-color: #636363;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+}
+
+/* 다음 */
+#row_btn2 {
+    width: 70px;
+    height: 40px;
+    border: 1px solid #4169E1;
+    background-color: #4169E1;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+}
+
+/* < 이전페이지 */
+#row_btn3 {
+    width: 120px;
+    height: 40px;
+    margin-top: 40px;
+    border: 1px solid #afafaf;
+    background-color: #afafaf;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+}
+
+
+/* 테스트중 */
+
+.range_value {
+    margin: 0;
+    padding: 0;
+
+    background:  #000;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.main {
+    width: 60%;
+    margin: 24% auto;
+    position: relative;
+}
+
+#moneyRange2 {
+    /* -webkit-appearance: none; */
+    width: 100%;
+    height: 7px;
+    outline: none;
+    border-radius: 3px;
+}
+
+#moneyRange2::-webkit-slider-thumb{
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    z-index: 3;
+    position: relative;
+}
+
+#selectBtn {
+    /* border: 1px solid #4169E1; */
+    height: 104px;
+    width: 48px;
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.selBtn {
+    height: 48px;
+    width: 48px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+
+}
+
+#selectValue {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 0;
+    background: #4169E1;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 45px;
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: bold;
+}
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>업로드 게시판1</title>
+    <link rel="stylesheet" href="UploadPage.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+</head>
+<body>
+    <h1>업로드 게시판1</h1>
+
+    <hr>
+
+    <form>
+        <div class="titleArea">
+            <input type="text" placeholder="제목을 입력해주세요." size="40" required>
+            <select id="titleSel" name="boardCode" required>
+                <option value="">게시판 선택</option>
+                <option value="sleeping">숙박</option>
+                <option value="photo">포토존</option>
+                <option value="delFood">맛집</option>
+            </select>
+        </div>
+        <br>
+        <div class="locationArea">
+            <input type="text" placeholder="해당 위치 찾기" size="55" required>
+        </div>
+        <br>
+        <div class="textArea">
+            <textarea cols="60" rows="8" placeholder="내용을 입력해주세요." style="resize: none;" required></textarea>
+        </div>
+        <br>
+        <div class="hashText">
+            <input type="text" placeholder="#해쉬태그를 입력하세요." size="55">
+        </div>
+        <br>
+        <div class="fileUpload">
+            <input type="file" placeholder="파일추가">
+        </div>
+        <br>
+        <div class="row_btn">
+            <div id="row_1">
+                <span><input id="row_btn1" type="reset" value="취소"></span> 
+                <span id="spanBtn"></span>
+                <span><input id="row_btn2" type="submit" value="다음" name="uploadNextBtn_1"></span>
+            </div>
+        </div>
+        <div id="row_2">
+            <span><input id="row_btn3" type="submit" value="&lt; 이전페이지"></span>
+        </div>
+    </form>
+</body>
+</html>

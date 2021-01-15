@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지역 상세 게시판</title>
+    <link rel="stylesheet" href="LocalBoardDetail.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+    </style>
+</head>
+<body>
+    <form action="">
+        <div class="boardDetail">
+            <div class="board_top">
+                <div class="top_btn">
+                    <div id="top_btn_area">
+                        <input id="goList" type="submit" value="목록" name="goBoardTitle">
+                        <span id="top_detailBtnSpan"></span>
+                        <span><input id="detail_BeforeBtn" type="submit" value="이전글" name="detail_BeforeBtn"></span> 
+                        <span id="top_detailBtnSpan"></span>
+                        <span><input id="detail_NextBtn" type="submit" value="다음글" name="detail_NextBtn"></span>
+                    </div>
+                </div>
+                <div class="board_header">
+                    <hr>
+                    <div>
+                        <a href="" class="boardTitle" name="boardTitle">게시판(goTo게시판페이지)</a><br>
+                    </div>
+                    <div class="userInfo">
+                        <div>
+                            <img src="" name="userImg" width="30px">
+                        </div>
+                        <div>
+                            <span class="userNo" name="userNo">아이디</span>
+                        </div>
+                        <div>
+                            <span>등록날짜</span>
+                            <span class="boardCreateDate" name="boardCreateDate">yyyy-mm-dd</span>
+                        </div>
+                    </div>
+                    <div class="viewInfo">
+                        <div>
+                            <img src="img/조회수1.png" width="25px">
+                            <span class="boardReadCount" name="boardReadCount">5</span>
+                            <span id="viewInfoSpan">&nbsp;</span>
+                            <img src="img/댓글1.png" width="25px">
+                            <span class="commentCount" name="commentCount">1</span>
+                            <span id="viewInfoSpan"></span>
+                            <img src="img/하트1.jpg" width="25px">
+                            <span class="commentCount" name="commentCount">2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+                
+                <div>
+                    <p id="boardConent" name="boardConent">
+                        boardConent 게시글 내용<br>
+                        상호명 : KH정보교육원<br>
+                        주소 : 서울특별시 강남구 테헤란로14길 6 남도빌딩 2F
+                    </p>
+                </div>             
+                
+                <hr>
+
+                <div class="commentAreaAll">
+                    <div class="commentTitle">
+                        <span id="commentTitle_span">댓글</span>
+                    </div>
+                    <div class="commentArea">
+                        <span><img src="" name="userImg" width="30px"></span>
+                        <div id="co_info">
+                            <span id="co_userNo" name="userNo">아이디</span>
+                            <span id="co_createDate"  name="commentCreateDate">yyyy.mm.dd</span><br>
+                        </div>
+                        <span id="co_content" name="commentContent">댓글내용</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div>
+                <textarea cols="60" rows="7" style="resize: none;"></textarea>
+            </div> -->
+        
+            <!-- <div class="goBoardTitle">
+                <input id="goList" type="submit" value="목록" name="goBoardTitle">
+            </div>
+            <div class="row_btn">
+                <div id="row_1">
+                    <span><input id="detail_BeforeBtn" type="submit" value="&lt;  이전 페이지" name="detail_BeforeBtn"></span> 
+                    <span id="row_detailSpan"></span>
+                    <span><input id="detail_NextBtn" type="submit" value="다음 페이지  &gt;" name="detail_NextBtn"></span>
+                </div>
+                <hr>
+            </div>
+        </div> -->
+    </form>
+</body>
+</html>
