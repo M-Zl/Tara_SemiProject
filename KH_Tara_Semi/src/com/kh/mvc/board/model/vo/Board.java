@@ -7,6 +7,8 @@ public class Board {
 	
 	private int boardWriteNo;
 	
+	private String userId;
+	
 	private String locName;
 	
 	private String boardName;
@@ -36,13 +38,14 @@ public class Board {
 	public Board() {
 	}
 
-	public Board(int boardNo, int boardWriteNo, String locName, String boardName, String boardTitle,
+	public Board(int boardNo, int boardWriteNo, String userId, String locName, String boardName, String boardTitle,
 			String boardContent, int boardReadCount, String boardOriginalFileName, String boardRenamedFileName,
 			String transport, String travelMoney, int boardScore, Date boardCreateDate, Date boardModifyDate,
 			String status) {
 		super();
 		this.boardNo = boardNo;
 		this.boardWriteNo = boardWriteNo;
+		this.userId = userId;
 		this.locName = locName;
 		this.boardName = boardName;
 		this.boardTitle = boardTitle;
@@ -72,6 +75,14 @@ public class Board {
 
 	public void setBoardWriteNo(int boardWriteNo) {
 		this.boardWriteNo = boardWriteNo;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getLocName() {
@@ -180,14 +191,13 @@ public class Board {
 
 	@Override
 	public String toString() {
-		return "Board [boardNo=" + boardNo + ", boardWriteNo=" + boardWriteNo + ", locName=" + locName + ", boardName="
-				+ boardName + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent + ", boardReadCount="
-				+ boardReadCount + ", boardOriginalFileName=" + boardOriginalFileName + ", boardRenamedFileName="
-				+ boardRenamedFileName + ", transport=" + transport + ", travelMoney=" + travelMoney + ", boardScore="
-				+ boardScore + ", boardCreateDate=" + boardCreateDate + ", boardModifyDate=" + boardModifyDate
-				+ ", status=" + status + "]";
-	}	
-	
-	
+		return "Board [boardNo=" + boardNo + ", boardWriteNo=" + boardWriteNo + ", userId=" + userId + ", locName="
+				+ locName + ", boardName=" + boardName + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
+				+ ", boardReadCount=" + boardReadCount + ", boardOriginalFileName=" + boardOriginalFileName
+				+ ", boardRenamedFileName=" + boardRenamedFileName + ", transport=" + transport + ", travelMoney="
+				+ travelMoney + ", boardScore=" + boardScore + ", boardCreateDate=" + boardCreateDate
+				+ ", boardModifyDate=" + boardModifyDate + ", status=" + status + "]";
+	}
+
 	
 }

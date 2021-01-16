@@ -1,20 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+String btnfirst = null;
+String btnsecond = null;
+String btnThird = null;
+String vacuum = "";
+String title[] = {"메인", "숙박", "맛집","포토존" };
+String local = request.getParameter("local"); 
+String menu  = request.getParameter("menu"); 
+	if(menu == null){btnfirst = title[1];btnsecond =title[2];btnThird=  title[3];
+	}else if(menu.equals(title[1])){btnfirst = title[0]; btnsecond =title[2]; btnThird=  title[3];		
+	}else if(menu.equals(title[2])){btnfirst = title[0];btnsecond =title[1]; btnThird=  title[3];	
+	}else{btnfirst = title[0];btnsecond =title[1];btnThird=  title[2];			
+	}
+
+ %>
+   
+    
 <%@ include file="/views/common/header.jsp" %>
 
-  <section id="content">
+    <section id="content">
         <div id="board_container">
-            <p id="title_local">강원도</p> 
-                <p id="title_menu">숙박</p>
-                <br>
+           
+               <h1 id="title_local"><%=local%></h1> 
+             <% if(menu != null){ %>  
+             <h1 id="title_menu"><%=menu%></h1>
+             <%}else{ %>
+                 <h1 id="title_menu">지역 게시판</h1>
+              <%} %>
+              <br>
            <div >
-               <button class="list_btn"><a href=""></a>메인</button>
-               <button class="list_btn"><a href=""></a>맛집</button>
-               <button class="list_btn"><a href=""></a>포토존</button>   
+               <button class="list_btn" onclick="menuLocationfirst();"><%=btnfirst%></button>
+               <button class="list_btn" onclick="menuLocationsecond();"><%=btnsecond%></button>
+               <button class="list_btn" onclick="menuLocationThird();"><%=btnThird%></button>   
            </div> 
            <br>
            <div>
-            <button id="sort">=</button>
+            <button id="sort" onclick="listre();">ㅁ</button>
             <select name="" id="inquiry1">
                 <option value="">최신순</option>
                 <option value="">추천순</option>
@@ -75,14 +97,35 @@
             <button >&gt;</button>
             <!-- 맨 끝으로 -->
             <button>&gt;&gt;</button>
-            
-            <button type="button" id="btn-add"
-            onclick="">글쓰기</button>
+            <%if(loginMember != null) {%>
+			<button type="button" id="btn-add"
+			onclick="location.href ='<%=request.getContextPath() %>/board/write'">글쓰기</button>
+	     	<%}%>
         </div>
         
         <br>
         <br>
         </div>
     </section>
+    <script>
+   function menuLocationfirst(){
+  <% if(btnfirst.equals("메인")){ %>
+   location.href="<%=request.getContextPath()%>/index.jsp";    
+  <%}else {%>
+   location.href="<%=request.getContextPath()%>/board/listRows?local=<%=local%>&menu=<%=btnfirst%>";           
+  <%  } %>	
+   }
+   function menuLocationsecond(){   
+   location.href="<%=request.getContextPath()%>/board/listRows?local=<%=local%>&menu=<%=btnsecond%>";    
+   }
+   function menuLocationThird(){   
+   location.href="<%=request.getContextPath()%>/board/listRows?local=<%=local%>&menu=<%=btnThird%>";    
+   }
+   function listre() {
+	    location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=<%=menu%>"; 
+   }
+   
+</script>
+
 
 <%@ include file="/views/common/footer.jsp" %>

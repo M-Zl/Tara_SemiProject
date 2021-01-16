@@ -1,33 +1,50 @@
 package com.kh.mvc.board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class BoardListServlet
- */
+import com.kh.mvc.board.model.service.BoardService;
+import com.kh.mvc.board.model.vo.Board;
+
+
 @WebServlet("/board/listColumns")
 public class BoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BoardListServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+     
+   
+	public BoardListServlet() {
+    
+      
+   
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		      List<Board> listvalue = new ArrayList<>();
+		      String localvalue = request.getParameter("local");
+		      String menuvalue = request.getParameter("menu");
+		
+	          
+		      List<Board> list = new BoardService().getBoardList(); 
+		      
+		      
+		      for(Board board : list) {
+			   if(board.getLocName().equals(localvalue)&& board.getBoardName().equals(menuvalue) ){ 
+				   listvalue.add(board);   
+			   }
+         }
+		     
+		      
+		      request.setAttribute("list", listvalue);
+		      		
+		      request.getRequestDispatcher("/views/board/listColumns.jsp").forward(request, response); 
 	}
 
 }
