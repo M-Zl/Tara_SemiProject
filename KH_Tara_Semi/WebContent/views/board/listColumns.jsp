@@ -117,14 +117,14 @@ function menuLocationfirst(){
   <% if(btnfirst.equals("메인")){ %>
    location.href="<%=request.getContextPath()%>/index.jsp";    
   <%}else {%>
-   location.href="<%=request.getContextPath()%>/views/board/boardListColumns.jsp?local=<%=local%>&menu=<%=btnfirst%>";           
+   location.href="<%=request.getContextPath()%>/views/board/listColumns.jsp?local=<%=local%>&menu=<%=btnfirst%>";           
   <%  } %>	
    }
    function menuLocationsecond(){   
-   location.href="<%=request.getContextPath()%>/views/board/boardListColumns.jsp?local=<%=local%>&menu=<%=btnsecond%>";    
+   location.href="<%=request.getContextPath()%>/views/board/listColumns.jsp?local=<%=local%>&menu=<%=btnsecond%>";    
    }
    function menuLocationThird(){   
-   location.href="<%=request.getContextPath()%>/views/board/boardListColumns.jsp?local=<%=local%>&menu=<%=btnThird%>";    
+   location.href="<%=request.getContextPath()%>/views/board/listColumns.jsp?local=<%=local%>&menu=<%=btnThird%>";    
    }
 
 </script>
