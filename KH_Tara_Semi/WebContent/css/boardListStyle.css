@@ -60,10 +60,14 @@ section #board_container {
 
 /*boardListColumns 테이블 css  */
 #board_table{
-    width:100%; 
+    width:100%;
     margin-top: 10px;
     text-align: center;
     background-color: whitesmoke;
+}
+#board_table tr{
+     margin-top: 40px;
+     margin-bottom: 40px;
 }
 
 

@@ -27,8 +27,8 @@
 			</ul>
 			<ul id="Gangwon">
 				<li><a href="<%=request.getContextPath()%>/board/listColumns?local=강원도">강원도</a>
-					<ol>
-						<li><a href="<%=request.getContextPath()%>/board/listColumns?local=강원도&menu=숙박" >숙박</a></li>
+					<ol>						
+						<li><a href="<%=request.getContextPath()%>/board/listColumns?local=강원도&menu=숙박">숙박</a></li>
 						<li><a href="<%=request.getContextPath()%>/board/listColumns?local=강원도&menu=맛집">맛집</a></li>
 						<li><a href="<%=request.getContextPath()%>/board/listColumns?local=강원도&menu=포토존" >포토존</a></li>
 					</ol>
@@ -119,4 +119,13 @@
 	</div>
 </section>
 
+<script>
+
+ function aaa(bb) {
+	 bbb = bb.innerHTML;
+	 location.href='<%=request.getContextPath()%>/board/listColumns?local=울릉도&menu='+ bbb;
+<%-- 	 location.href="<%=request.getContextPath()%>/board/listColumns?local=강원도&menu=맛집"; --%>
+	 
+}
+ </script>
 <%@ include file="/views/common/footer.jsp" %>

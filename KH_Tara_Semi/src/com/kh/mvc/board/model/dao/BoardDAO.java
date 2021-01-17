@@ -13,7 +13,7 @@ import com.kh.mvc.board.model.vo.Board;
 
 public class BoardDAO {
 
-	public List<Board> findAll(Connection conn) {
+	public List<Board> findAll(Connection conn, String locName, String boardName, String boardUserId, String boardTitle, String boardContent ) {
 		List<Board> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -29,10 +29,23 @@ public class BoardDAO {
 				+       "B.BOARD_ORIGINAL_FILENAME, "
 				+       "B.BOARD_READCOUNT "
 				+ "FROM BOARD B JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NO) "
-				+ "WHERE B.STATUS = 'Y' ORDER BY BOARD_NO DESC";
+				+ "WHERE B.STATUS = 'Y'"
+				+ "AND B.LOC_NAME = ? "
+				+ "AND B.BOARD_NAME = ? "
+				+ "AND M.USER_ID LIKE '%' || ? || '%' "
+				+ "AND B.BOARD_TITLE LIKE '%' || ? || '%' "
+				+ "AND B.BOARD_CONTENT LIKE '%' || ? || '%' "
+				+ "ORDER BY BOARD_NO DESC";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, locName);
+			pstmt.setString(2, boardName);
+			pstmt.setString(3, boardUserId);
+			pstmt.setString(4, boardTitle);
+			pstmt.setString(5, boardContent);
+			
 			rs = pstmt.executeQuery();
 			
 			while (rs.next()) {
@@ -60,5 +73,6 @@ public class BoardDAO {
 	
 		return list;
 	}
+
 
 }
