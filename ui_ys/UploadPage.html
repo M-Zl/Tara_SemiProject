@@ -10,31 +10,42 @@
     </style>
 </head>
 <body>
-    <h1>업로드 게시판1</h1>
-
-    <hr>
-
     <form>
         <div class="titleArea">
-            <input type="text" placeholder="제목을 입력해주세요." size="40" required>
+            <select id="localTitleSel" name="boardCode" required>
+                <option value="">지역 선택</option>
+                <option value="Seoul">서울</option>
+                <option value="Gyeonggi">경기도</option>
+                <option value="Gangwon">강원도</option>
+                <option value="Chungcheongbuk">충청북도</option>
+                <option value="Chungcheongnam">충청남도</option>
+                <option value="Jeollabuk">전라북도</option>
+                <option value="Jeollanam">전라남도</option>
+                <option value="Gyeongsangbuk">경상북도</option>
+                <option value="delGyeongsangnamFood">경상남도</option>
+                <option value="jeju">제주도</option>
+                <option value="Ulleungdo">을릉도</option>
+                <option value="Dokdo">독도</option>
+            </select>
             <select id="titleSel" name="boardCode" required>
                 <option value="">게시판 선택</option>
                 <option value="sleeping">숙박</option>
                 <option value="photo">포토존</option>
                 <option value="delFood">맛집</option>
             </select>
+            <input type="text" placeholder="제목을 입력해주세요." size="66" required>
         </div>
         <br>
         <div class="locationArea">
-            <input type="text" placeholder="해당 위치 찾기" size="55" required>
+            <input type="text" placeholder="해당 위치 찾기" size="95" required>
         </div>
         <br>
         <div class="textArea">
-            <textarea cols="60" rows="8" placeholder="내용을 입력해주세요." style="resize: none;" required></textarea>
+            <textarea cols="100" rows="12" placeholder="내용을 입력해주세요." style="resize: none;" required></textarea>
         </div>
         <br>
         <div class="hashText">
-            <input type="text" placeholder="#해쉬태그를 입력하세요." size="55">
+            <input type="text" placeholder="#해쉬태그를 입력하세요." size="95">
         </div>
         <br>
         <div class="fileUpload">

@@ -6,11 +6,15 @@
 .titleArea {
     display: flex;
     justify-content: center;  
-    margin-top: 7%;
+    margin-top: 50px;
+}
+
+#localTitleSel {
+    margin-right: 10px;
 }
 
 #titleSel {
-    margin-left: 9px;
+    margin-right: 10px;
 }
 
 .locationArea {
@@ -30,7 +34,7 @@
 
 .fileUpload {
     /* border: 1px solid; */
-    margin-top: 2%;
+    margin-top: 20px;
     margin-right: -80px;
     display: flex;
     justify-content: center; 

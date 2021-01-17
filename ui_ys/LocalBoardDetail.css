@@ -3,88 +3,24 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-#boardDetail {
-    /* width: 750px; */
-    width: 10%;
-    display: block;
-    justify-content: center;
-    position: fixed;
+.boardDetail {
+    width: 1000px;
+    margin: auto;
 }
 
 .board_top {
     /* border: 1px solid; */
-    margin-top: 7%;
     padding: 30px 30px 0;
-    outline: none;
+    align-items: center;
 }
 
-.viewInfo {
-    border: 1px solid;
-    width: 140px;
-    display: inline-block;
-}
-
-#viewInfoSpan {
-    /* border: 1px solid; */
-    width: 50px;
-}
-
-/* 작성한 글 양식 */
-#boardConent {
-    padding: 15px 15px 15px;
-}
-
-/* 하단 댓글 영역 */
-.commentAreaAll {
-    padding: 15px 15px 15px;
-}
-
-.commentTitle {
-    margin-bottom: 10px;
-}
-
-#commentTitle_span {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-#co_info {
-    border: 1px solid;
-    margin-left: 50px;
-    /* position: absolute; */
-}
-
-#co_userNo {
-    font-size: 15px;
-}
-
-#co_createDate {
-    font-size: 12px;
-    color: #afafaf;
-}
-
-#co_content {
-    
-}
-
+/* ===== 상단 버튼 ===== */
 #top_btn_area {
-    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-left: 15px;
 }
 
 /* 목록 버튼 */
-#goBoardTitle {
-    margin-top: 10px;
-    
-}
-
-.goBoardTitle {
-    /* border: 1px solid; */
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
 #goList {
     width: 60px;
     height: 30px;
@@ -93,33 +29,12 @@
     background-color: #afafaf;
     color: white;
     border-radius: 5px;
-    font-weight: bold;
-    
+    /* font-weight: bold; */
 }
-
 #goList:hover {
     color: white;
     border: 1px solid #4169E1;
     background-color: #4169E1;
-}
-
-/* 상단 버튼 */
-.top_btn {
-    /* border: 1px solid; */
-    display: block;
-    justify-content: center;
-}
-
-/* #row_1 {
-    /* border: 1px solid; */
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-} */
-
-/* 버튼사이 간격 */
-#top_detailBtnSpan {
-    width: 20px;
 }
 
 /* 이전글 */
@@ -132,9 +47,8 @@
     color: white;
     border-radius: 5px;
     font-family: 'Noto Sans KR', sans-serif;
-    margin: 0%;
+    /* font-weight: bold; */
 }
-
 #detail_BeforeBtn:hover {
     border: 1px solid #4169E1;
     background-color: #4169E1;
@@ -150,10 +64,127 @@
     color: white;
     border-radius: 5px;
     font-family: 'Noto Sans KR', sans-serif;
+    /* font-weight: bold; */
 
 }
-
 #detail_NextBtn:hover {
     border: 1px solid #4169E1;
     background-color: #4169E1;
+}
+
+/* ===== Top Board Title ===== */
+/* a태그 밑줄제거 */
+a{
+    text-decoration: none;
+    color: #4169E1;
+}
+
+/* 타이틀 프사 + 아이디 + 등록날짜 */
+.title_Info {
+    margin-top: 3px;
+    display: flex;
+}
+.title_userInfo {
+    margin-left: 10px;
+    flex: 1;
+}
+
+/* 타이틀 상단 유저 font */
+#title_userNo {
+    font-size: 14px;
+}
+#title_createDate {
+    font-size: 12px;
+    color: #afafaf;
+}
+
+/* 타이틀 조회수 댓글수 좋아요 수 UI */
+.viewInfo {
+    /* border: 1px solid; */
+    display: inline-block;
+    text-align: center;
+    margin-top: 8px;
+}
+.boardInfo {
+    width: "25px";
+}
+.boardInfo {
+    font-size: 13px;
+}
+.viewInfo_img {
+    width: 20px;
+}
+
+/* ===== 글 양식 info ===== */
+.board_header {
+    padding: 15px 15px 15px;
+}
+
+#titleName {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#userNo {
+    border: 1px solid;
+    /* padding-left: 70px; */
+    margin-left: 60px;
+    margin-top: -30px;
+}
+
+#boardCreateDate {
+    border: 1px solid;
+    /* padding-left: 70px; */
+    /* margin-left: 60px; */
+}
+
+/* 프로필 사진 */
+.userProfileBox {
+    width: 40px;
+    height: 40px;
+    border-radius: 70%;
+    overflow: hidden;
+}
+.UserImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-color: #4169E1;
+}
+
+
+/* 작성한 글 양식 */
+#boardConent {
+    padding: 15px 15px 15px;
+}
+
+/* ===== 하단 댓글 영역 ===== */
+.commentAreaAll {
+    margin-bottom: 30px;
+}
+#comment_area {
+    /* border: 1px solid; */
+    margin-bottom: 20px;
+    margin-top: -10px;
+    margin-left: 65px;
+    /* padding: 5px 5px 5px; */
+}
+#co_userNo {
+    font-size: 14px;
+}
+#co_createDate {
+    font-size: 12px;
+    color: #afafaf;
+}
+
+.comment_Info {
+    /* border: 1px solid; */
+    padding: 15px 15px 15px;
+    display: flex;
+}
+
+.comment_userInfo {
+    /* border: 1px solid; */
+    margin-left: 10px;
+    flex: 1;
 }
