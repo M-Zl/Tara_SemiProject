@@ -33,15 +33,13 @@ public class VisitCountDAO {
 	            
 	            // 쿼리생성
 	            // 총 방문자수를 증가시키기 위해 테이블에 현재 날짜 값을 추가시킨다.
+	        	// 지금 쿼리로는 StringBuffer 와 append를 사용할 필요는 없지만, 나중에 조건문등으로 조건을 추가하게 될때는 유용하다.
 	            StringBuffer sql = new StringBuffer();
 	            sql.append("INSERT INTO VISIT (V_DATE) VALUES (sysdate)");
 	            
 	            // 커넥션을 가져온다.
 	            conn = JDBCTemplate.getConnection();
 	                        
-	            // 자동 커밋을 false로 한다.
-	            conn.setAutoCommit(false);
-	            
 	            pstmt = conn.prepareStatement(sql.toString());
 	            // 쿼리 실행
 	            pstmt.executeUpdate();
