@@ -107,6 +107,7 @@ th {
 	border: 0;
 	height: 23px;
 	width: 70px;
+	cursor: pointer;
 	
 }
 
@@ -137,7 +138,7 @@ th {
 	<hr>
          <div class="join-container">
          
-            <form action="" method="POST" name="memberjoinfrm" id="joinArea">
+            <form action="<%= request.getContextPath()%>/member/join" method="POST" name="memberJoinfrm" >
                     <table >
                      <h3></h3><br>
              <tr>
@@ -160,7 +161,7 @@ th {
              <tr></tr> 
              <tr></tr> 
             <th >비밀번호  </th>
-                            <td><input id="pass1" name="pass1"  maxlength="10"  value="" type="password" required> 
+                            <td><input id="pass1" name="userPwd"  maxlength="10"  value="" type="password" required> 
                             <label id="id">(영문소문자/숫자, 4~10자)</label>
                             </td>
                         </tr>
@@ -169,7 +170,7 @@ th {
             <tr></tr>         
             <tr></tr>         
             <th >비밀번호 확인 </th>
-                            <td><input id="pass2" name="pass2" maxlength="10"  value="" type="password"  required/></td>
+                            <td><input id="pass2"  maxlength="10"  value="" type="password"  required/></td>
                         </tr>
             <tr></tr>         
              <tr></tr> 
@@ -189,7 +190,7 @@ th {
                 <tr>
                 	<th>거주지 </th>
                 	<td> 
-                		<select id="location1" name="location1" style="height: 22px;">
+                		<select id="address" name="address" style="height: 22px;">
                 			<option value="">--------</option>
                 			<option value="서울시">수도권</option>
                 			<option value="충청권">충청권</option>
@@ -238,7 +239,7 @@ th {
                         <option value="017">017</option>
                         <option value="018">018</option>
                         <option value="019">019</option>
-</select> - <input id="mobile2" name="mobile2" maxlength="4" size="2"  type="text"> - <input id="mobile3" name="mobile3" maxlength="4" size="2"  value="" type="text"  /></td>
+			</select> - <input id="mobile2" name="mobile2" maxlength="4" size="2"  type="text"> - <input id="mobile3" name="mobile3" maxlength="4" size="2"  value="" type="text"  /></td>
             </tr>
            <tr></tr>         
              <tr></tr> 
@@ -323,15 +324,38 @@ $(document).ready(() => {
 	$("#pass2").blur((e) => {
 		let pass1 = $("#pass1").val();
 		let pass2 = $(e.target).val();
+		
 		if(pass1.trim() != pass2.trim()){
 			alert("비밀번호가 일치하지 않습니다.");
 			$("#pass1").val("");
 			$(e.target).val("");
 			$("#pass1").focus();
+			return;
 		}
+				
 	});		
 	
+	$("#pass2").blur((e) => {
+	var pwdReg =  /^[a-z0-9]{3,9}/g;
 	
+	if(pass1.length < 4) {
+		alert("비밀번호는 최소 4글자이상 입력해주세요!");
+		
+		return;
+	}
+	});
+	
+	function validate() {
+     if( !ipwdReg.test( $("input[name=userPwd]").val() ) ) {
+         alert("비밀번호는 4~10자 영문자 또는 숫자이어야 합니다.");
+            $("#pass1").val("");
+			$(e.target).val("");
+			$("#pass1").focus();
+        
+			return;
+     }
+	}
+		
 	
 
 //아이디 중복을 확인 처리 콜백함수
@@ -344,20 +368,24 @@ $("#idCheck").on("click", () => {
 		
 		return;
 	}
-
-
-
 	
+	 var idReg = /(^[a-z]+[a-z0-9]{3,9}$/g;
+     if( !idReg.test( $("input[name=userId]").val() ) ) {
+         alert("아이디는 영문자로 시작하는 4~10자 영문자, 숫자이어야 합니다.");
+        
+         return false;
+        
+     }
 	// 중복 확인할 새창 띄우기
 	const url = "<%= request.getContextPath()%>/member/idCheck";
 	const title = "duplicate";
-	const status = "left=500px, top=100px, width=300px, height=200px";
+	const status = "left=500px, top=100px, width=500px, height=300px";
 	
 	// window.open
 	open("", title, status);
 	
 	idCheckForm.target = title; // form 전송하는 윈도우를 설정
-	idCheckForm.action = url;// checkId.jsp라는 새창에서 처리하므로 url지정
+	idCheckForm.action = url;// idCheck.jsp라는 새창에서 처리하므로 url지정
 	idCheckForm.method = "POST";
 	idCheckForm.userId.value = id;
     
@@ -381,7 +409,7 @@ if ($("#agreeCheck").is(":checked") == true && $("#privacyCheck").is(":checked")
 
 $('#joinbtn').on({
     'mouseenter': function() {
-        $(this).css({"background": "royalblue", "color": "white"});
+        $(this).css({"background": "royalblue", "color": "white", "cursor": "pointer"});
         console.log('mouseenter');
     },
 'mouseleave': function() {
@@ -389,6 +417,8 @@ $('#joinbtn').on({
         console.log('mouseleave');
     }
    });
+   
+   
    
 });
 

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@page import="com.kh.mvc.member.model.vo.Member"%>
+    
+
+    
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="/KH_Tara_Semi/css/style.css" type="text/css">
@@ -17,11 +21,12 @@
 		<form >
 			<ul>
 				<li><a href="<%= request.getContextPath()%>">Home</a></li>
-				<li><a href="#">Login</a></li>
-				<li><a href="#">Join Us</a></li>
+				<li><a href="<%= request.getContextPath()%>/views/member/login.jsp">Login</a></li>
+				<li><a href="<%= request.getContextPath()%>/views/member/join.jsp">Join Us</a></li>
 				<li><input id="search_input" type="text" placeholder="Search"></li>
 			</ul>
 		</form>
+		
 	</div>
 	<div class= "main_logo">
 		<a href="<%= request.getContextPath()%>"><img src="<%= request.getContextPath()%>/logo/logo3.png"/></a>
