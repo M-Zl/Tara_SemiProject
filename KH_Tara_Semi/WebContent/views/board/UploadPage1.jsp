@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ include file="/views/common/header.jsp" %>
 
-<section>
-	<div class="titleArea">
+    <div>
+        <div class="titleArea">
             <select id="localTitleSel" name="boardCode" required>
                 <option value="">지역 선택</option>
                 <option value="Seoul">서울</option>
@@ -20,53 +19,41 @@
                 <option value="Ulleungdo">을릉도</option>
                 <option value="Dokdo">독도</option>
             </select>
-            
             <select id="titleSel" name="boardCode" required>
                 <option value="">게시판 선택</option>
                 <option value="sleeping">숙박</option>
                 <option value="photo">포토존</option>
                 <option value="delFood">맛집</option>
             </select>
-            
-            <input type="text" placeholder="제목을 입력해주세요." size="66" required>
+            <input type="text" placeholder="제목을 입력해주세요." size="68" required>
         </div>
-        
         <br>
-        
         <div class="locationArea">
-            <input type="text" placeholder="해당 위치 찾기" size="95" required>
+            <input type="text" placeholder="해당 위치 찾기" size="99" required>
         </div>
         <br>
         <div class="textArea">
             <textarea cols="100" rows="12" placeholder="내용을 입력해주세요." style="resize: none;" required></textarea>
         </div>
-        
         <br>
-        
         <div class="hashText">
-            <input type="text" placeholder="#해쉬태그를 입력하세요." size="95">
+            <input type="text" placeholder="#해쉬태그를 입력하세요." size="99">
         </div>
-        
         <br>
-        
         <div class="fileUpload">
             <input type="file" placeholder="파일추가">
         </div>
-        
         <br>
-        
         <div class="row_btn">
             <div id="row_1">
                 <span><input id="row_btn1" type="reset" value="취소"></span> 
                 <span id="spanBtn"></span>
-                <span><input id="row_btn2" type="submit" value="다음" onclick="location.href = '<%= request.getContextPath() %>/board/UploadPage2.jsp';"></span>
+                <span><input id="row_btn2" type="submit" value="다음" name="uploadNextBtn_1"></span>
             </div>
         </div>
-        
         <div id="row_2">
-            <span><input id="row_btn3" type="submit" value="&lt; 이전페이지" onclick="location.href = '<%= request.getContextPath() %>/board/listColumns.jsp';"></span>
+            <span><input id="row_btn3" type="submit" value="&lt; 이전페이지"></span>
         </div>
-        
-</section>
+    </div>
 
 <%@ include file="/views/common/footer.jsp" %> 

@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ include file="/views/common/header.jsp" %>
 
-<section>
-
-	<div class="Transportation_all">
+	<div>
+        <div class="Transportation_all">
             <div class="Transportation" id="border1">
                 <span id="Img_span1"><img src="img/carIcon.png" width="35px"></span><br>
                 <span id="Tpt_span_car">자차</span><br>
@@ -29,17 +27,15 @@
         </div>
         
         <br>
-        <div>
+        <form action="">
             <p align="center"><span id="money">경비를 입력해주세요.</span></p>
             <div class="inputMoney">
                 <input type="range" id="moneyRange" value="50" min="0" max="100" step="5" name="moneyValue" required><br>
             </div>
             <div class="infoMoney">
-                <span id="">00,000 원</span>
+                <span>00,000 원</span>
             </div>
             <br><br>
-            
-            <!-- 제이쿼리 기능 수정중 -->
             <div class="yourEval">
                 <label id="yourEval_ment">당신의 평가는?</label>&nbsp;&nbsp;&nbsp;
                 <label class="starPoint">
@@ -51,21 +47,19 @@
                 </label>&nbsp;&nbsp;&nbsp;
                 <span id="star_counter">0</span>/<span id="max_counter">5</span>
             </div>
-        </div>
+        </form>
 
         <br>
-        
         <div class="row_btn">
             <div id="row_1">
                 <span><input id="row_btn1" type="reset" value="취소" ></span> 
                 <span id="spanBtn"></span>
-                <span><input id="row_btn2" type="submit" value="다음"></span>
+                <span><input id="row_btn2" type="submit" value="다음" name="uploadNextBtn_2"></span>
             </div>
         </div>
         <div id="row_2">
-            <span><input id="row_btn3" type="submit" value="&lt;&nbsp;&nbsp;이전페이지" onclick="location.href = '<%= request.getContextPath() %>/board/UploadPage1.jsp';"></span>
+            <span><input id="row_btn3" type="submit" value="&lt;&nbsp;&nbsp;이전페이지"></span>
         </div>
-        
-</section>
+    </div>
 
 <%@ include file="/views/common/footer.jsp" %> 
