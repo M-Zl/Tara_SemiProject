@@ -12,6 +12,7 @@ public class Member {
 
 	private String userName;
 
+	private String birthdate;
 
 	private String phone;
 
@@ -34,7 +35,7 @@ public class Member {
 	public Member() {
 	}
 
-	public Member(int userNo, String userId, String userPwd, String userName, String phone,
+	public Member(int userNo, String userId, String userPwd, String userName, String birthdate, String phone,
 			String email, int userRole, String address, String userimg, String travel, Date createDate,
 			Date modifyDate) {
 		super();
@@ -42,6 +43,7 @@ public class Member {
 		this.userId = userId;
 		this.userPwd = userPwd;
 		this.userName = userName;
+		this.birthdate = birthdate;
 		this.phone = phone;
 		this.email = email;
 		this.userRole = userRole;
@@ -84,6 +86,13 @@ public class Member {
 		this.userName = userName;
 	}
 
+	public String getBirthdate() {
+		return birthdate;
+	}
+
+	public void setBirthdate(String birthdate) {
+		this.birthdate = birthdate;
+	}
 
 	public String getPhone() {
 		return phone;
@@ -147,6 +156,14 @@ public class Member {
 
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
+	}
+
+	@Override
+	public String toString() {
+		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
+				+ ", birthdate=" + birthdate + ", phone=" + phone + ", email=" + email + ", userRole=" + userRole
+				+ ", address=" + address + ", userimg=" + userimg + ", travel=" + travel + ", createDate=" + createDate
+				+ ", modifyDate=" + modifyDate + "]";
 	}
 
 }

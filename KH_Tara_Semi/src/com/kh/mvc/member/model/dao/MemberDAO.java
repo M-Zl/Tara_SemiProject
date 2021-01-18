@@ -31,6 +31,7 @@ public class MemberDAO {
 						rset.getString("USER_ID"),
 						rset.getString("USER_PWD"),
 						rset.getString("USER_NAME"),
+						rset.getString("BIRTHDATE"),
 						rset.getString("PHONE"),
 						rset.getString("USER_EMAIL"),
 						rset.getInt("USER_ROLE"),
