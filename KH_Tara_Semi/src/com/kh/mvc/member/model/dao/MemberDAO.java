@@ -58,7 +58,7 @@ public class MemberDAO {
 		      PreparedStatement pstmt = null;
 		      
 		      try {				
-		    	  	pstmt = conn.prepareStatement("INSERT INTO MEMBER VALUES(SEQ_UNO.NEXTVAL, ?, ?, ?, ?, ?, '1', ?, ?,SYSDATE, SYSDATE, DEFAULT)");
+		    	  	pstmt = conn.prepareStatement("INSERT INTO MEMBER VALUES(SEQ_UNO.NEXTVAL,?,?,?,?,?,1,?,?,?,SYSDATE,SYSDATE,'Y')");
 			
 		    	  	pstmt.setString(1, member.getUserId());
 		    	  	pstmt.setString(2, member.getUserPwd());
@@ -66,7 +66,8 @@ public class MemberDAO {
 		    	  	pstmt.setString(4, member.getPhone());
 		    	  	pstmt.setString(5, member.getEmail());
 		    	  	pstmt.setString(6, member.getAddress());
-		    	  	pstmt.setString(7, member.getTravel());
+		    	  	pstmt.setString(7, member.getUserimg());
+		    	  	pstmt.setString(8, member.getTravel());
 			
 		    	  	result = pstmt.executeUpdate();
 			

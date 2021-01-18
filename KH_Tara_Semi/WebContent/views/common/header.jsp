@@ -22,7 +22,7 @@
 			<ul>
 				<li><a href="<%= request.getContextPath()%>">Home</a></li>
 				<li><a href="<%= request.getContextPath()%>/views/member/login.jsp">Login</a></li>
-				<li><a href="<%= request.getContextPath()%>/views/member/join.jsp">Join Us</a></li>
+				<li><a href="<%=request.getContextPath() %>/member/join">Join Us</a></li>
 				<li><input id="search_input" type="text" placeholder="Search"></li>
 			</ul>
 		</form>

@@ -89,9 +89,11 @@ h1 {
 	border: 0;
 	background-color: lightgray;
 	color: rgb(80, 52, 52);
+	align: center;
 	font-family: Arial;
 	font-weight: 500;
 	font-size: 12pt
+	
 	
 }
 
@@ -162,7 +164,7 @@ th {
              <tr></tr> 
             <th >비밀번호  </th>
                             <td><input id="pass1" name="userPwd"  maxlength="10"  value="" type="password" required> 
-                            <label id="id">(영문소문자/숫자, 4~10자)</label>
+                            <label id="id">(영문소문자/숫자, 8~16자)</label>
                             </td>
                         </tr>
              <tr></tr> 
@@ -192,7 +194,7 @@ th {
                 	<td> 
                 		<select id="address" name="address" style="height: 22px;">
                 			<option value="">--------</option>
-                			<option value="서울시">수도권</option>
+                			<option value="수도권">수도권</option>
                 			<option value="충청권">충청권</option>
                 			<option value="호남권">호남권</option>
                 			<option value="경북권">경북권</option>
@@ -231,7 +233,7 @@ th {
              <tr></tr>             
              <tr></tr>             
              <tr></tr>             
-                   <tr>  <th >휴대전화 </th>
+                   <tr>  <th >휴대전화 <img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/ico_required.gif" class="" alt="필수"/>  </th>
                 <td><select id="mobile1" name="mobile1"  style="height: 22px;">
                         <option value="010">010</option>
                         <option value="011">011</option>
@@ -239,7 +241,7 @@ th {
                         <option value="017">017</option>
                         <option value="018">018</option>
                         <option value="019">019</option>
-			</select> - <input id="mobile2" name="mobile2" maxlength="4" size="2"  type="text"> - <input id="mobile3" name="mobile3" maxlength="4" size="2"  value="" type="text"  /></td>
+			</select> - <input id="mobile2" name="mobile2" maxlength="4" size="2"  type="text"/>- <input id="mobile3" name="mobile3" maxlength="4" size="2"  value="" type="text"  /></td>
             </tr>
            <tr></tr>         
              <tr></tr> 
@@ -248,7 +250,7 @@ th {
              <tr>
             <th >이메일 </th>
                             <td><input id="email1" name="email1" size="10" value="" type="text" required > 
-                                <select name="" id="email2" name="eamil2" style="width: 100px; height: 21px;">
+                                <select id="email2" name="email2" style="width: 100px; height: 21px;">
                                     <option value="@naver.com">@naver.com</option>
                                     <option value="@gmail.com">@gmail.com</option>
                                     <option value="@daum.net">@daum.net</option>
@@ -306,12 +308,11 @@ th {
               </div>
            
            </div>
-          
-           
-           <form action="" id="joinSubmit" >
-           	<input id="joinbtn" type="submit"  value="REGISTER" style="width:180px; height:80px;">	
-	 		
-           </form>
+               
+               <div id="joinSubmit">   
+           	<button id="joinbtn"  style="width:180px; height:80px;">REGISTER</button>
+           		</div> 
+	 	
            
            <form name="idCheckForm">
 	 		<input type ="hidden" name="userId">
@@ -324,58 +325,95 @@ $(document).ready(() => {
 	$("#pass2").blur((e) => {
 		let pass1 = $("#pass1").val();
 		let pass2 = $(e.target).val();
-		
+		var pwdReg =  /^[\w\d]+[\w\d]{7,15}$/; // 꼭 포함......
+		var chknum = pass1.search(/[0-9]/g);
+		var chkeng = pass1.search(/[a-z]/ig);
+		  
 		if(pass1.trim() != pass2.trim()){
 			alert("비밀번호가 일치하지 않습니다.");
 			$("#pass1").val("");
 			$(e.target).val("");
 			$("#pass1").focus();
-			return;
+			return false;
 		}
+		
+
+		if(pass1.length < 4) {
+			alert("비밀번호는 최소 4글자이상 입력해주세요!");
+			$("#pass1").val("");
+			$(e.target).val("");
+			$("#pass1").focus();
+			return false;
+			
+		}
+		
+		if(!pwdReg.test( $("input[name=userPwd]").val() ) ) {
+			alert("비밀번호는 8~16자 영소문자와 숫자를 포함해야 합니다.");
+			$("#pass1").val("");
+			$(e.target).val("");
+			$("#pass1").focus();
+		         return false;
+		}
+		
+		  if(chknum < 0 || chkeng < 0)
+
+		    {
+		        alert('비밀번호는 숫자와 영문자를 혼용하여야 합니다.');
+		        $("#pass1").val("");
+				$(e.target).val("");
+				$("#pass1").focus();
+		        return false;
+		    }
+		    
+		    if(/(\w)\1\1\1/.test($("input[name=userPwd]").val()))
+
+		    {
+		        alert('비밀번호에 같은 문자를 4번 이상 사용하실 수 없습니다.'); 
+		        $("#pass1").val("");
+				$(e.target).val("");
+				$("#pass1").focus();
+		        return false;
+		    }
+
+		    if(pass1.search($("input[name=userId]").val() ) > -1)
+
+		    {
+		        alert('ID가 포함된 비밀번호는 사용하실 수 없습니다.'); 
+		        $("#pass1").val("");
+				$(e.target).val("");
+				$("#pass1").focus();
+		        return false;
+		    }
+
+
+		    return true;
 				
 	});		
 	
-	$("#pass2").blur((e) => {
-	var pwdReg =  /^[a-z0-9]{3,9}/g;
 	
-	if(pass1.length < 4) {
-		alert("비밀번호는 최소 4글자이상 입력해주세요!");
-		
-		return;
-	}
-	});
-	
-	function validate() {
-     if( !ipwdReg.test( $("input[name=userPwd]").val() ) ) {
-         alert("비밀번호는 4~10자 영문자 또는 숫자이어야 합니다.");
-            $("#pass1").val("");
-			$(e.target).val("");
-			$("#pass1").focus();
-        
-			return;
-     }
-	}
-		
-	
-
 //아이디 중복을 확인 처리 콜백함수
 $("#idCheck").on("click", () => {
 	// 중복확인 전에 아이디값이 4글자이상인지 확인
 	let id = $("#newId").val().trim();
-	
-	if(id.length < 4) {
-		alert("아이디는 최소 4글자이상 입력해주세요!");
+	var chknum = id.search(/[0-9]/g);
+	var chkeng = id.search(/[a-z]/ig);
 		
-		return;
-	}
-	
-	 var idReg = /(^[a-z]+[a-z0-9]{3,9}$/g;
+	 var idReg = /^[a-z]+[a-z0-9]{3,9}$/g;
      if( !idReg.test( $("input[name=userId]").val() ) ) {
          alert("아이디는 영문자로 시작하는 4~10자 영문자, 숫자이어야 합니다.");
-        
+         $("#newId").focus();
          return false;
         
      }
+     
+     if(chknum < 0 || chkeng < 0)
+
+	    {
+	        alert('아이디는 숫자와 영문자를 혼용해야 합니다.');
+	        $("#newId").focus();
+	        return false;
+	    }
+   
 	// 중복 확인할 새창 띄우기
 	const url = "<%= request.getContextPath()%>/member/idCheck";
 	const title = "duplicate";
@@ -394,17 +432,82 @@ $("#idCheck").on("click", () => {
 	
 });
 
-$("#joinbtn").on("click", () => {
-	
-if ($("#agreeCheck").is(":checked") == true && $("#privacyCheck").is(":checked") == true) {
-	alert("가입을 축하합니다.");
-	console.log("가입함");
-} else {
-	alert("이용약관에 동의해주세요.");
-	console.log("가입안됨");
-}
+//이름 유효성 검사
+$("#address").on("focus",() => {
+var nameReg =  /^[가-힣]{2,}$/;
+
+if( !nameReg.test( $("input[name=userName]").val() ) ) {
+   alert("유효한 이름을 입력해주세요.");
+    console.log("유효하지 않음"); 
+    $("#userName").focus();
+		return false;
+} 
 
 });
+
+$("#email1").on("focus",() => {
+var mobile2Reg = /^[0-9]{3,4}$/;
+var mobile3Reg = /^[0-9]{4}$/;
+
+if( !mobile2Reg.test( $("input[name=mobile2]").val() ) || !mobile3Reg.test( $("input[name=mobile3]").val() ))  {
+	   alert("유효한 번호를 입력해주세요.");
+	   $("#mobile2").focus();
+	   console.log("유효하지 않음 번호"); 
+			return false;
+	}
+});
+
+$("#joinbtn").click(function checkForm() {
+	
+    var userId = $("#newId").val();
+    // 아이디 입력 유무 체크
+    if(userId == '') {
+        alert("아이디를 입력하세요");
+        userId.focus();
+      
+        return false; 
+    }
+    var userPwd = $('#pass1').val();
+    // 암호 입력 유무 체크
+    if(userPwd == ''){
+        alert('비밀번호를 입력하세요.');
+        userPwd.focus();
+        return false;
+    }
+    
+    var userName = $('#userName').val();
+    // 이름 입력 유무 체크
+    if(userName == '') {   	
+    	 alert('이름 입력하세요.');
+	        userName.focus();
+	        return false;
+    }
+    
+    var mobile2 =$('#mobile2').val();
+    // mobile2 입력 유무 체크
+    if(mobile2 == '') {   	
+    	 alert('번호를 입력하세요.');
+	        mobile2.focus();
+	        return false;
+    }
+    
+    var mobile3 = $('#mobile3').val;
+    // mobile3 입력 유무 체크
+    if(mobile3 == '') {   	
+    	 alert('번호를 입력하세요.');
+	        mobile3.focus();
+	        return false;
+    }
+    
+    if ($("#agreeCheck").is(":checked") == false || $("#privacyCheck").is(":checked") == false) {
+    	alert("이용약관에 동의해주세요.");
+    	console.log("가입안됨");
+    	return false;
+    }
+    
+    memberJoinfrm.submit();
+ 
+	});
 
 
 $('#joinbtn').on({
@@ -418,12 +521,9 @@ $('#joinbtn').on({
     }
    });
    
-   
+
    
 });
-
-
-
 
 </script>
     
