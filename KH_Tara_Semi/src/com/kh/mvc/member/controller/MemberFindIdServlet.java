@@ -37,7 +37,7 @@ public class MemberFindIdServlet extends HttpServlet {
 			dispatcher.forward(request, response);			
 
 		} else {
-			request.setAttribute("msg", "입력하신 이름과 이메일이 존재하지 않습니다. ㅠㅠ");
+			request.setAttribute("msg", "입력하신 이름과 이메일이 존재하지 않습니다.ㅠㅠ");
 			request.setAttribute("location", "/views/member/findId.jsp");
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/views/common/msg.jsp");

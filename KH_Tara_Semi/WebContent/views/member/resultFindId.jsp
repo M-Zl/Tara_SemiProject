@@ -49,11 +49,11 @@
 <body>
 <hr>
   <div class="wrap">
-    <form action="<%=request.getContextPath() %>/views/member/login.jsp" class="resultFindId" method="POST">
+    <form action="<%=request.getContextPath() %>/login" class="resultFindId" method="get">
       <h1>아이디 찾기 성공!</h1>
       <span>회원님의 아이디는 <b><%= FindMember.getUserId() %></b> 입니다.</span><br>
-      <input id="find" type="submit" value="로그인"><br>
-      <input id="find" type="button" onclick="location.href = '<%= request.getContextPath() %>/findPwd';" value="비밀번호 찾기">
+      <input id="find" type="submit" value="로그인" ><br>
+      <input id="find" type="button" onclick="location.href ='<%= request.getContextPath() %>/findPwd';" value="비밀번호 찾기">
     </form>
   </div>
   <hr>

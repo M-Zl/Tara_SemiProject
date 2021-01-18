@@ -20,6 +20,11 @@ public class MemberFindPwdServlet extends HttpServlet {
     public MemberFindPwdServlet() {
     }
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    	RequestDispatcher dispatcher = request.getRequestDispatcher("/views/member/changePwd.jsp");
+		dispatcher.forward(request, response);
+    }
+    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");

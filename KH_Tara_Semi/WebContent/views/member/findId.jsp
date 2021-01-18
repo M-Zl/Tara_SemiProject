@@ -58,8 +58,8 @@
     <form action="<%=request.getContextPath() %>/findId" class="findId" method="POST">
       <h1>아이디 찾기</h1>
       <p>아이디는 가입시 입력하신 이름과 이메일을 통해 찾을 수 있습니다.</p><br>
-      <input type="text" id="name" name="name" placeholder="이름"><br>
-      <input type="email" id="email" name="email" placeholder="이메일"><br>
+      <input type="text" id="name" name="name" placeholder="이름" required><br>
+      <input type="email" id="email" name="email" placeholder="이메일" required><br>
       <input id="find" type="submit" value="찾기">
     </form>
   </div>
