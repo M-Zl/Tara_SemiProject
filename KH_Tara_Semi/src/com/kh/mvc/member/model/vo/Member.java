@@ -12,8 +12,6 @@ public class Member {
 
 	private String userName;
 
-	private String birthdate;
-
 	private String phone;
 
 	private String email;
@@ -32,18 +30,18 @@ public class Member {
 
 	private Date modifyDate;
 
+	private String status;
+
 	public Member() {
 	}
 
-	public Member(int userNo, String userId, String userPwd, String userName, String birthdate, String phone,
-			String email, int userRole, String address, String userimg, String travel, Date createDate,
-			Date modifyDate) {
+	public Member(int userNo, String userId, String userPwd, String userName, String phone, String email, int userRole,
+			String address, String userimg, String travel, Date createDate, Date modifyDate, String status) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
 		this.userPwd = userPwd;
 		this.userName = userName;
-		this.birthdate = birthdate;
 		this.phone = phone;
 		this.email = email;
 		this.userRole = userRole;
@@ -52,6 +50,15 @@ public class Member {
 		this.travel = travel;
 		this.createDate = createDate;
 		this.modifyDate = modifyDate;
+		this.status = status;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public int getUserNo() {
@@ -84,14 +91,6 @@ public class Member {
 
 	public void setUserName(String userName) {
 		this.userName = userName;
-	}
-
-	public String getBirthdate() {
-		return birthdate;
-	}
-
-	public void setBirthdate(String birthdate) {
-		this.birthdate = birthdate;
 	}
 
 	public String getPhone() {
@@ -161,9 +160,9 @@ public class Member {
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
-				+ ", birthdate=" + birthdate + ", phone=" + phone + ", email=" + email + ", userRole=" + userRole
-				+ ", address=" + address + ", userimg=" + userimg + ", travel=" + travel + ", createDate=" + createDate
-				+ ", modifyDate=" + modifyDate + "]";
+				+ ", phone=" + phone + ", email=" + email + ", userRole=" + userRole + ", address=" + address
+				+ ", userimg=" + userimg + ", travel=" + travel + ", createDate=" + createDate + ", modifyDate="
+				+ modifyDate + ", status=" + status + "]";
 	}
 
 }

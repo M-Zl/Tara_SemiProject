@@ -73,8 +73,8 @@
 			<a href="https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com#"><img alt="" width="200px" height="30px" src="<%=request.getContextPath()%>/images/login/네이버 로그인.png" > </a> <br>
 			<a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fcs.kakao.com%2Fhelps%3Fcategory%3D25%26service%3D8"> <img alt="" width="202px" height="27px" src="<%=request.getContextPath()%>/images/login/카카오계정로그인.png" ></a> <br>
 					<span id="find">
-			<a href="" id="findId">아이디 찾기 |</a>  
-							<a href="" id="findPwd">비밀번호 찾기</a></span>											
+			<a href="<%=request.getContextPath() %>/views/member/findId.jsp" id="findId">아이디 찾기 |</a>  
+			<a href="<%=request.getContextPath() %>/views/member/findPwd.jsp" id="findPwd">비밀번호 찾기</a></span>											
 		</form>
 	<br><br>			
 	</div>
