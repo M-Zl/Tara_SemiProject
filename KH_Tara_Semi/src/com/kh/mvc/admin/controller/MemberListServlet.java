@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.kh.mvc.board.model.vo.Board;
+import com.kh.mvc.board.model.service.BoardService;
 import com.kh.mvc.common.util.PageInfo;
+import com.kh.mvc.member.model.service.MemberService;
+import com.kh.mvc.member.model.vo.Member;
 
 @WebServlet("/admin/members")
 public class MemberListServlet extends HttpServlet {
@@ -23,7 +25,7 @@ public class MemberListServlet extends HttpServlet {
 		int page = 0;
 		int listCount = 0;
 		PageInfo info = null;
-		List<Board> list = null;
+		List<Member> list = null;
 		
 		try {
 			page = Integer.parseInt(request.getParameter("page"));
@@ -31,9 +33,9 @@ public class MemberListServlet extends HttpServlet {
 			page = 1;
 		}		
 		
-		listCount = new BoardService().getBoardCount();
-		info = new PageInfo(page, 10, listCount, 5);		
-		list = new BoardService().getBoardList(info);
+		listCount = new MemberService().getMemberCount();
+		info = new PageInfo(page, 10, listCount, 10);
+		list = new MemberService().getMemberList(info);
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pageInfo", info);

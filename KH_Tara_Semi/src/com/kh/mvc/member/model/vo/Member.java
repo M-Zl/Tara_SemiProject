@@ -6,6 +6,8 @@ public class Member {
 
 	private int userNo;
 
+	private int rowNum;
+	
 	private String userId;
 
 	private String userPwd;
@@ -30,13 +32,15 @@ public class Member {
 	private Date createDate;
 
 	private Date modifyDate;
+	
+	private String status;
 
 	public Member() {
 	}
 
-	public Member(int userNo, String userId, String userPwd, String userName, String phone,
-			String email, int userRole, String address, String userimg, String travel, Date createDate,
-			Date modifyDate) {
+
+	public Member(int userNo, String userId, String userPwd, String userName, String phone, String email, int userRole,
+			String address, String userimg, String travel, Date createDate, Date modifyDate, String status) {
 		super();
 		this.userNo = userNo;
 		this.userId = userId;
@@ -50,7 +54,19 @@ public class Member {
 		this.travel = travel;
 		this.createDate = createDate;
 		this.modifyDate = modifyDate;
+		this.status = status;
 	}
+
+
+	public int getRowNum() {
+		return rowNum;
+	}
+
+
+	public void setRowNum(int rowNum) {
+		this.rowNum = rowNum;
+	}
+
 
 	public int getUserNo() {
 		return userNo;
@@ -148,5 +164,26 @@ public class Member {
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Member [userNo=" + userNo + ", rowNum=" + rowNum + ", userId=" + userId + ", userPwd=" + userPwd
+				+ ", userName=" + userName + ", phone=" + phone + ", email=" + email + ", userRole=" + userRole
+				+ ", address=" + address + ", userimg=" + userimg + ", travel=" + travel + ", createDate=" + createDate
+				+ ", modifyDate=" + modifyDate + ", status=" + status + "]";
+	}
+
+
+	
 
 }

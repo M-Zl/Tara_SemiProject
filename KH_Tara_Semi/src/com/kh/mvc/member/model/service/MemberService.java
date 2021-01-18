@@ -1,8 +1,13 @@
 package com.kh.mvc.member.model.service;
 
-import java.sql.Connection;
+import static com.kh.mvc.common.jdbc.JDBCTemplate.*;
 
+import java.sql.Connection;
+import java.util.List;
+
+import com.kh.mvc.board.model.dao.BoardDAO;
 import com.kh.mvc.common.jdbc.JDBCTemplate;
+import com.kh.mvc.common.util.PageInfo;
 import com.kh.mvc.member.model.dao.MemberDAO;
 import com.kh.mvc.member.model.vo.Member;
 
@@ -17,6 +22,24 @@ public class MemberService {
 		JDBCTemplate.close(conn);
 		
 		return member;
+	}
+	public List<Member> getMemberList(PageInfo info) {
+		Connection conn = getConnection();
+		
+		List<Member> list = new MemberDAO().findAll(conn, info);
+		
+		close(conn);		
+		
+		return list;
+	}
+	public int getMemberCount() {
+		Connection conn = getConnection();
+		
+		int result = new MemberDAO().getMemberCount(conn);
+		
+		close(conn);
+		
+		return result;			
 	}
 
 }
