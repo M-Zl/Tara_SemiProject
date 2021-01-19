@@ -1,4 +1,5 @@
 <%@page import="com.kh.mvc.board.model.vo.Board"%>
+<%@page import="com.kh.mvc.common.util.PageInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 
@@ -8,8 +9,8 @@
 <%@ include file="/views/common/header.jsp" %>
 
 <%
- List<Board> list = (ArrayList) request.getAttribute("list");
-
+	List<Board> list = (ArrayList) request.getAttribute("list");
+	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 %>
 
 <%
@@ -30,8 +31,6 @@
 			btnfirst = title[0]; btnsecond = title[1]; btnThird= title[2];			
 	}
 %>
-   
-    
 
 	<section id="content">
 		<div id="board_container">
@@ -174,25 +173,26 @@
         <br>
         <br>
         <div id="pageBar">
-         
-            <button >&lt;&lt;</button>
-       
-            <button>&lt;</button>
-        
-            <button disabled>1</button>
-            <button >2</button>
-            <button >3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>10</button>
-            <!-- 다음 페이지로 -->
-            <button >&gt;</button>
-            <!-- 맨 끝으로 -->
-            <button>&gt;&gt;</button>
+			<!-- 맨 처음으로 -->
+			<button onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=1'">&lt;&lt;</button>
+			
+			<!-- 이전 페이지로 -->
+			<button onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+
+			<!--  10개 페이지 목록 -->
+			<% for(int p = pageInfo.getStartPage(); p <= pageInfo.getEndPage(); p++){ %>
+				<% if(p == pageInfo.getCurrentPage()){ %>
+					<button disabled><%= p %></button>
+				<% } else { %>
+					<button onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=<%= p %>'"><%= p %></button>
+				<% } %>
+			<% } %>
+			
+			<!-- 다음 페이지로 -->
+			<button onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+			
+			<!-- 맨 끝으로 -->
+			<button onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
             
             <%if(loginMember != null) {%>
 			<button type="button" id="btn-add"
