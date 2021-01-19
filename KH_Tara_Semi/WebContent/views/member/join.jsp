@@ -5,199 +5,77 @@
 <%@ include file="/views/common/header.jsp" %>
     <script src="<%=request.getContextPath()%>/js/jquery-3.5.1.js"></script>
     <style>
-    
-<<<<<<< HEAD
-		@font-face {
-		  font-family: "TmoneyRoundWindExtraBold";
-		  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff")
-		    format("woff");
-		  font-weight: normal;
-		  font-style: normal;
-		}
-	    #join_top{
-	    	font-family: "TmoneyRoundWindExtraBold";
-	    	color:gray;
-	    }
-    
-		.joinfrm {
-		  	margin: auto;
-			
-		}
-		
-		.agree-container {
-			
-		}
-		.agree{
-		 border:1px lightgray solid;
-		   width: 390px;
-		   height: 250px;
-		    overflow: scroll;
-		    font-size: 10pt;
-			
-		}
-		
-		.left{
-		   float:left;
-		  
-		   margin-left: 140px;
-		  
-		
-		}
-		
-		.right{
-			display: inline-block;
-		   
-		   margin-left: 40px;
-		}
-		
-		
-		
-		.join-container {
-			text-align: center;
-			margin: 0 auto;
-			   width: 863px;
-			height: 460px;       	
-			border: 1px solid lightgray;
-			
-		}
-		      
-		 .join-container input {
-			 margin:3px;
-		}
-		 .join-container table {
-			margin:0 auto;
-		 }
-		.join-container table th {
-			padding:0 100px; 
-			text-align:right;
-		}
-		.join-container table td {
-			padding-right: 10px;
-			padding:0 0px; 
-			text-align:left;
-			}
-		.join-container table tr {	
-				
-			}
-		#joininfo {
-			margin-right: 40px;
-			font-family: Arial;
-		}
-		h1 {
-			color: royalblue;
-		}
-		#joinSubmit {
-			text-align: center;
-		}
-		#joinbtn {
-			border: 0;
-			background-color: lightgray;
-			color: rgb(80, 52, 52);
-			align: center;
-			font-family: Arial;
-			font-weight: 500;
-			font-size: 12pt
-			
-			
-		}
-		th {
-			font-family: Arial;
-			font-size: 9pt;
-			font-weight: lighter;
-		}
-		#idCheck {
-			background-color: lightgray;
-			color: rgb(80, 52, 52);
-			border: 0;
-			height: 23px;
-			width: 70px;
-			cursor: pointer;
-			
-		}
-		#check {
-			font-weight: lighter;
-			font-size: 10pt;
-		}
-		#p-check {
-			font-family: Arial;
-		}
-		#a-check {
-			font-family: Arial;
-		}
-		   
-		#travel {
-			font-size: 9pt;
-		} 
-		#id {
-			font-size: 9pt;
-		}       
-    </style>
-  
-<section>
-	<h1 id="join_top">Join Us</h1>
-=======
-        .joinfrm {
-          	margin: auto;
-        	
-        }
-        
-        .agree-container {
-        	
-        }
-        .agree{
-         border:1px lightgray solid;
-           width: 390px;
-           height: 250px;
-            overflow: scroll;
-            font-size: 10pt;
-        	
-        }
-      
-.left{
-     float:left;          
-     margin-left: 80px;        
+@font-face {
+	font-family: "TmoneyRoundWindExtraBold";
+	src:
+		url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff")
+		format("woff");
+	font-weight: normal;
+	font-style: normal;
 }
-       
+
+#join_top {
+	font-family: "TmoneyRoundWindExtraBold";
+	color: gray;
+}
+
+.joinfrm {
+	margin: auto;
+}
+
+.agree-container {
+	
+}
+
+.agree {
+	border: 1px lightgray solid;
+	width: 390px;
+	height: 250px;
+	overflow: scroll;
+	font-size: 10pt;
+}
+
+.left {
+	float: left;
+	margin-left: 80px;
+}
 
 .right {
-   display: inline-block;          
-   margin-left: 20px;
-   overflow: scroll;    		
-}
-                
-        
-        
-.join-container {
-     text-align: center;
-     margin: 0 auto;
-     width: 863px;
-     height: 460px;       	
-     border: 1px solid lightgray;
-        	
-}
-        
- .join-container input {
-	 margin:3px;
+	display: inline-block;
+	margin-left: 20px;
 }
 
- .join-container table {
-	margin:0 auto;
- }
+.join-container {
+	text-align: center;
+	margin: 0 auto;
+	width: 863px;
+	height: 460px;
+	border: 1px solid lightgray;
+}
+
+.join-container input {
+	margin: 3px;
+}
+
+.join-container table {
+	margin: 0 auto;
+}
 
 .join-container table th {
-	padding:0 100px; 
-	text-align:right;
+	padding: 0 100px;
+	text-align: right;
 }
 
 .join-container table td {
 	padding-right: 10px;
-	padding:0 0px; 
-	text-align:left;
-	}
+	padding: 0 0px;
+	text-align: left;
+}
 
-.join-container table tr {	
-		
-	}
+.join-container table tr {
+	
+}
+
 #joininfo {
 	margin-right: 40px;
 	font-family: Arial;
@@ -219,8 +97,6 @@ h1 {
 	font-family: Arial;
 	font-weight: 500;
 	font-size: 12pt
-	
-	
 }
 
 th {
@@ -236,14 +112,12 @@ th {
 	height: 23px;
 	width: 70px;
 	cursor: pointer;
-	
 }
 
 #check {
 	font-weight: lighter;
 	font-size: 10pt;
 }
-
 
 #p-check {
 	font-family: Arial;
@@ -252,22 +126,23 @@ th {
 #a-check {
 	font-family: Arial;
 }
-   
+
 #travel {
 	font-size: 9pt;
-} 
+}
 
 #id {
 	font-size: 9pt;
-}       
-    </style>
+}
+</style>
   
 <section>
->>>>>>> jiyeon_Lee
+	<h1 id="join_top">Join Us</h1>
+
 	<hr>
          <div class="join-container">
          
-            <form action="<%= request.getContextPath()%>/member/join" method="POST" name="memberJoinfrm" >
+            <form action="<%=request.getContextPath()%>/member/join" method="POST" name="memberJoinfrm" >
                     <table >
                      <h3></h3><br>
              <tr>
