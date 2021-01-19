@@ -26,16 +26,27 @@ public class MemberListServlet extends HttpServlet {
 		int listCount = 0;
 		PageInfo info = null;
 		List<Member> list = null;
+		// 검색구현
+		String field= request.getParameter("f");
+		String value= request.getParameter("q");
 		
 		try {
 			page = Integer.parseInt(request.getParameter("page"));
 		}catch(NumberFormatException e) {
 			page = 1;
 		}		
-		
-		listCount = new MemberService().getMemberCount();
-		info = new PageInfo(page, 10, listCount, 10);
-		list = new MemberService().getMemberList(info);
+		if(field!=null) {
+			listCount = new MemberService().getMemberSearchCount(field,value);
+			info = new PageInfo(page, 10, listCount, 10);
+			list = new MemberService().getMemberList(field,value,info);	
+			request.setAttribute("f", field);
+			request.setAttribute("q", value);
+		}else {
+			listCount = new MemberService().getMemberCount();
+			info = new PageInfo(page, 10, listCount, 10);
+			list = new MemberService().getMemberList(info);
+				
+		}
 		
 		request.setAttribute("list", list);
 		request.setAttribute("pageInfo", info);
