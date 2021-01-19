@@ -26,11 +26,27 @@ public class BoardListServletRows extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		      String local = request.getParameter("local");
-		      String menu  = request.getParameter("menu");
-		      
 		
-		      request.getRequestDispatcher("/views/board/listRows.jsp").forward(request, response); 
+		String locName = request.getParameter("local");
+		String boardName = request.getParameter("menu");
+		String boardUserId = request.getParameter("boardUserId");
+		String boardTitle = request.getParameter("boardTitle");
+		String boardContent = request.getParameter("boardContent");
+		      
+			if(boardName == null) {
+				
+				List<Board> list = new BoardService().getBoardSerch(locName, boardUserId, boardTitle, boardContent); 
+		    		request.setAttribute("list", list);
+		    		request.setAttribute("local", locName);
+		    		request.getRequestDispatcher("/views/board/listRows.jsp").forward(request, response); 
+		    	
+			}else {
+				List<Board> list = new BoardService().getBoardList(locName, boardName, boardUserId, boardTitle, boardContent);   
+		    		request.setAttribute("list", list);
+		    		request.setAttribute("local", locName);
+		    		request.setAttribute("menu", boardName);
+		    		request.getRequestDispatcher("/views/board/listRows.jsp").forward(request, response); 
+			}
 	}
-
+	
 }

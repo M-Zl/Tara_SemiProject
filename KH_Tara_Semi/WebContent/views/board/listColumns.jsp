@@ -17,10 +17,8 @@
 	String btnsecond = null;
 	String btnThird = null;
 	int count = 0;
-	String vacuum = "";
 	String title[] = {"메인", "숙박", "맛집","포토존" };
 	String local = request.getParameter("local"); 
-	String vvv = request.getParameter("vvv"); 
 	String menu  = request.getParameter("menu"); 
 	if(menu == null){
 	        btnfirst = title[1]; btnsecond = title[2]; btnThird= title[3];
@@ -50,24 +48,32 @@
 				<button class="list_btn" onclick="menuLocationThird();"><%=btnThird%></button>   
            </div> 
            <br>
-			<div>
-            	<button id="sort" onclick="listre();">=</button>
-            		<select name="" id="inquiry1">
+			<div id="serchdiv">
+				<div id="Sortdiv">
+            		<button id="sort" onclick="listre();">=</button>
+            		<select name="" id="inquirySort">
                			<option value="">최신순</option>
                 		<option value="">추천순</option>
-                		<option selected>정렬</option>
-            		</select>
 
-<!--             <form action="" method="GET" id="search"> -->
+            		</select>
+            	</div>
+            	<div id="Menudiv">	
+                     <select id="serchMenu">
+                    	<option value="전체">전체</option>
+                    	<option value="숙박">숙박</option>
+                   		<option value="맛집">맛집</option>
+                   		<option value="포토존">포토존</option>
+             		 </select>
+          
             		 <select id="serchList">
                     	<option value="작성자">작성자</option>
                     	<option value="제목">제목</option>
                    		<option value="내용">내용</option>
              		 </select> 
-             	<input type="text" id="searchtext" placeholder="내용을 입력하세요">
-            	 <button  onclick="serch();">검색</button>
-<!--             </form> -->
-			</div>
+             		 <input type="text" id="searchtext" placeholder="내용을 입력하세요">
+            	 	 <button  onclick="serch();">검색</button>           
+			   </div>
+		</div>	   
 			<br>
 			<hr>
 
@@ -213,20 +219,44 @@
   	 location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=<%=btnThird%>";    
    }
    function listre() {
-	location.href="<%=request.getContextPath()%>/board/listRows?local=<%=local%>&menu=<%=menu%>"; 
+	   location.href="<%=request.getContextPath()%>/board/listRows?local=<%=local%>&menu=<%=menu%>";
    }
  
    function serch() {
+	var titlemenu = document.getElementById("title_menu").value;
+	var valueMenu = document.getElementById("serchMenu").value;
 	var valueList = document.getElementById("serchList").value;
 	var serchValue = document.getElementById("searchtext").value;
-	if(valueList === '작성자'){
-		location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardUserId="+ serchValue;
-	}else if(valueList === '제목'){
-		location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle="+ serchValue;	
-	}else{
-		location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent="+ serchValue;	
+	
+		if(titlemenu === null || valueMenu === '전체'){
+			if(valueMenu === '전체'){
+				if(valueList === '작성자'){
+					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&boardUserId="+ serchValue;
+				}else if(valueList === '제목'){
+					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&boardTitle="+ serchValue;	
+				}else{
+					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&boardContent="+ serchValue;	
+				}
+			}else{
+				if(valueList === '작성자'){
+					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardUserId="+ serchValue;
+				}else if(valueList === '제목'){
+					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardTitle="+ serchValue;	
+				}else{
+					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardContent="+ serchValue;	
+				}	
+			}	
+		}else{
+			if(valueList === '작성자'){
+				location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardUserId="+ serchValue;
+			}else if(valueList === '제목'){
+				location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardTitle="+ serchValue;	
+			}else{
+				location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardContent="+ serchValue;	
+			}			
+		}	    
 	}
-    }
+    
 </script>
 
 <%@ include file="/views/common/footer.jsp" %>

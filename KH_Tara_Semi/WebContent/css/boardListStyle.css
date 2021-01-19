@@ -9,7 +9,7 @@ section #board_container {
 }
 
 /* 지역 제목 */
-#title_local{
+section #title_local{
     font-size: 45px;
     color: royalblue;
     font-weight: 900;  
@@ -17,7 +17,7 @@ section #board_container {
 }  
 
 /* 게시판 제목*/
-#title_menu{
+section #title_menu{
     margin-top: 5px;
     font-size:  30px;
     margin-bottom: 5px;
@@ -26,13 +26,9 @@ section #board_container {
     text-align: center;
 }
 
-/* boardListColumns rows 전환 버튼  */
-#sort{
-    float: left;
-   
-} 
+
 /* 상단 버튼 css */
-.list_btn{
+section .list_btn{
     font-size:25px;
     font-weight: 700;
     width: 100px;
@@ -43,29 +39,49 @@ section #board_container {
 }
 
 /* 검색기능 css */
-#inquiry1{
-    float:left; 
+#serchdiv{
+	width:100%;
+    display: inline-block;	
+}
+
+#Sortdiv{
+	float:left;
+}
+#Menudiv{
+	float:right;
+}
+
+
+section #inquirySort{
+
     font-size:15px;
-   
+}    
+section #serchMenu{
+	font-size:15px;
+	margin-left: 2px
+
 }   
-#inquiry2{
+   
+section #serchList{
     font-size:15px;
 }
-#search{
+
+section #search{
     float:right; 
 }
-#searchtext{
+
+section #searchtext{
     font-size:15px;
 }
 
 /*boardListColumns 테이블 css  */
-#board_table{
+section #board_table{
     width:100%;
     margin-top: 10px;
     text-align: center;
     background-color: whitesmoke;
 }
-#board_table tr{
+section #board_table tr{
      margin-top: 40px;
      margin-bottom: 40px;
 }
