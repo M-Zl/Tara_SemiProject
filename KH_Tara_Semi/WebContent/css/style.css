@@ -7,8 +7,21 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "TmoneyRoundWindRegular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "TmoneyRoundWindExtraBold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
-div,
 header,
 footer {
   padding: 10px;
@@ -64,7 +77,6 @@ header > div {
   float: right;
   display: inline;
   text-align: right;
-  font-family: "Yusei Magic", sans-serif;
 }
 
 .main_option li {
@@ -76,21 +88,26 @@ header > div {
   font-weight: 800;
   color: royalblue;
   /* font-family: "Yusei Magic", sans-serif; */
-  font-family: "Roboto Slab", serif;
+  /* font-family: "Roboto Slab", serif; */
+  /* font-family: "Yusei Magic", sans-serif; */
+  font-family: "TmoneyRoundWindExtraBold";
 }
 .main_option li > a {
   text-decoration: none;
 }
 
 .main_visit {
+  /* border: 3px solid royalblue; */
+  /* border-radius: 20px; */
+  padding-top: 13px;
   float: right;
   font-family: "Recipekorea";
-  font-size: 15px;
-  /* color: royalblue; */
+  font-size: 14px;
+  color: #575756;
 }
 
 #search_input {
-  width: 13%;
+  width: 23%;
   padding: 10px 20px;
   background-color: transparent;
   transition: transform 250ms ease-in-out;
@@ -143,7 +160,7 @@ header > div {
   font-size: 40px;
   margin-bottom: 5px;
   text-shadow: -1px -1px 2px black, 1px 1px 2px black, -1px -1px 1px royalblue,
-    0px 0px 8px royalblue, 3px 3px 1px royalblue, 5px 5px 1px #42a5f5;
+    0px 0px 8px royalblue, 3px 3px 1px royalblue, 4px 4px 1px #42a5f5;
 }
 
 #map_board li a {
@@ -164,10 +181,10 @@ header > div {
 }
 #map_board > ul > li a:hover {
   color: white;
-  -webkit-transform: scale(1.2, 1.2);
-  -moz-transform: scale(1.2, 1.2);
-  -o-transform: scale(1.2, 1.2);
-  -ms-transform: scale(1.2, 1.2);
+  -webkit-transform: scale(1.2, 1.2); /* 크롬, 사파리 */
+  -moz-transform: scale(1.2, 1.2); /*  파이어폭스 */
+  -o-transform: scale(1.2, 1.2); /*  익스플로러 */
+  -ms-transform: scale(1.2, 1.2); /* 오페라 */
   transform: scale(1.2, 1.2);
 }
 #map_board > ul > li > a:hover + ol {
