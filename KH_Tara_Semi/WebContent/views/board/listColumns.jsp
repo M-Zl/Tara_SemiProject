@@ -14,10 +14,13 @@
 %>
 
 <%
+	int count = 0;
 	String btnfirst = null;
 	String btnsecond = null;
 	String btnThird = null;
-	int count = 0;
+	String boardUserId = request.getParameter("boardUserId"); 
+	String boardTitle = request.getParameter("boardTitle"); 
+	String boardContent = request.getParameter("boardContent"); 
 	String title[] = {"메인", "숙박", "맛집","포토존" };
 	String local = request.getParameter("local"); 
 	String menu  = request.getParameter("menu"); 
@@ -173,27 +176,72 @@
         <br>
         <br>
         <div id="pageBar">
-			<!-- 맨 처음으로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=1'">&lt;&lt;</button>
 			
+			<!-- 맨 처음으로 -->
+			<%if(boardUserId != null) {%>    
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=1'">&lt;&lt;</button>
+			<%}else if(boardTitle != null) { %>	
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=1'">&lt;&lt;</button>
+			<%}else{ %>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=1'">&lt;&lt;</button>
+			<%} %>	
+					
 			<!-- 이전 페이지로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
-
+			<button onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+            <%if(boardUserId != null) {%>    
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+			<%}else if(boardTitle != null) { %>	
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+			<%}else{ %>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+			<%} %>			
+			
+			 
 			<!--  10개 페이지 목록 -->
 			<% for(int p = pageInfo.getStartPage(); p <= pageInfo.getEndPage(); p++){ %>
 				<% if(p == pageInfo.getCurrentPage()){ %>
 					<button disabled><%= p %></button>
 				<% } else { %>
-					<button onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=<%= p %>'"><%= p %></button>
+				    <%if(menu == null ){ %> 
+				    	<%if(boardUserId != null) {%>    
+							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= p %>'"><%= p %></button>
+						<%}else if(boardTitle != null) { %>	
+							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= p %>'"><%= p %></button>	
+						<%}else if(boardContent != null){ %>
+							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardContent=<%=boardContent%>&page=<%= p %>'"><%= p %></button>
+						<%}else{ %>   
+						    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=<%= p %>'"><%= p %></button>
+						<%} %>
+					<%}else if(boardUserId != null) {%>    
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= p %>'"><%= p %></button>
+					<%}else if(boardTitle != null) { %>	
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= p %>'"><%= p %></button>	
+					<%}else if(boardContent != null){ %>
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=<%= p %>'"><%= p %></button>
+					<%}else{ %>	
+					    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&page=<%= p %>'"><%= p %></button>
+					<%} %>		
 				<% } %>
 			<% } %>
 			
-			<!-- 다음 페이지로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
 			
+			<!-- 다음 페이지로 -->
+
+			<%if(boardUserId != null) {%>    
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+			<%}else if(boardTitle != null) { %>	
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+			<%}else{ %>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+			<%} %>			 
 			<!-- 맨 끝으로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
-            
+            <%if(boardUserId != null) {%>    
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+			<%}else if(boardTitle != null) { %>	
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+			<%}else{ %>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+			<%} %>			
             <%if(loginMember != null) {%>
 			<button type="button" id="btn-add"
 			onclick="location.href ='<%=request.getContextPath() %>/board/write'">글쓰기</button>
@@ -205,6 +253,7 @@
 	</section>
 	
 <script>
+	
    function menuLocationfirst(){
  	 <% if(btnfirst.equals("메인")){ %>
    			location.href="<%=request.getContextPath()%>/index.jsp";    
@@ -226,33 +275,34 @@
 	var titlemenu = document.getElementById("title_menu").value;
 	var valueMenu = document.getElementById("serchMenu").value;
 	var valueList = document.getElementById("serchList").value;
+	var page = document.getElementById("btnPage").value;
 	var serchValue = document.getElementById("searchtext").value;
 	
 		if(titlemenu === null || valueMenu === '전체'){
 			if(valueMenu === '전체'){
 				if(valueList === '작성자'){
-					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&boardUserId="+ serchValue;
+					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&boardUserId="+ serchValue + "&page=" + page ;
 				}else if(valueList === '제목'){
-					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&boardTitle="+ serchValue;	
+					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&boardTitle="+ serchValue + "&page=" + page;	
 				}else{
-					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&boardContent="+ serchValue;	
+					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&boardContent="+ serchValue + "&page=" + page;	
 				}
 			}else{
 				if(valueList === '작성자'){
-					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardUserId="+ serchValue;
+					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardUserId="+ serchValue + "&page=" + page;
 				}else if(valueList === '제목'){
-					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardTitle="+ serchValue;	
+					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardTitle="+ serchValue + "&page=" + page;	
 				}else{
-					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardContent="+ serchValue;	
+					location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardContent="+ serchValue + "&page=" + page;	
 				}	
 			}	
 		}else{
 			if(valueList === '작성자'){
-				location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardUserId="+ serchValue;
+				location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardUserId="+ serchValue + "&page=" + page;
 			}else if(valueList === '제목'){
-				location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardTitle="+ serchValue;	
+				location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardTitle="+ serchValue + "&page=" + page;	
 			}else{
-				location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardContent="+ serchValue;	
+				location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=" + valueMenu + "&boardContent="+ serchValue + "&page=" + page;	
 			}			
 		}	    
 	}
