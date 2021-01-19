@@ -42,7 +42,7 @@ public class MemberJoinServlet extends HttpServlet {
 		String phone = request.getParameter("mobile1") + request.getParameter("mobile2") + request.getParameter("mobile3");
 		String email = request.getParameter("email1") + request.getParameter("email2");
 		String address = request.getParameter("address");
-		String travel = String.join(",", request.getParameter("travel"));
+		String travel = String.join(",", request.getParameterValues("travel"));
 			
 		member.setUserId(userId);
 		member.setUserPwd(userPwd);

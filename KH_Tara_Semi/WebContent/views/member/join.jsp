@@ -23,32 +23,28 @@
         	
         }
       
-        .left{
-           float:left;
-          
-           margin-left: 80px;
-          
-        
-        }
+.left{
+     float:left;          
+     margin-left: 80px;        
+}
        
 
-        .right{
-       		display: inline-block;
-           
-           margin-left: 20px;
-           overflow: scroll;
-        }
+.right {
+   display: inline-block;          
+   margin-left: 20px;
+   overflow: scroll;    		
+}
+                
         
         
-        
-        .join-container {
-        	text-align: center;
-        	margin: 0 auto;
-        	   width: 863px;
-        	height: 460px;       	
-        	border: 1px solid lightgray;
+.join-container {
+     text-align: center;
+     margin: 0 auto;
+     width: 863px;
+     height: 460px;       	
+     border: 1px solid lightgray;
         	
-        }
+}
         
  .join-container input {
 	 margin:3px;
@@ -400,7 +396,7 @@ $("#idCheck").on("click", () => {
 		
 	 var idReg = /^[a-z]+[a-z0-9]{3,9}$/g;
      if( !idReg.test( $("input[name=userId]").val() ) ) {
-         alert("아이디는 영문자로 시작하는 4~10자 영문자, 숫자이어야 합니다.");
+         alert("아이디는 영문자로 시작하는 4~10자 영문자, 숫자를 포함해야 합니다.");
          $("#newId").focus();
          return false;
         
@@ -409,7 +405,7 @@ $("#idCheck").on("click", () => {
      if(chknum < 0 || chkeng < 0)
 
 	    {
-	        alert('아이디는 숫자와 영문자를 혼용해야 합니다.');
+	        alert('아이디는 영문자, 숫자를 포함해야 합니다.');
 	        $("#newId").focus();
 	        return false;
 	    }
@@ -462,7 +458,7 @@ $("#joinbtn").click(function checkForm() {
     var userId = $("#newId").val();
     // 아이디 입력 유무 체크
     if(userId == '') {
-        alert("아이디를 입력하세요");
+        alert("아이디를 입력해주세요");
         userId.focus();
       
         return false; 
@@ -470,7 +466,7 @@ $("#joinbtn").click(function checkForm() {
     var userPwd = $('#pass1').val();
     // 암호 입력 유무 체크
     if(userPwd == ''){
-        alert('비밀번호를 입력하세요.');
+        alert('비밀번호를 입력해주세요.');
         userPwd.focus();
         return false;
     }
@@ -478,7 +474,7 @@ $("#joinbtn").click(function checkForm() {
     var userName = $('#userName').val();
     // 이름 입력 유무 체크
     if(userName == '') {   	
-    	 alert('이름 입력하세요.');
+    	 alert('이름을 입력해주세요.');
 	        userName.focus();
 	        return false;
     }
@@ -486,7 +482,7 @@ $("#joinbtn").click(function checkForm() {
     var mobile2 =$('#mobile2').val();
     // mobile2 입력 유무 체크
     if(mobile2 == '') {   	
-    	 alert('번호를 입력하세요.');
+    	 alert('번호를 입력해주세요.');
 	        mobile2.focus();
 	        return false;
     }
@@ -494,14 +490,33 @@ $("#joinbtn").click(function checkForm() {
     var mobile3 = $('#mobile3').val;
     // mobile3 입력 유무 체크
     if(mobile3 == '') {   	
-    	 alert('번호를 입력하세요.');
+    	 alert('번호를 입력해주세요.');
 	        mobile3.focus();
 	        return false;
     }
     
+    if ( $('#travel0').is(":checked") == false && 
+       	 $('#travel1').is(":checked") == false &&
+       	 $('#travel2').is(":checked") == false &&
+       	 $('#travel3').is(":checked") == false &&
+       	 $('#travel4').is(":checked") == false &&
+       	 $('#travel5').is(":checked") == false &&
+       	 $('#travel6').is(":checked") == false &&
+       	 $('#travel7').is(":checked") == false &&
+       	 $('#travel8').is(":checked") == false &&
+       	 $('#travel9').is(":checked") == false &&
+       	 $('#travel10').is(":checked") == false &&
+       	 $('#travel11').is(":checked") == false &&
+       	 $('#travel12').is(":checked") == false) {
+       	
+       	alert("여행지를 선택해주세요.");
+       	console.log("선택 안 됨");
+       	return false;
+       }
+    
     if ($("#agreeCheck").is(":checked") == false || $("#privacyCheck").is(":checked") == false) {
     	alert("이용약관에 동의해주세요.");
-    	console.log("가입안됨");
+    	console.log("가입 안 됨");
     	return false;
     }
     

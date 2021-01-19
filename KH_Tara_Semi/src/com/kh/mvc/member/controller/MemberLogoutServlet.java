@@ -21,6 +21,7 @@ public class MemberLogoutServlet extends HttpServlet {
 		if(session != null) {
 			session.invalidate();
 //			request.getSession().removeAttribute("sessionID"); //세션아이디값만 추가하는거 알아보기
+			System.out.println("로그아웃");
 
 		}
 
