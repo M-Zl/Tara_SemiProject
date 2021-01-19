@@ -118,4 +118,24 @@ public class MemberService {
 		return result;			
 	}
 
+	public List<Member> getMemberList(String field, String value, PageInfo info) {
+		Connection conn = getConnection();
+		
+		List<Member> list = new MemberDAO().findMembers(field, value, conn, info);
+		
+		close(conn);		
+		
+		return list;
+	}
+
+	public int getMemberSearchCount(String field, String value) {
+		Connection conn = getConnection();
+
+		int result = new MemberDAO().getMemberSearchCount(field,value,conn);
+
+		close(conn);
+
+		return result;			
+	}
+
 }

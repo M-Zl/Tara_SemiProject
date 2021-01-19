@@ -13,6 +13,7 @@ import com.kh.mvc.common.util.PageInfo;
 
 import com.kh.mvc.member.model.vo.Member;
 
+
 public class MemberDAO {
 
 	public Member findMemberByIdAndPwd(Connection conn, String useId, String userPwd) {
@@ -250,8 +251,6 @@ public class MemberDAO {
 			
 			return result;
 		}	
-	//멤버 목록
-	
 
 	public Member findPwd(Connection conn, String id, String name, String email) {
 		Member member = null;
@@ -317,5 +316,108 @@ public class MemberDAO {
 		
 		return result;
 	}
+	//멤버 목록
+	public int getMemberSearchCount(String field, String value, Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		int result = 0;
+		String query ="";
+		if(field.equals("userNo")) {
+			query = "SELECT COUNT(*) FROM(SELECT ROWNUM AS RNUM, " + "USER_NO, " + "USER_ID, " + "USER_NAME, " + "USER_EMAIL, "
+					+ "CREATE_DATE, " + "STATUS " + "FROM(SELECT USER_NO, " + "USER_ID," + "USER_NAME," + "USER_EMAIL,"
+					+ "CREATE_DATE," + "STATUS " + "FROM MEMBER " + "WHERE USER_NO=?" + "ORDER BY CREATE_DATE)" + ")";
+		}else if(field.equals("userId")) {
+			query = "SELECT COUNT(*) FROM(SELECT ROWNUM AS RNUM, " + "USER_NO, " + "USER_ID, " + "USER_NAME, " + "USER_EMAIL, "
+					+ "CREATE_DATE, " + "STATUS " + "FROM(SELECT USER_NO, " + "USER_ID," + "USER_NAME," + "USER_EMAIL,"
+					+ "CREATE_DATE," + "STATUS " + "FROM MEMBER " + "WHERE USER_ID LIKE ? " + "ORDER BY CREATE_DATE)"
+					+ ")";
+		}else {
+			query = "SELECT COUNT(*) FROM(SELECT ROWNUM AS RNUM, " + "USER_NO, " + "USER_ID, " + "USER_NAME, " + "USER_EMAIL, "
+					+ "CREATE_DATE, " + "STATUS " + "FROM(SELECT USER_NO, " + "USER_ID," + "USER_NAME," + "USER_EMAIL,"
+					+ "CREATE_DATE," + "STATUS " + "FROM MEMBER " + "WHERE USER_NAME LIKE ? " + "ORDER BY CREATE_DATE)"
+					+ ")";
+		}
+//		String query = "SELECT COUNT(*) FROM MEMBER";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			if(field.equals("userNo")) {
+				pstmt.setInt(1,Integer.parseInt(value));
+			}else {
+				pstmt.setString(1, "%"+value+"%");
+			}
+			
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				result = rset.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		
+		return result;
+	}
 
+	public List<Member> findMembers(String field, String value, Connection conn, PageInfo info) {
+		List<Member> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "";
+		if(field.equals("userNo")) {
+			query = "SELECT * FROM(SELECT ROWNUM AS RNUM, " + "USER_NO, " + "USER_ID, " + "USER_NAME, " + "USER_EMAIL, "
+					+ "CREATE_DATE, " + "STATUS " + "FROM(SELECT USER_NO, " + "USER_ID," + "USER_NAME," + "USER_EMAIL,"
+					+ "CREATE_DATE," + "STATUS " + "FROM MEMBER " + "WHERE USER_NO=?" + "ORDER BY CREATE_DATE)" + ")"
+					+ "WHERE RNUM BETWEEN ? AND ?";
+		}else if(field.equals("userId")) {
+			query = "SELECT * FROM(SELECT ROWNUM AS RNUM, " + "USER_NO, " + "USER_ID, " + "USER_NAME, " + "USER_EMAIL, "
+					+ "CREATE_DATE, " + "STATUS " + "FROM(SELECT USER_NO, " + "USER_ID," + "USER_NAME," + "USER_EMAIL,"
+					+ "CREATE_DATE," + "STATUS " + "FROM MEMBER " + "WHERE USER_ID LIKE ? " + "ORDER BY CREATE_DATE)"
+					+ ")" + "WHERE RNUM BETWEEN ? AND ?";
+		}else {
+			query = "SELECT * FROM(SELECT ROWNUM AS RNUM, " + "USER_NO, " + "USER_ID, " + "USER_NAME, " + "USER_EMAIL, "
+					+ "CREATE_DATE, " + "STATUS " + "FROM(SELECT USER_NO, " + "USER_ID," + "USER_NAME," + "USER_EMAIL,"
+					+ "CREATE_DATE," + "STATUS " + "FROM MEMBER " + "WHERE USER_NAME LIKE ? " + "ORDER BY CREATE_DATE)"
+					+ ")" + "WHERE RNUM BETWEEN ? AND ?";
+		}
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			if(field.equals("userNo")) {
+				pstmt.setInt(1,Integer.parseInt(value));
+			}else {
+				pstmt.setString(1, "%"+value+"%");
+			}
+			pstmt.setInt(2, info.getStartList());
+			pstmt.setInt(3, info.getEndList());
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				Member member = new Member(); 
+				
+				member.setUserNo(rs.getInt("USER_NO"));
+				member.setRowNum(rs.getInt("RNUM"));
+				member.setUserId(rs.getString("USER_ID"));
+				member.setUserName(rs.getString("USER_NAME"));
+				member.setEmail(rs.getString("USER_EMAIL"));
+				member.setCreateDate(rs.getDate("CREATE_DATE"));
+				member.setStatus(rs.getString("STATUS"));
+				
+				list.add(member);	
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+
+	
+	
 }
