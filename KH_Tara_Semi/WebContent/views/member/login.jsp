@@ -4,6 +4,7 @@
 <%@ include file="/views/common/header.jsp" %>    
 
 <style>
+
 #loginfrm input {
 	margin: 2px;
 }

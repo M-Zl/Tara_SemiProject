@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.kh.mvc.common.wrapper.EncryptWrapper;
 
 
-@WebFilter(filterName = "EncryptFilter", servletNames = { "login","changePwd" })
+@WebFilter(filterName = "EncryptFilter", servletNames = { "login","changePwd", "join" })
 public class EncryptFilter implements Filter {
 
 
