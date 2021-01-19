@@ -85,7 +85,7 @@
 			
 			<div class="user-table__search">
 				<div class="user__search">
-					<form action="<%=request.getContextPath()%>/admin/members/search" method="get">
+					<form action="<%=request.getContextPath()%>/members/search" method="get">
 						<select name="user">
 							<option value="userNo" selected>회원번호</option>
 							<option value="userId">회원ID</option>

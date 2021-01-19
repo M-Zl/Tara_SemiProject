@@ -81,7 +81,6 @@ public class MemberDAO {
 				+ 		"ORDER BY USER_NO"
 				+ 	 ")"
 				+ ") WHERE RNUM BETWEEN ? and ?";
-//		
 		try {
 			pstmt = conn.prepareStatement(query);
 			
@@ -136,5 +135,6 @@ public class MemberDAO {
 			
 			return result;
 		}	
-
+	//멤버 목록
+	
 }
