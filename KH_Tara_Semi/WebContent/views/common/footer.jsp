@@ -4,4 +4,4 @@
 	<p>COPYRIGHTⓒ 2020 KHeducenter_Tara. ALL RIGHTS RESERVED</p>
 </footer>
 </body>
-</html>
+</html> 

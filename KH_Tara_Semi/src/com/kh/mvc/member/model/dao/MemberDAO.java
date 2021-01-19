@@ -10,6 +10,7 @@ import java.util.List;
 
 import static com.kh.mvc.common.jdbc.JDBCTemplate.*;
 import com.kh.mvc.common.util.PageInfo;
+
 import com.kh.mvc.member.model.vo.Member;
 
 public class MemberDAO {
@@ -19,15 +20,15 @@ public class MemberDAO {
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
 		String query = "SELECT * FROM MEMBER WHERE USER_ID = ? AND USER_PWD = ? AND STATUS = 'Y'";
-		
+
 		try {
 			pstmt = conn.prepareStatement(query);
-			
+
 			pstmt.setString(1, useId);
 			pstmt.setString(2, userPwd);
-			
+
 			rset = pstmt.executeQuery();
-			
+
 			if(rset.next()) {
 				member = new Member(
 						rset.getInt("USER_NO"),
@@ -61,23 +62,23 @@ public class MemberDAO {
 		      PreparedStatement pstmt = null;
 		      
 		      try {				
-		    	  	pstmt = conn.prepareStatement("INSERT INTO MEMBER VALUES(SEQ_UNO.NEXTVAL,?,?,?,?,?,1,?,?,?,SYSDATE,SYSDATE,'Y')");
-			
-		    	  	pstmt.setString(1, member.getUserId());
-		    	  	pstmt.setString(2, member.getUserPwd());
-		    	  	pstmt.setString(3, member.getUserName());
-		    	  	pstmt.setString(4, member.getPhone());
-		    	  	pstmt.setString(5, member.getEmail());
-		    	  	pstmt.setString(6, member.getAddress());
-		    	  	pstmt.setString(7, member.getUserimg());
-		    	  	pstmt.setString(8, member.getTravel());
+		    	  pstmt = conn.prepareStatement("INSERT INTO MEMBER VALUES(SEQ_UNO.NEXTVAL,?,?,?,?,?,1,?,?,?,SYSDATE,SYSDATE,'Y')");
+		    	  
+		    	  pstmt.setString(1, member.getUserId());
+		    	  pstmt.setString(2, member.getUserPwd());
+		    	  pstmt.setString(3, member.getUserName());
+		    	  pstmt.setString(4, member.getPhone());
+		    	  pstmt.setString(5, member.getEmail());
+		    	  pstmt.setString(6, member.getAddress());
+		    	  pstmt.setString(7, member.getUserimg());
+		    	  pstmt.setString(8, member.getTravel());
 			
 		    	  	result = pstmt.executeUpdate();
 			
 			}  catch (SQLException e) {	         
 		         e.printStackTrace();
 		      }finally {
-			     JDBCTemplate.close(pstmt);		
+			     close(pstmt);		
 				}
 				return result;
 		
@@ -162,8 +163,8 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(conn);
+			close(rset);
+			close(conn);
 		}
 		
 		return member;
@@ -289,8 +290,8 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(conn);
+			close(rset);
+			close(conn);
 		}
 		
 		return member;
@@ -311,12 +312,10 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			JDBCTemplate.close(pstmt);
+			close(pstmt);
 		}
 		
 		return result;
 	}
 
 }
-
-

@@ -16,6 +16,7 @@
 <title>아이디 중복 확인</title>
 <script src="<%=request.getContextPath()%>/js/jquery-3.5.1.js"></script>
 <style type="text/css">
+
 #idCheck-container {
 		text-align:center;
 		padding-top:50px;
@@ -30,6 +31,7 @@
 	
 	
 }	
+
 #idCheck {
 	background-color:  lightgray;
 	color: rgb(90, 52, 52);
@@ -39,10 +41,12 @@
 	cursor: pointer;
 	
 }
+
 #duplicated {
 	font-size: 10pt;
 	
 }
+
 .close {
 	
 }
@@ -66,54 +70,89 @@
 	align: right;
 	width: 100px;
 }
+
+.duplicated {
+	font-size: 11pt;
+	font-weight: lighter;
+	
+}
+
+.list {	
+	 font-weight: lighter; 
+	 font-size: 10pt;
+}
+
+#Title {
+	background: gray;
+	height: 30px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 9px;
+	
+}
+
+#idTitle {	 
+	color: white; 	
+	font-size: 12pt;
+	font-weight: 500;
+	font-family: Arial;	
+	display: inline;
+}
+
+#idTitle> img {
+	margin-top: 3px;
+	float: right;
+	cursor: pointer;
+}	 
+
 </style>
 </head>
 <body>
 
-		<!-- 아이디 중복검사시 나오는 새장!!! -->
-		<div >
+	<!-- 아이디 중복검사시 나오는 새장!!! -->
+	<div id="Title">
+		<div id="idTitle">아이디 중복확인</div>
 		<div id="idTitle">
-			아이디 중복확인 </div>
-			<div id="close">
-			<a  onclick="self.close();"><img src="http://img.echosting.cafe24.com/skin/base_ko_KR/common/btn_close.png" alt="닫기"/></a>
-			</div>
-			</div>
-			
-		
+			<img style="width: 17px; height: 17px;" onclick="self.close();"
+				src="http://img.echosting.cafe24.com/skin/base_ko_KR/common/btn_close.png"
+				alt="닫기" />
+		</div>
+	</div>
+
+
 	<div id="idCheck-container">
 		<% if(valid) { %> 
-			<%if (memberStatus.getStatus().equals("N")) { %>
-				<span id="duplicated"><%= request.getParameter("userId") %></span>는 이미 탈퇴한 아이디입니다. <br>
-				<br><br> 
-		<form action="<%=request.getContextPath() %>/member/idCheck "  method="POST">		
-		<label style="font-size: 11pt;">아이디는 영문(소문자), 숫자로 4~10자 이내로 입력해 주세요.</label> <br><br>
-		<input type="text" name="userId" id="newId"  style="height: 22px" required> <!-- 다시 아이디 입력창 -->
-				<input type="submit" id="idCheck" onclick="return validate();" value="중복확인" > <br><br>
-		
-			<label class="">공백 또는 특수문자가 포함된 아이디는 사용할 수 없습니다.</label> <br>
-            <label class="">숫자로 시작하거나, 숫자로만 이루어진 아이디는 사용할 수 없습니다.</label> <br>      
+         <%if (memberStatus.getStatus().equals("N")) { %>
+            <span id="duplicated"><%= request.getParameter("userId") %></span><label class="duplicated">는 탈퇴한 아이디입니다. </label><br>
+            <br><br> 
+      <form action="<%=request.getContextPath() %>/member/idCheck "  method="POST">      
+      <label class="list" >아이디는 영문(소문자), 숫자로 4~10자 이내로 입력해 주세요.</label> <br><br>
+      <input type="text" name="userId" id="newId"  style="height: 22px" required> <!-- 다시 아이디 입력창 -->
+            <input type="submit" id="idCheck" onclick="return validate();" value="중복확인" > <br><br>
+      
+         <label class="list">공백 또는 특수문자가 포함된 아이디는 사용할 수 없습니다.</label> <br>
+            <label class="list">숫자로 시작하거나, 숫자로만 이루어진 아이디는 사용할 수 없습니다.</label> <br>      
         </form>
-				<% } else { %>
-		<span id="duplicated"><%= request.getParameter("userId") %></span>는 이미 사용중인 아이디입니다. <br>
-		<br><br> 
-		<form action="<%=request.getContextPath() %>/member/idCheck "  method="POST">		
-		<label style="font-size: 11pt;">아이디는 영문(소문자), 숫자로 4~10자 이내로 입력해 주세요.</label> <br><br>
-		<input type="text" name="userId" id="newId"  style="height: 22px" required> <!-- 다시 아이디 입력창 -->
-				<input type="submit" id="idCheck" onclick="return validate();" value="중복확인" > <br><br>
-		
-			<label class="">공백 또는 특수문자가 포함된 아이디는 사용할 수 없습니다.</label> <br>
-            <label class="">숫자로 시작하거나, 숫자로만 이루어진 아이디는 사용할 수 없습니다.</label> <br>      
+            <% } else { %>
+      <span id="duplicated"><%= request.getParameter("userId") %></span><label class="duplicated">는 사용중인 아이디입니다. <br>
+      <br><br> 
+      <form action="<%=request.getContextPath() %>/member/idCheck "  method="POST">      
+      <label class="list">아이디는 영문(소문자), 숫자로 4~10자 이내로 입력해 주세요.</label> <br><br>
+      <input type="text" name="userId" id="newId"  style="height: 22px" required> <!-- 다시 아이디 입력창 -->
+            <input type="submit" id="idCheck" onclick="return validate();" value="중복확인" > <br><br>
+      
+         <label class="list">공백 또는 특수문자가 포함된 아이디는 사용할 수 없습니다.</label> <br>
+            <label class="list">숫자로 시작하거나, 숫자로만 이루어진 아이디는 사용할 수 없습니다.</label> <br>      
         </form>
-       			<%} %>		
-		  <%}else { %>
-		   <label><span id="duplicated"><%= request.getParameter("userId") %></span>는 사용 가능한 아이디입니다. </label> <br>
-			<br><br>
-		<hr>
-		<input id="setIdbtn" type="button" onclick="setUserId();" value="사용하기" style="width: 100px; height: 30px;">		
-	    
-        <% } %>	
-  		 <br><br>
-			
+                <%} %>      
+        <%}else { %>
+       <span id="duplicated"><%= request.getParameter("userId") %></span> <label class="duplicated">는 사용 가능한 아이디입니다. </label> <br>
+         <br><br>
+      <hr>
+      <input id="setIdbtn" type="button" onclick="setUserId();" value="사용하기" style="width: 100px; height: 30px;">      
+       
+        <% } %>   
+         <br><br>
 		
 		</div>
 		<script>
@@ -131,7 +170,9 @@
 		           
 		        }		        			             
 		         if(chknum < 0 || chkeng < 0) {
-		        	   alert('아이디는 숫자와 영문자를 혼용해야 합니다.');
+
+		        	   alert('아이디는 영문자와 숫자를 포함해야 합니다.');
+
 		        	   $("#newId").focus();
 		        	    return false;
 		      }		

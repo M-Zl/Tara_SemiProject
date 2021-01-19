@@ -3,7 +3,6 @@
 <%@ include file="/views/common/header.jsp" %>
 
 <section>
-	
 	<div class="map_info">
 		<img src="<%= request.getContextPath()%>/images/logo/map3.png"/>
 		<div id="map_board">
