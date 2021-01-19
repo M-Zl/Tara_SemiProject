@@ -36,10 +36,7 @@ public class BoardListServlet extends HttpServlet {
 		String boardUserId = request.getParameter("boardUserId");
 		String boardTitle = request.getParameter("boardTitle");
 		String boardContent = request.getParameter("boardContent");
-		String pageUserId = request.getParameter("boardUserId");
-		String pageTitle = request.getParameter("boardTitle");
-		String pageContent = request.getParameter("boardContent");
-		
+	
 		try {
 			page = Integer.parseInt(request.getParameter("page"));
 		}catch(NumberFormatException e) {
@@ -55,9 +52,9 @@ public class BoardListServlet extends HttpServlet {
 		    	request.setAttribute("list", list);
 		    	request.setAttribute("local", locName);
 		    	request.setAttribute("pageInfo", info);
-		    	request.setAttribute("boardUserId", pageUserId);
-		    	request.setAttribute("boardTitle", pageTitle);
-		    	request.setAttribute("boardContent", pageContent);
+		    	request.setAttribute("boardUserId", boardUserId);
+		    	request.setAttribute("boardTitle", boardTitle);
+		    	request.setAttribute("boardContent", boardContent);
 		    	request.getRequestDispatcher("/views/board/listColumns.jsp").forward(request, response); 
 		    	System.out.println("실행되야함");
 		    	
@@ -71,9 +68,9 @@ public class BoardListServlet extends HttpServlet {
 		    	request.setAttribute("local", locName);
 		    	request.setAttribute("menu", boardName);
 		    	request.setAttribute("pageInfo", info);
-		    	request.setAttribute("boardUserId", pageUserId);
-		    	request.setAttribute("boardTitle", pageTitle);
-		    	request.setAttribute("boardContent", pageContent);		    		    	
+		    	request.setAttribute("boardUserId", boardUserId);
+		    	request.setAttribute("boardTitle", boardTitle);
+		    	request.setAttribute("boardContent", boardContent);    		    	
 		    	request.getRequestDispatcher("/views/board/listColumns.jsp").forward(request, response); 
 		    	
 		    	System.out.println("실행되면 안됨.");
