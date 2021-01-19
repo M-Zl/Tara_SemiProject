@@ -24,6 +24,7 @@
 <link rel="stylesheet" href="/KH_Tara_Semi/css/style.css" type="text/css">
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Yusei+Magic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="<%= request.getContextPath()%>/css/boardListStyle.css"type="text/css">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
