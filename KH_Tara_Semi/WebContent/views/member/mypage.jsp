@@ -12,12 +12,12 @@
 			<div>
 				<h2 class="profile__title">Profile</h2>
 				<div class="profile__photo">
-					<div></div>
+					<div><!-- loginMember.getUserimg() --></div>
 					<span><i class="fas fa-camera-retro fa-lg"></i></span>
 				</div>
 				<div class="profile__info">
-					<h3>ID : xxxxxx</h3>
-					<h3>Email : xxx@gmail.com</h3>
+					<h3>ID :  <!-- loginMember.getUserId() --></h3>
+					<h3>Email : <!-- loginMember.getEmail() --></h3>
 				</div>
 			</div>
 			<div>
@@ -30,11 +30,11 @@
 						<div>
 							<div class="listbox-left">
 								<div class="board-write__list-photo">
-									<div></div>
+									<div>사진</div>
 								</div>
 								<div class="board-write__list-content">
-									<h4>제주도 숙박 Tip</h4>
-									<h5>요기 진짜 너무너무 좋아요꼭오세요</h5>
+									<h4><!-- board.getBoardTitle() --></h4>
+									<h5><!-- board.getBoardContent() --></h5>
 								</div>
 							</div>
 							<div class="listbox-right">
@@ -45,11 +45,11 @@
 						<div>
 							<div class="listbox-left">
 								<div class="board-write__list-photo">
-									<div></div>
+									<div>사진</div>
 								</div>
 								<div class="board-write__list-content">
-									<h4>제주도 숙박 Tip</h4>
-									<h5>요기 진짜 너무너무 좋아요꼭오세요</h5>
+									<h4><!-- board.getBoardTitle() --></h4>
+									<h5><!-- board.getBoardContent() --></h5>
 								</div>
 							</div>
 							<div class="listbox-right">
@@ -68,19 +68,37 @@
 					</div>
 					<div class="board-like__list">
 						<div class="board-like__content">
-							<div class="board-like__content-photo"></div>
-							<div class="board-like__content-text"></div>
-						</div>
-						<div class="board-like__content">
-							<div class="board-like__content-photo">사진</div>
+							<div class="board-like__content-photo">
+							사진</div>
 							<div class="board-like__content-text">
-							<h5>dddd</h5>
-							<span>ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</span>
+							<!-- board.getBoardContent() -->
 							</div>
 						</div>
 						<div class="board-like__content">
-							<div class="board-like__content-photo"></div>
-							<div class="board-like__content-text"></div>
+							<div class="board-like__content-photo">
+								사진
+							</div>
+							<div class="board-like__content-text">
+								<h5>
+									<!-- board.getBoardTitle() -->
+								</h5>
+								<span>
+									<!-- board.getBoardContent() -->
+								</span>
+							</div>
+						</div>
+						<div class="board-like__content">
+							<div class="board-like__content-photo">
+								사진
+							</div>
+							<div class="board-like__content-text">
+								<h5>
+									<!-- board.getBoardTitle() -->
+								</h5>
+								<span>
+									<!-- board.getBoardContent() -->
+								</span>
+							</div>
 						</div>
 					</div>
 				</div>

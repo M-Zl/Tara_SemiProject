@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/logout")
 public class MemberLogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     public MemberLogoutServlet() {
     }
 
@@ -23,7 +23,7 @@ public class MemberLogoutServlet extends HttpServlet {
 //			request.getSession().removeAttribute("sessionID"); //세션아이디값만 추가하는거 알아보기
 
 		}
-		
+
 		response.sendRedirect(request.getContextPath() + "/");
 	}
 

@@ -4,166 +4,186 @@ import java.sql.Date;
 
 public class Member {
 
-	private int userNo;
+   private int userNo;
 
-	private String userId;
+   private int rowNum;
+   
+   private String userId;
 
-	private String userPwd;
+   private String userPwd;
 
-	private String userName;
+   private String userName;
 
-	private String birthdate;
 
-	private String phone;
+   private String phone;
 
-	private String email;
+   private String email;
 
-	private int userRole;
+   private int userRole;
 
-	private String address;
+   private String address;
 
-	private String userimg;
-//	private String userOriginalFileName; //파일명 어떻게 저장할건지 확인하기
-//	private String userRenameFileName;
+   private String userimg;
+//   private String userOriginalFileName; //파일명 어떻게 저장할건지 확인하기
+//   private String userRenameFileName;
 
-	private String travel;
+   private String travel;
 
-	private Date createDate;
+   private Date createDate;
 
-	private Date modifyDate;
+   private Date modifyDate;
+   
+   private String status;
 
-	public Member() {
-	}
+   public Member() {
+   }
 
-	public Member(int userNo, String userId, String userPwd, String userName, String birthdate, String phone,
-			String email, int userRole, String address, String userimg, String travel, Date createDate,
-			Date modifyDate) {
-		super();
-		this.userNo = userNo;
-		this.userId = userId;
-		this.userPwd = userPwd;
-		this.userName = userName;
-		this.birthdate = birthdate;
-		this.phone = phone;
-		this.email = email;
-		this.userRole = userRole;
-		this.address = address;
-		this.userimg = userimg;
-		this.travel = travel;
-		this.createDate = createDate;
-		this.modifyDate = modifyDate;
-	}
 
-	public int getUserNo() {
-		return userNo;
-	}
+   public Member(int userNo, String userId, String userPwd, String userName, String phone, String email, int userRole,
+         String address, String userimg, String travel, Date createDate, Date modifyDate, String status) {
+      super();
+      this.userNo = userNo;
+      this.userId = userId;
+      this.userPwd = userPwd;
+      this.userName = userName;
+      this.phone = phone;
+      this.email = email;
+      this.userRole = userRole;
+      this.address = address;
+      this.userimg = userimg;
+      this.travel = travel;
+      this.createDate = createDate;
+      this.modifyDate = modifyDate;
+      this.status = status;
+   }
 
-	public void setUserNo(int userNo) {
-		this.userNo = userNo;
-	}
 
-	public String getUserId() {
-		return userId;
-	}
+   public int getRowNum() {
+      return rowNum;
+   }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 
-	public String getUserPwd() {
-		return userPwd;
-	}
+   public void setRowNum(int rowNum) {
+      this.rowNum = rowNum;
+   }
 
-	public void setUserPwd(String userPwd) {
-		this.userPwd = userPwd;
-	}
 
-	public String getUserName() {
-		return userName;
-	}
+   public int getUserNo() {
+      return userNo;
+   }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+   public void setUserNo(int userNo) {
+      this.userNo = userNo;
+   }
 
-	public String getBirthdate() {
-		return birthdate;
-	}
+   public String getUserId() {
+      return userId;
+   }
 
-	public void setBirthdate(String birthdate) {
-		this.birthdate = birthdate;
-	}
+   public void setUserId(String userId) {
+      this.userId = userId;
+   }
 
-	public String getPhone() {
-		return phone;
-	}
+   public String getUserPwd() {
+      return userPwd;
+   }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+   public void setUserPwd(String userPwd) {
+      this.userPwd = userPwd;
+   }
 
-	public String getEmail() {
-		return email;
-	}
+   public String getUserName() {
+      return userName;
+   }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+   public void setUserName(String userName) {
+      this.userName = userName;
+   }
 
-	public int getUserRole() {
-		return userRole;
-	}
 
-	public void setUserRole(int userRole) {
-		this.userRole = userRole;
-	}
+   public String getPhone() {
+      return phone;
+   }
 
-	public String getAddress() {
-		return address;
-	}
+   public void setPhone(String phone) {
+      this.phone = phone;
+   }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+   public String getEmail() {
+      return email;
+   }
 
-	public String getUserimg() {
-		return userimg;
-	}
+   public void setEmail(String email) {
+      this.email = email;
+   }
 
-	public void setUserimg(String userimg) {
-		this.userimg = userimg;
-	}
+   public int getUserRole() {
+      return userRole;
+   }
 
-	public String getTravel() {
-		return travel;
-	}
+   public void setUserRole(int userRole) {
+      this.userRole = userRole;
+   }
 
-	public void setTravel(String travel) {
-		this.travel = travel;
-	}
+   public String getAddress() {
+      return address;
+   }
 
-	public Date getCreateDate() {
-		return createDate;
-	}
+   public void setAddress(String address) {
+      this.address = address;
+   }
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
+   public String getUserimg() {
+      return userimg;
+   }
 
-	public Date getModifyDate() {
-		return modifyDate;
-	}
+   public void setUserimg(String userimg) {
+      this.userimg = userimg;
+   }
 
-	public void setModifyDate(Date modifyDate) {
-		this.modifyDate = modifyDate;
-	}
+   public String getTravel() {
+      return travel;
+   }
 
-	@Override
-	public String toString() {
-		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
-				+ ", birthdate=" + birthdate + ", phone=" + phone + ", email=" + email + ", userRole=" + userRole
-				+ ", address=" + address + ", userimg=" + userimg + ", travel=" + travel + ", createDate=" + createDate
-				+ ", modifyDate=" + modifyDate + "]";
-	}
+   public void setTravel(String travel) {
+      this.travel = travel;
+   }
+
+   public Date getCreateDate() {
+      return createDate;
+   }
+
+   public void setCreateDate(Date createDate) {
+      this.createDate = createDate;
+   }
+
+   public Date getModifyDate() {
+      return modifyDate;
+   }
+
+   public void setModifyDate(Date modifyDate) {
+      this.modifyDate = modifyDate;
+   }
+
+   public String getStatus() {
+      return status;
+   }
+
+
+   public void setStatus(String status) {
+      this.status = status;
+   }
+
+
+   @Override
+   public String toString() {
+      return "Member [userNo=" + userNo + ", rowNum=" + rowNum + ", userId=" + userId + ", userPwd=" + userPwd
+            + ", userName=" + userName + ", phone=" + phone + ", email=" + email + ", userRole=" + userRole
+            + ", address=" + address + ", userimg=" + userimg + ", travel=" + travel + ", createDate=" + createDate
+            + ", modifyDate=" + modifyDate + ", status=" + status + "]";
+   }
+
+
+   
 
 }

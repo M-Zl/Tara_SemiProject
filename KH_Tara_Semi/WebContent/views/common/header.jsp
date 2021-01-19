@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+
 	String saveId = null;
 	Member loginMember = (Member)session.getAttribute("loginMember");
 	Cookie[] cookies = request.getCookies();
@@ -21,6 +22,9 @@
 <!DOCTYPE html>
 <html>
 <link rel="stylesheet" href="/KH_Tara_Semi/css/style.css" type="text/css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Yusei+Magic&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="<%= request.getContextPath()%>/css/boardListStyle.css"type="text/css">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -37,7 +41,7 @@
 			<ul>
 				<li><a href="<%= request.getContextPath()%>">Home</a></li>
 				<li><a href="<%= request.getContextPath()%>/login">Login</a></li>
-				<li><a href="#">Join Us</a></li>
+				<li><a href="<%= request.getContextPath()%>/member/join">Join Us</a></li>
 				<li><input id="search_input" type="text" placeholder="Search"></li>
 			</ul>
 		</form>
@@ -46,7 +50,7 @@
 			<ul>
 				<li><a href="<%= request.getContextPath()%>">Home</a></li>
 				<li><a href="<%= request.getContextPath()%>/logout">Logout</a></li>
-				<li><a href="#">MyPage</a></li>
+				<li><a href="#"><%= loginMember.getUserName() %>님 Page</a></li>
 				<li><input id="search_input" type="text" placeholder="Search"></li>
 			</ul>
 		</form>
