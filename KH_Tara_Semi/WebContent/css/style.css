@@ -1,0 +1,250 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "Recipekorea";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Recipekorea.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+div,
+header,
+footer {
+  padding: 10px;
+}
+
+header {
+  height: 130px;
+  /* border: 2px solid black; */
+  position: relative;
+}
+
+section {
+  min-height: 800px;
+  width: 1100px;
+  /* border: 2px solid black; */
+  margin: 0 auto;
+}
+
+footer {
+  height: 80px;
+  /* border: 2px solid black; */
+}
+
+footer > p {
+  margin-bottom: 0px;
+  padding: 10px;
+  text-align: center;
+  font-family: "Roboto Slab", serif;
+}
+
+/* header부분 css */
+
+header > div {
+  display: inline;
+}
+
+.main_logo {
+  width: 180px;
+  height: 100px;
+}
+
+.main_logo img {
+  width: 170px;
+  height: 90px;
+  margin-top: 10px;
+  margin-left: 10px;
+  float: left;
+  padding: 0px;
+}
+
+.main_option {
+  width: 45%;
+  float: right;
+  display: inline;
+  text-align: right;
+  font-family: "Yusei Magic", sans-serif;
+}
+
+.main_option li {
+  margin-right: 20px;
+  /* margin-top: 0px; */
+  list-style-type: none;
+  text-decoration: none;
+  display: inline;
+  font-weight: 800;
+  color: royalblue;
+  /* font-family: "Yusei Magic", sans-serif; */
+  font-family: "Roboto Slab", serif;
+}
+.main_option li > a {
+  text-decoration: none;
+}
+
+.main_visit {
+  /* border: 3px solid royalblue; */
+  /* border-radius: 20px; */
+  padding-top: 13px;
+  float: right;
+  font-family: "Recipekorea";
+  font-size: 14px;
+  color: #575756;
+}
+
+#search_input {
+  width: 20%;
+  padding: 10px 20px;
+  background-color: transparent;
+  transition: transform 250ms ease-in-out;
+  font-size: 14px;
+  line-height: 15px;
+  border-radius: 50px;
+  border: 1px solid #575756;
+  transition: all 250ms ease-in-out;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+#search_input::placeholder {
+  color: color(#575756 a(0.8));
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+#search_input:hover,
+#search_input:focus {
+  padding: 12px 0;
+  outline: 0;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #575756;
+  border-radius: 0;
+  background-position: 100% center;
+}
+
+/* section부분 css */
+
+.map_info {
+  position: relative;
+}
+
+.map_info img {
+  display: block;
+  text-align: center;
+  max-width: 100%;
+  margin: auto;
+  width: 900px;
+  height: 700px;
+}
+
+#map_board li {
+  list-style-type: none;
+  text-align: center;
+}
+
+#map_board > ul > li > a {
+  font-size: 40px;
+  margin-bottom: 5px;
+  text-shadow: -1px -1px 2px black, 1px 1px 2px black, -1px -1px 1px royalblue,
+    0px 0px 8px royalblue, 3px 3px 1px royalblue, 4px 4px 1px #42a5f5;
+}
+
+#map_board li a {
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  font-weight: 900;
+  display: block;
+  line-height: 35px;
+  text-shadow: 0px 0px 6px black, 0px 0px 8px royalblue, 3px 3px 1px royalblue;
+  font-family: "Recipekorea";
+}
+
+#map_board > ul > li ol {
+  display: none;
+  padding: 0px;
+  float: center;
+}
+#map_board > ul > li a:hover {
+  color: white;
+  -webkit-transform: scale(1.2, 1.2); /* 크롬, 사파리 */
+  -moz-transform: scale(1.2, 1.2); /*  파이어폭스 */
+  -o-transform: scale(1.2, 1.2); /*  익스플로러 */
+  -ms-transform: scale(1.2, 1.2); /* 오페라 */
+  transform: scale(1.2, 1.2);
+}
+#map_board > ul > li > a:hover + ol {
+  display: block;
+}
+#map_board > ul > li > ol:hover {
+  display: block;
+  color: white;
+}
+
+#Gyeonggi {
+  position: absolute;
+  top: 100px;
+  left: 290px;
+  margin: 0px;
+  padding: 0px;
+}
+#Gyeonggi li > a {
+  list-style-type: none;
+}
+
+#seoul {
+  position: absolute;
+  top: 130px;
+  left: 180px;
+}
+
+#Gangwon {
+  position: absolute;
+  top: 100px;
+  left: 470px;
+}
+#Chungcheongnam {
+  position: absolute;
+  top: 290px;
+  left: 110px;
+}
+#Chungcheongbuk {
+  position: absolute;
+  top: 230px;
+  left: 330px;
+}
+#Gyeongsangbuk {
+  position: absolute;
+  top: 320px;
+  left: 460px;
+}
+#Gyeongsangnam {
+  position: absolute;
+  top: 470px;
+  left: 400px;
+}
+#Jeollabuk {
+  position: absolute;
+  top: 420px;
+  left: 240px;
+}
+#Jeollanam {
+  position: absolute;
+  top: 530px;
+  left: 120px;
+}
+#jeju {
+  position: absolute;
+  top: 650px;
+  left: 370px;
+}
+#Dokdo {
+  position: absolute;
+  top: 190px;
+  right: 5px;
+}
+#Ulleungdo {
+  position: absolute;
+  top: 200px;
+  right: 230px;
+}
