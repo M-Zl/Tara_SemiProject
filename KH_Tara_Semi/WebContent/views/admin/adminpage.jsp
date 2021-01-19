@@ -60,7 +60,7 @@
 			
 			<div class="pagecount">
 					<!-- 맨 처음으로 -->
-				<buttononclick="location.href='<%=request.getContextPath()%>/admin/members?page=1'">&lt;&lt;</button>
+				<button onclick="location.href='<%=request.getContextPath()%>/admin/members?page=1'">&lt;&lt;</button>
 					<!-- 이전 페이지로 -->
 				<button onclick="location.href='<%=request.getContextPath()%>/admin/members?page=<%=pageInfo.getPrvePage()%>'">&lt;</button>
 					<!--  10개 페이지 목록 -->
@@ -85,12 +85,13 @@
 			
 			<div class="user-table__search">
 				<div class="user__search">
-					<form action="">
-						<select>
-							<option selected>회원번호</option>
-							<option>회원ID</option>
-							<option>이름</option>
-						</select> <input type="text" /> <input type="submit" value="검색" />
+					<form action="<%=request.getContextPath()%>/admin/members/search" method="get">
+						<select name="user">
+							<option value="userNo" selected>회원번호</option>
+							<option value="userId">회원ID</option>
+							<option value="userName">이름</option>
+						</select> 
+							<input type="text" name="obj"/> <input type="submit" value="검색" />
 					</form>
 				</div>
 			</div>
