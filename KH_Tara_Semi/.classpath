@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="E:/develop/kh_semi/KH_Tara_Semi/WebContent/WEB-INF/lib/cos.jar"/>
-	<classpathentry kind="lib" path="C:/Users/moon/Desktop/백업/KH_Tara_Semi/WebContent/WEB-INF/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="E:/develop/kh_semi/KH_Tara_Semi/WebContent/WEB-INF/lib/ojdbc6.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
