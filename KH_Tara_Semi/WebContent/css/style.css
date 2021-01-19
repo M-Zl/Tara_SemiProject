@@ -7,8 +7,21 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "TmoneyRoundWindRegular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "TmoneyRoundWindExtraBold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
-div,
 header,
 footer {
   padding: 10px;
@@ -64,7 +77,6 @@ header > div {
   float: right;
   display: inline;
   text-align: right;
-  font-family: "Yusei Magic", sans-serif;
 }
 
 .main_option li {
@@ -76,7 +88,9 @@ header > div {
   font-weight: 800;
   color: royalblue;
   /* font-family: "Yusei Magic", sans-serif; */
-  font-family: "Roboto Slab", serif;
+  /* font-family: "Roboto Slab", serif; */
+  /* font-family: "Yusei Magic", sans-serif; */
+  font-family: "TmoneyRoundWindExtraBold";
 }
 .main_option li > a {
   text-decoration: none;
@@ -93,7 +107,7 @@ header > div {
 }
 
 #search_input {
-  width: 20%;
+  width: 23%;
   padding: 10px 20px;
   background-color: transparent;
   transition: transform 250ms ease-in-out;

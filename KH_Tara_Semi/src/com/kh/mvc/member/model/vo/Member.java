@@ -14,7 +14,6 @@ public class Member {
 
 	private String userName;
 
-
 	private String phone;
 
 	private String email;
@@ -24,8 +23,6 @@ public class Member {
 	private String address;
 
 	private String userimg;
-//	private String userOriginalFileName; //파일명 어떻게 저장할건지 확인하기
-//	private String userRenameFileName;
 
 	private String travel;
 
@@ -35,9 +32,10 @@ public class Member {
 	
 	private String status;
 
+	private String status;
+
 	public Member() {
 	}
-
 
 	public Member(int userNo, String userId, String userPwd, String userName, String phone, String email, int userRole,
 			String address, String userimg, String travel, Date createDate, Date modifyDate, String status) {
@@ -65,6 +63,13 @@ public class Member {
 
 	public void setRowNum(int rowNum) {
 		this.rowNum = rowNum;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 
@@ -99,7 +104,6 @@ public class Member {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-
 
 	public String getPhone() {
 		return phone;
@@ -182,8 +186,4 @@ public class Member {
 				+ ", address=" + address + ", userimg=" + userimg + ", travel=" + travel + ", createDate=" + createDate
 				+ ", modifyDate=" + modifyDate + ", status=" + status + "]";
 	}
-
-
-	
-
 }

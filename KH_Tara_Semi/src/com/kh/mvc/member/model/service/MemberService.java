@@ -5,9 +5,11 @@ import static com.kh.mvc.common.jdbc.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.List;
 
+
 import com.kh.mvc.board.model.dao.BoardDAO;
 import com.kh.mvc.common.jdbc.JDBCTemplate;
 import com.kh.mvc.common.util.PageInfo;
+
 import com.kh.mvc.member.model.dao.MemberDAO;
 import com.kh.mvc.member.model.vo.Member;
 
@@ -15,11 +17,84 @@ public class MemberService {
 	private MemberDAO dao = new MemberDAO();
 
 	public Member login(String useId, String userPwd) {
-		Connection conn = JDBCTemplate.getConnection();
+		Connection conn = getConnection();
 		
 		Member member = dao.findMemberByIdAndPwd(conn, useId, userPwd);
 		
-		JDBCTemplate.close(conn);
+		close(conn);
+		
+		return member;
+	}
+
+	public Member findId(String name, String email) {
+		
+		Connection conn = getConnection();
+		
+		Member member = dao.findId(conn, name, email);
+		
+		close(conn);
+		
+		return member;
+	}
+
+	public Member findPwd(String id, String name, String email) {
+		
+		Connection conn = getConnection();
+		
+		Member member = dao.findPwd(conn, id, name, email);
+		
+		close(conn);
+		
+		return member;
+	}
+
+	public int changePwd(String id, String pwd) {
+		Connection conn = getConnection();
+		int result = dao.changePwd(conn, id, pwd);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+	
+	public int joinMember(Member member) {
+		Connection conn = getConnection();
+		
+		int result = dao.insertMember(conn, member);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		return result;
+	}
+	
+	public boolean validate(String userId) {
+		Connection conn = getConnection();
+		
+		Member member = dao.findMemberById(conn, userId);
+		
+		close(conn);
+		
+		
+		return member != null;
+	}
+
+	public Member findMemberById(String userId) {		
+		Connection conn = getConnection();
+		
+		Member member = dao.findMemberById(conn, userId);
+		
+		close(conn);
+		
 		
 		return member;
 	}
