@@ -56,7 +56,7 @@ public class BoardListServlet extends HttpServlet {
 		    	request.setAttribute("boardTitle", boardTitle);
 		    	request.setAttribute("boardContent", boardContent);
 		    	request.getRequestDispatcher("/views/board/listColumns.jsp").forward(request, response); 
-		    	System.out.println("실행되야함");
+	
 		    	
 		    	
 		}else {
@@ -73,7 +73,6 @@ public class BoardListServlet extends HttpServlet {
 		    	request.setAttribute("boardContent", boardContent);    		    	
 		    	request.getRequestDispatcher("/views/board/listColumns.jsp").forward(request, response); 
 		    	
-		    	System.out.println("실행되면 안됨.");
 		}
 	}
 	

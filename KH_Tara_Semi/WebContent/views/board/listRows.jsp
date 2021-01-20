@@ -1,4 +1,5 @@
 <%@page import="com.kh.mvc.board.model.vo.Board"%>
+<%@page import="com.kh.mvc.common.util.PageInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 
@@ -8,22 +9,25 @@
 <%@ include file="/views/common/header.jsp" %>
 
 <%
- List<Board> list = (ArrayList) request.getAttribute("list");
-
+	List<Board> list = (ArrayList) request.getAttribute("list");
+	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
 %>
 
 <%
+	int count = 0;
 	String btnfirst = null;
 	String btnsecond = null;
 	String btnThird = null;
-	String vacuum = "";
+	String boardUserId = request.getParameter("boardUserId"); 
+	String boardTitle = request.getParameter("boardTitle"); 
+	String boardContent = request.getParameter("boardContent"); 
 	String title[] = {"메인", "숙박", "맛집","포토존" };
 	String local = request.getParameter("local"); 
 	String menu  = request.getParameter("menu"); 
-	if(menu == null){
-	        btnfirst = title[1]; btnsecond = title[2]; btnThird= title[3];
+		if(menu == null){
+        	btnfirst = title[1]; btnsecond = title[2]; btnThird= title[3];
 		}else if(menu.equals(title[1])){
-		    btnfirst = title[0]; btnsecond = title[2]; btnThird= title[3];		
+	 	    btnfirst = title[0]; btnsecond = title[2]; btnThird= title[3];		
 		}else if(menu.equals(title[2])){
 			btnfirst = title[0]; btnsecond = title[1]; btnThird= title[3];	
 		}else{
@@ -95,29 +99,79 @@
               					<span ><%= board.getUserId()%> </span> 
               				</div>
                				<div id="board_div_img"><img src="../image/해변.jpg" class="board_list_img"></div>  
-            				 </a>
-                     <%} }%>     
+            			</a>
+            		<br>
+                     <%} }%>         
              </div> 
         <hr>
         <br>
         <div id="pageBar">
-           
-            <button >&lt;&lt;</button>
-            <button>&lt;</button>
-            <button disabled>1</button>
-            <button >2</button>
-            <button >3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>10</button>
-            <!-- 다음 페이지로 -->
-            <button >&gt;</button>
-            <!-- 맨 끝으로 -->
-            <button>&gt;&gt;</button>
+			
+			<!-- 맨 처음으로 -->
+			<%if(boardUserId != null) {%>    
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=1'">&lt;&lt;</button>
+			<%}else if(boardTitle != null) { %>	
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=1'">&lt;&lt;</button>
+			<%}else{ %>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=1'">&lt;&lt;</button>
+			<%} %>	
+					
+			<!-- 이전 페이지로 -->
+			<button onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+            <%if(boardUserId != null) {%>    
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+			<%}else if(boardTitle != null) { %>	
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+			<%}else{ %>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+			<%} %>			
+			
+			 
+			<!--  10개 페이지 목록 -->
+			<% for(int p = pageInfo.getStartPage(); p <= pageInfo.getEndPage(); p++){ %>
+				<% if(p == pageInfo.getCurrentPage()){ %>
+					<button disabled><%= p %></button>
+				<% } else { %>
+				    <%if(menu == null ){ %> 
+				    	<%if(boardUserId != null) {%>    
+							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= p %>'"><%= p %></button>
+						<%}else if(boardTitle != null) { %>	
+							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= p %>'"><%= p %></button>	
+						<%}else if(boardContent != null){ %>
+							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardContent=<%=boardContent%>&page=<%= p %>'"><%= p %></button>
+						<%}else{ %>   
+						    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&page=<%= p %>'"><%= p %></button>
+						<%} %>
+					<%}else if(boardUserId != null) {%>    
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= p %>'"><%= p %></button>
+					<%}else if(boardTitle != null) { %>	
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= p %>'"><%= p %></button>	
+					<%}else if(boardContent != null){ %>
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=<%= p %>'"><%= p %></button>
+					<%}else{ %>	
+					    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&page=<%= p %>'"><%= p %></button>
+					<%} %>		
+				<% } %>
+			<% } %>
+			
+			
+			<!-- 다음 페이지로 -->
+
+			<%if(boardUserId != null) {%>    
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+			<%}else if(boardTitle != null) { %>	
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+			<%}else{ %>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+			<%} %>			 
+			<!-- 맨 끝으로 -->
+            <%if(boardUserId != null) {%>    
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+			<%}else if(boardTitle != null) { %>	
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+			<%}else{ %>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+			<%} %>			
             <%if(loginMember != null) {%>
 			<button type="button" id="btn-add"
 			onclick="location.href ='<%=request.getContextPath() %>/board/write'">글쓰기</button>
