@@ -95,7 +95,7 @@
 										<div class="board_list_div">
 										
 										    <div class="board_list_div_img">
-												<img src="../" class="board_list_image">
+												<a href="<%=request.getContextPath() %>/board/detail"><img src="../" class="board_list_image"></a>
                           					</div>  
                           					         
                           					<div class="board_list_count">

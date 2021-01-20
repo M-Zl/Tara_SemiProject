@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="com.kh.mvc.board.model.vo.BoardReply"%>
+<%@page import="com.kh.mvc.board.model.vo.Board"%>
 <%@page import="com.kh.mvc.board.model.vo.Board"%>
 <%@page import="com.kh.mvc.board.model.vo.BoardComment"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,7 +8,7 @@
 <%@ include file="/views/common/header.jsp" %>
 <%
 	Board board = (Board)request.getAttribute("board");
-	
+
 	BoardComment boardcomment = (BoardComment)request.getAttribute("boardcomment");
 %>
 
