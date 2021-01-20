@@ -268,7 +268,25 @@
   	 location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=<%=btnThird%>";    
    }
    function listre() {
-	   location.href="<%=request.getContextPath()%>/board/listRows?local=<%=local%>&menu=<%=menu%>";
+	   <%if(menu == null){%>
+	   		<%if(boardUserId != null) {%>    
+				location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardTitle=<%=boardTitle%>';
+			<%}else if(boardTitle != null) { %>	
+	    		location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardTitle=<%=boardTitle%>';	
+			<%}else if(boardContent != null){ %>
+				location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardContent=<%=boardContent%>';
+			<%}else{ %>   
+	  			location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>';
+			<%} %>
+	   <%}else if(boardUserId != null) {%>    
+				location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>';
+	   <%}else if(boardTitle != null) { %>	
+				location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>';	
+	   <%}else if(boardContent != null){ %>
+				location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>';
+	   <%}else{ %>	
+	   			location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>';
+	   <%}%>
    }
  
    function serch() {
