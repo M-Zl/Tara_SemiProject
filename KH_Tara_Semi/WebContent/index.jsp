@@ -119,13 +119,4 @@
 	</div>
 </section>
 
-<script>
-
- function aaa(bb) {
-	 bbb = bb.innerHTML;
-	 location.href='<%=request.getContextPath()%>/board/listColumns?local=울릉도&menu='+ bbb;
-<%-- 	 location.href="<%=request.getContextPath()%>/board/listColumns?local=강원도&menu=맛집"; --%>
-	 
-}
- </script>
 <%@ include file="/views/common/footer.jsp" %>
