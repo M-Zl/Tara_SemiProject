@@ -212,7 +212,7 @@ public class BoardDAO {
 		Board board = null;
 		String query = 
 				"SELECT  B.BOARD_NO, "
-				+ 		"B.BOARD_WRITER_NO, "
+				+ 		"M.USER_NO, "
 				+ 		"M.USER_ID, "
 				+ 		"B.LOC_NAME, "
 				+ 		"B.BOARD_NAME, "
@@ -227,7 +227,7 @@ public class BoardDAO {
 				+ 		"B.BOARD_CREATE_DATE, "
 				+ 		"B.BOARD_MODIFY_DATE "
 				+ "FROM BOARD B, MEMBER M "
-				+ "WHERE (B.BOARD_WRITER_NO = M.USER_NO) AND B.STATUS ='Y' AND B.BOARD_NO =?";
+				+ "WHERE (B.BOARD_WRITER_NO = M.USER_NO) AND B.STATUS ='Y' AND B.BOARD_NO = ?";
 
 		
 		try {
@@ -236,8 +236,6 @@ public class BoardDAO {
 			pstmt.setInt(1, boardNo);
 			
 			rs = pstmt.executeQuery();
-			
-			System.out.println(rs);
 			
 			if(rs.next()) {
 				board = new Board();
@@ -258,7 +256,6 @@ public class BoardDAO {
 				board.setBoardCreateDate(rs.getDate("BOARD_CREATE_DATE"));
 				board.setBoardCreateDate(rs.getDate("BOARD_MODIFY_DATE"));
 				
-				System.out.println("boardDAO"+board);
 			}			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -299,17 +296,16 @@ public class BoardDAO {
 		ResultSet rs = null;
 		List<BoardReply> list = new ArrayList();
 		String query = 
-				"SELECT COMMENT_NO, "
-				+ 		"COMMENT_BOARD_NO, "
-				+ 		"COMMENT_CONTENT, "
+				"SELECT C.COMMENT_NO, "
+				+ 		"C.COMMENT_CONTENT, "
+				+ 		"C.COMMENT_WRITER_NO, "
+				+ 		"C.COMMENT_BOARD_NO, "
 				+ 		"M.USER_ID, "
-				+ 		"M.COMMENT_WRITER_NO, "
 				+ 		"C.COMMENT_CREATE_DATE, "
-				+ 		"C.COMMENT_MODIFY_DATE, "
-				+ 		"C.STATUS "
+				+ 		"C.COMMENT_MODIFY_DATE "
 				+ "FROM COMMENTS C "
 				+ "JOIN MEMBER M ON(C.COMMENT_WRITER_NO = M.USER_NO) "
-				+ "WHERE C.STATUS='Y' AND COMMENT_BOARD_NO = 8 "
+				+ "WHERE C.STATUS='Y' AND COMMENT_BOARD_NO = ?"
 				+ "ORDER BY COMMENT_CREATE_DATE DESC";
 		
 		try {
@@ -323,13 +319,15 @@ public class BoardDAO {
 				BoardReply reply=new BoardReply();
 				
 				reply.setCommentNo(rs.getInt("COMMENT_NO"));
-				reply.setCommentWriterNo(rs.getInt("COMMENT_WRITER_NO"));
 				reply.setCommentBoardNo(rs.getInt("COMMENT_BOARD_NO"));
+				reply.setCommentWriterNo(rs.getInt("COMMENT_WRITER_NO"));
 				reply.setContent(rs.getString("COMMENT_CONTENT"));
 				reply.setCreateDate(rs.getDate("COMMENT_CREATE_DATE"));
 				reply.setCreateDate(rs.getDate("COMMENT_MODIFY_DATE"));
 				
 				list.add(reply);
+				
+				System.out.println(reply);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();

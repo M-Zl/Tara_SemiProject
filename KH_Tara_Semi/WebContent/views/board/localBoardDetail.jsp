@@ -84,7 +84,7 @@
                         </div>
                     </div>
                     <div id="comment_area">
-                        <span name="commentContent"><%= boardcomment.getCommentContent() %></span>
+                        <span name="commentContent"></span>
                     </div>
                     <hr>
                 </div>
