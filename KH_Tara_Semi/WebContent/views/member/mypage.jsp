@@ -13,16 +13,16 @@
 				<h2 class="profile__title">Profile</h2>
 				<div class="profile__photo">
 					<div><!-- loginMember.getUserimg() --></div>
-					<span><i class="fas fa-camera-retro fa-lg"></i></span>
+					<span><i class="fas fa-camera-retro fa-3x"></i></span>
 				</div>
 				<div class="profile__info">
 					<div style="margin-bottom:50px;">
 						<h3>ID :  <%=loginMember.getUserId()%></h3>
 						<h3>Email : <%=loginMember.getEmail()%></h3>
 					</div>
-					<div
-						style="display: flex; align-items: center; flex-direction: column;">
-						<button>회원탈퇴</button>
+					<div class="member-delete_btn">
+						<a href="#"><i class="fas fa-user-alt-slash fa-5x"></i></a>
+						<span>회원탈퇴</span>
 					</div>
 				</div>
 			</div>
@@ -30,7 +30,7 @@
 				<div class="board-write">
 					<div class="board-write__title">
 						<h3 class="board-write__title">작성한 글목록</h3>
-						<span><a href=""><i class="fas fa-bars fa-lg"></i></a></span>
+						<span><a href=""><i class="fas fa-bars fa-2x"></i></a></span>
 					</div>
 					<div class="board-write__list">
 						<div>
@@ -44,8 +44,8 @@
 								</div>
 							</div>
 							<div class="listbox-right">
-								<span><a href=""><i class="fas fa-pen-fancy fa-lg"></i></a></span>
-								<span><a href=""><i class="fas fa-trash-alt fa-lg"></i></a></span>
+								<span><a href=""><i class="fas fa-pen-fancy fa-2x"></i></a></span>
+								<span><a href=""><i class="fas fa-trash-alt fa-2x"></i></a></span>
 							</div>
 						</div>
 						<div>
@@ -59,8 +59,8 @@
 								</div>
 							</div>
 							<div class="listbox-right">
-								<span><a href=""><i class="fas fa-pen-fancy fa-lg"></i></a></span>
-								<span><a href=""><i class="fas fa-trash-alt fa-lg"></i></a></span>
+								<span><a href=""><i class="fas fa-pen-fancy fa-2x"></i></a></span>
+								<span><a href=""><i class="fas fa-trash-alt fa-2x"></i></a></span>
 							</div>
 						</div>
 					</div>
@@ -70,7 +70,7 @@
 				<div class="board-like">
 					<div class="board-like__title">
 						<h3>내가 찜한 게시물</h3>
-						<span><a href=""><i class="fas fa-bars fa-lg"></i></a></span>
+						<span><a href=""><i class="fas fa-bars fa-2x"></i></a></span>
 					</div>
 					<div class="board-like__list">
 						<div class="board-like__content">
