@@ -16,8 +16,14 @@
 					<span><i class="fas fa-camera-retro fa-lg"></i></span>
 				</div>
 				<div class="profile__info">
-					<h3>ID :  <!-- loginMember.getUserId() --></h3>
-					<h3>Email : <!-- loginMember.getEmail() --></h3>
+					<div style="margin-bottom:50px;">
+						<h3>ID :  <%=loginMember.getUserId()%></h3>
+						<h3>Email : <%=loginMember.getEmail()%></h3>
+					</div>
+					<div
+						style="display: flex; align-items: center; flex-direction: column;">
+						<button>회원탈퇴</button>
+					</div>
 				</div>
 			</div>
 			<div>
