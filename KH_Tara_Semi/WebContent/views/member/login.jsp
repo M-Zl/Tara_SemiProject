@@ -5,50 +5,50 @@
 
 <style>
 
-
 #loginfrm input {
-	margin: 2px;
+   margin: 2px;
 }
 #btn1 {
-	background-color: royalblue;
-	color: white;
-	border: 0px;
-	font-weight: bold;
+   background-color: royalblue;
+   color: white;
+   border: 0px;
+   font-weight: bold;
 }
 #btn2 {
-	background-color: lightgray;
-	color: rgb(80, 52, 52);
-	border: 0px;
-	font-weight: bold;
+   background-color: lightgray;
+   color: rgb(80, 52, 52);
+   border: 0px;
+   font-weight: bold;
 }
 #logintitle>img {
-	width: 150px;
-  	height: 70px; 
+   width: 150px;
+     height: 70px; 
 }
 #loginfrm {
-	text-align: center;
+   text-align: center;
 }
+
 #userId,#userPwd{
-	height:27px;
-	border: 1px solid gray;
-	border-radius: 7px; 
+   height:27px;
+   border: 1px solid gray;
+   border-radius: 7px; 
 }
 .titleArea {
-	text-align: center;
+   text-align: center;
 }
 #findId {
-	text-decoration: none;
-	font-size: 9pt;
-	color: black;
+   text-decoration: none;
+   font-size: 9pt;
+   color: black;
 }
 #findPwd {
-	text-decoration: none;
-	font-size: 9pt;
-	color: black;
+   text-decoration: none;
+   font-size: 9pt;
+   color: black;
 }
 #checksaveId {
-	font-size: 9pt;
-	margin-right: 160px;
+   font-size: 9pt;
+   margin-right: 160px;
 }
 </style>
 </head>

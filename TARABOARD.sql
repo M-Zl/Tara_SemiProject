@@ -106,7 +106,7 @@ INSERT INTO BOARD VALUES
 BEGIN
     FOR N IN 1..52
     LOOP
-        INSERT INTO BOARD VALUES(SEQ_BOARD_NO.NEXTVAL, 2, '강원도', '여행','강원도 게시글 ' || SEQ_BOARD_NO.CURRVAL,'게시글 내용입니다'||  SEQ_BOARD_NO.CURRVAL, DEFAULT,null, null,null,null,null,SYSDATE,SYSDATE, 'Y');
+        INSERT INTO BOARD VALUES(SEQ_BOARD_NO.NEXTVAL, 66, '강원도', '포토존','강원도 게시글 ' || SEQ_BOARD_NO.CURRVAL,'게시글 내용입니다'||  SEQ_BOARD_NO.CURRVAL, DEFAULT,null, null,null,null,null,SYSDATE,SYSDATE, 'Y');
     END LOOP;
     
     COMMIT;
