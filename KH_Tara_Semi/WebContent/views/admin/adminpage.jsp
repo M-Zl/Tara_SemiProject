@@ -7,13 +7,15 @@
 <%
 	List<Member> list = (ArrayList) request.getAttribute("list");
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
+	String f =request.getAttribute("f")==null ? "" : (String)request.getAttribute("f");
+	String q =request.getAttribute("q")==null ? "" : (String)request.getAttribute("q");
 %>
 <section>
 	<link rel="stylesheet" property="stylesheet"
 		href="/KH_Tara_Semi/css/adminpage.css">
 	<div class="main">
 		<div class="admin-header">
-			<h1 class="admin-header__title">회원 관리</h1>
+			<h1 align="center" class="admin-header__title">회원 관리</h1>
 		</div>
 		<div class="admin-main">
 			<div class="user-table">
@@ -60,9 +62,9 @@
 			
 			<div class="pagecount">
 					<!-- 맨 처음으로 -->
-				<button onclick="location.href='<%=request.getContextPath()%>/admin/members?page=1'">&lt;&lt;</button>
+				<button onclick="location.href='<%=request.getContextPath()%>/admin/members?page=1&f=<%=f%>&q=<%=q%>'">&lt;&lt;</button>
 					<!-- 이전 페이지로 -->
-				<button onclick="location.href='<%=request.getContextPath()%>/admin/members?page=<%=pageInfo.getPrvePage()%>'">&lt;</button>
+				<button onclick="location.href='<%=request.getContextPath()%>/admin/members?page=<%=pageInfo.getPrvePage()%>&f=<%=f%>&q=<%=q%>'">&lt;</button>
 					<!--  10개 페이지 목록 -->
 				<%
 				for (int p = pageInfo.getStartPage(); p <= pageInfo.getEndPage(); p++) {
@@ -72,26 +74,28 @@
 				%>
 				<button disabled><%=p%></button>
 				<%} else {%>
-				<button onclick="location.href='<%=request.getContextPath()%>/admin/members?page=<%=p%>'"><%=p%></button>
+				<button onclick="location.href='<%=request.getContextPath()%>/admin/members?page=<%=p%>&f=<%=f%>&q=<%=q%>'"><%=p%></button>
 					<%}%>
 				<%}%>
 					<!-- 다음 페이지로 -->
 				<button
-					onclick="location.href='<%=request.getContextPath()%>/admin/members?page=<%=pageInfo.getNextPage()%>'">&gt;</button>
+					onclick="location.href='<%=request.getContextPath()%>/admin/members?page=<%=pageInfo.getNextPage()%>&f=<%=f%>&q=<%=q%>'">&gt;</button>
 
 				<!-- 맨 끝으로 -->
-				<button onclick="location.href='<%= request.getContextPath() %>/admin/members?page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+				<button onclick="location.href='<%= request.getContextPath() %>/admin/members?page=<%= pageInfo.getMaxPage()%>&f=<%=f%>&q=<%=q%>'">&gt;&gt;</button>
 			</div>
 			
+		<div align="center"><a href="<%=request.getContextPath()%>/admin/members">목록으로</a></div>
 			<div class="user-table__search">
 				<div class="user__search">
-					<form action="<%=request.getContextPath()%>/members/search" method="get">
-						<select name="user">
+					<form action="<%=request.getContextPath()%>/admin/members" method="get">
+							<input type="hidden" name="page" value="1">
+						<select name="f">
 							<option value="userNo" selected>회원번호</option>
 							<option value="userId">회원ID</option>
 							<option value="userName">이름</option>
 						</select> 
-							<input type="text" name="obj"/> <input type="submit" value="검색" />
+							<input type="text" name="q"/> <input type="submit" value="검색" />
 					</form>
 				</div>
 			</div>
