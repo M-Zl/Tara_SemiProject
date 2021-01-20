@@ -5,69 +5,76 @@
 <%@ include file="/views/common/header.jsp" %>
     <script src="<%=request.getContextPath()%>/js/jquery-3.5.1.js"></script>
     <style>
-    
-        .joinfrm {
-          	margin: auto;
-        	
-        }
-        
-        .agree-container {
-        	
-        }
-        .agree{
-         border:1px lightgray solid;
-           width: 390px;
-           height: 250px;
-            overflow: scroll;
-            font-size: 10pt;
-        	
-        }
-      
-.left{
-     float:left;          
-     margin-left: 80px;        
+@font-face {
+	font-family: "TmoneyRoundWindExtraBold";
+	src:
+		url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff")
+		format("woff");
+	font-weight: normal;
+	font-style: normal;
 }
-       
+
+#join_top {
+	font-family: "TmoneyRoundWindExtraBold";
+	color: gray;
+}
+
+.joinfrm {
+	margin: auto;
+}
+
+.agree-container {
+	
+}
+
+.agree {
+	border: 1px lightgray solid;
+	width: 420px;
+	height: 250px;
+	overflow: scroll;
+	font-size: 10pt;
+}
+
+.left {
+	float: left;
+}
 
 .right {
-   display: inline-block;          
-   margin-left: 20px;
-   overflow: scroll;    		
-}
-                
-        
-        
-.join-container {
-     text-align: center;
-     margin: 0 auto;
-     width: 863px;
-     height: 460px;       	
-     border: 1px solid lightgray;
-        	
-}
-        
- .join-container input {
-	 margin:3px;
+	display: inline-block;
+	margin-left: 20px;
 }
 
- .join-container table {
-	margin:0 auto;
- }
+.join-container {
+	text-align: center;
+	margin: 0 auto;
+	width: 863px;
+	height: 460px;
+	border: 1px solid lightgray;
+}
+
+.join-container input {
+	margin: 3px;
+}
+
+.join-container table {
+	margin: 0 auto;
+}
 
 .join-container table th {
-	padding:0 100px; 
-	text-align:right;
+	padding: 0 100px;
+	text-align: right;
 }
 
 .join-container table td {
 	padding-right: 10px;
-	padding:0 0px; 
-	text-align:left;
-	}
+	padding: 0 0px;
+	text-align: left;
+}
 
-.join-container table tr {	
-		
-	}
+.join-container table tr {
+	
+}
+
 #joininfo {
 	margin-right: 40px;
 	font-family: Arial;
@@ -89,8 +96,6 @@ h1 {
 	font-family: Arial;
 	font-weight: 500;
 	font-size: 12pt
-	
-	
 }
 
 th {
@@ -106,14 +111,12 @@ th {
 	height: 23px;
 	width: 70px;
 	cursor: pointer;
-	
 }
 
 #check {
 	font-weight: lighter;
 	font-size: 10pt;
 }
-
 
 #p-check {
 	font-family: Arial;
@@ -122,21 +125,23 @@ th {
 #a-check {
 	font-family: Arial;
 }
-   
+
 #travel {
 	font-size: 9pt;
-} 
+}
 
 #id {
 	font-size: 9pt;
-}       
-    </style>
+}
+</style>
   
 <section>
+	<h1 id="join_top">Join Us</h1>
+
 	<hr>
          <div class="join-container">
          
-            <form action="<%= request.getContextPath()%>/member/join" method="POST" name="memberJoinfrm" >
+            <form action="<%=request.getContextPath()%>/member/join" method="POST" name="memberJoinfrm" >
                     <table >
                      <h3></h3><br>
              <tr>
@@ -229,7 +234,7 @@ th {
              <tr></tr>             
              <tr></tr>             
              <tr></tr>             
-                   <tr>  <th >휴대전화 <img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/ico_required.gif" class="" alt="필수"/>  </th>
+                   <tr>  <th >휴대전화   </th>
                 <td><select id="mobile1" name="mobile1"  style="height: 22px;">
                         <option value="010">010</option>
                         <option value="011">011</option>
@@ -244,7 +249,7 @@ th {
              <tr></tr> 
              <tr></tr> 
              <tr>
-            <th >이메일 </th>
+            <th >이메일 <img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/ico_required.gif" class="" alt="필수"/></th>
                             <td><input id="email1" name="email1" size="10" value="" type="text" required > 
                                 <select id="email2" name="email2" style="width: 100px; height: 21px;">
                                     <option value="@naver.com">@naver.com</option>
@@ -291,7 +296,7 @@ th {
         			<div class="agree">		
                     <p>■ 수집하는 개인정보 항목 및 수집방법</p><p>가. 수집하는 개인정보의 항목</p><p>o 회사는 회원가입, 상담, 서비스 신청 등을 위해 아래와 같은 개인정보를 수집하고 있습니다.</p><p>- 회원가입시 : 이름 , 생년월일 , 성별 , 로그인ID , 비밀번호 , 자택 전화번호 , 휴대전화번호 , 이메일 , 14세미만 가입자의 경우 법정대리인의 정보</p><p>- 서비스 신청시 : 주소, 결제 정보</p>
                     <p>o 서비스 이용 과정이나 사업 처리 과정에서 서비스이용기록, 접속로그, 쿠키, 접속 IP, 결제 기록, 불량이용 기록이 생성되어 수집될 수 있습니다.</p><p>나. 수집방법</p><p>- 홈페이지, 서면양식, 게시판, 이메일, 이벤트 응모, 배송요청, 전화, 팩스, 생성 정보 수집 툴을 통한 수집</p><p><br></p><p>■ 개인정보의 수집 및 이용목적</p><p>회사는 수집한 개인정보를 다음의 목적을 위해 활용합니다.</p><p>o 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산</p>
-                    <p>콘텐츠 제공 , 구매 및 요금 결제 , 물품배송 또는 청구지 등 발송 , 금융거래 본인 인증 및 금융 서비스</p><p>o 회원 관리</p><p>회원제 서비스 이용에 따른 본인확인 , 개인 식별 , 불량회원의 부정 이용 방지와 비인가 사용 방지 , 가입 의사 확인 , 연령확인 , 만14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인, 불만처리 등 민원처리 , 고지사항 전달</p><p>o 마케팅 및 광고에 활용</p><p>이벤트 등 광고성 정보 전달 , 접속 빈도 파악 또는 회원의 서비스 이용에 대한 통계</p><p><br></p>
+                    <p>콘텐츠 제공 , 구매 및 요금 결제 , 물품배송 또는 청구지 등 발송 , 금융거래 본인 인증 및 금융 서비스</p><p>o 회원 관리</p><p>회원제 서비스 이용에 따른 본인확인 , 개인 식별 , 불량회원의 부정 이용 방지와 비인가 사용 방지 , 가입 의사 확인 , 연령확인 , 만14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인, 불만처리 등 민원처리 , 고지사항 전달 </p><p>o 마케팅 및 광고에 활용</p><p>이벤트 등 광고성 정보 전달 , 접속 빈도 파악 또는 회원의 서비스 이용에 대한 통계</p><p><br></p>
                     <p>■ 개인정보의 보유 및 이용기간</p><p>고객의 개인정보는 회원탈퇴 등 수집 및 이용목적이 달성되거나 동의철회 요청이 있는 경우 지체없이 파기됩니다.</p><p>단,「전자상거래 등에서의 소비자보호에 관한 법률」 등 관련법령의 규정에 의하여</p><p>다음과 같이 거래 관련 권리 의무 관계의 확인 등을 이유로 일정기간 보유하여야 할 필요가 있을 경우에는 그 기간동안 보유합니다.</p>
                     <p>가. 「전자상거래 등에서의 소비자보호에 관한 법률」 제6조</p><p>- 계약 또는 청약 철회 등에 관한 기록 : 5년</p><p>- 대금결재 및 재화 등의 공급에 관한 기록 : 5년</p><p>- 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년</p><p>나. 「통신비밀보호법」 제15조의2</p><p>- 방문(로그)에 관한 기록: 3개월</p><p>다. 기타 관련 법령 등</p><p><br></p><p>※ 동의를 거부할 수 있으나 거부시 회원 가입이 불가능합니다.</p>						      
                       </div>
@@ -305,7 +310,8 @@ th {
            
            </div>
                
-               <div id="joinSubmit">   
+               <div id="joinSubmit">  <br> 
+
            	<button id="joinbtn"  style="width:180px; height:80px;">REGISTER</button>
            		</div> 
 	 	
@@ -333,7 +339,6 @@ $(document).ready(() => {
 			return false;
 		}
 		
-
 		if(pass1.length < 4) {
 			alert("비밀번호는 최소 4글자이상 입력해주세요!");
 			$("#pass1").val("");
@@ -352,7 +357,6 @@ $(document).ready(() => {
 		}
 		
 		  if(chknum < 0 || chkeng < 0)
-
 		    {
 		        alert('비밀번호는 숫자와 영문자를 혼용하여야 합니다.');
 		        $("#pass1").val("");
@@ -381,7 +385,6 @@ $(document).ready(() => {
 		        return false;
 		    }
 
-
 		    return true;
 				
 	});		
@@ -396,7 +399,9 @@ $("#idCheck").on("click", () => {
 		
 	 var idReg = /^[a-z]+[a-z0-9]{3,9}$/g;
      if( !idReg.test( $("input[name=userId]").val() ) ) {
+
          alert("아이디는 영문자로 시작하는 4~10자 영문자, 숫자를 포함해야 합니다.");
+
          $("#newId").focus();
          return false;
         
@@ -404,8 +409,10 @@ $("#idCheck").on("click", () => {
      
      if(chknum < 0 || chkeng < 0)
 
+
 	    {
 	        alert('아이디는 영문자, 숫자를 포함해야 합니다.');
+
 	        $("#newId").focus();
 	        return false;
 	    }
@@ -441,24 +448,15 @@ if( !nameReg.test( $("input[name=userName]").val() ) ) {
 
 });
 
-$("#email1").on("focus",() => {
-var mobile2Reg = /^[0-9]{3,4}$/;
-var mobile3Reg = /^[0-9]{4}$/;
-
-if( !mobile2Reg.test( $("input[name=mobile2]").val() ) || !mobile3Reg.test( $("input[name=mobile3]").val() ))  {
-	   alert("유효한 번호를 입력해주세요.");
-	   $("#mobile2").focus();
-	   console.log("유효하지 않음 번호"); 
-			return false;
-	}
-});
 
 $("#joinbtn").click(function checkForm() {
 	
     var userId = $("#newId").val();
     // 아이디 입력 유무 체크
     if(userId == '') {
+
         alert("아이디를 입력해주세요");
+        
         userId.focus();
       
         return false; 
@@ -466,7 +464,9 @@ $("#joinbtn").click(function checkForm() {
     var userPwd = $('#pass1').val();
     // 암호 입력 유무 체크
     if(userPwd == ''){
+
         alert('비밀번호를 입력해주세요.');
+
         userPwd.focus();
         return false;
     }
@@ -474,26 +474,21 @@ $("#joinbtn").click(function checkForm() {
     var userName = $('#userName').val();
     // 이름 입력 유무 체크
     if(userName == '') {   	
+
     	 alert('이름을 입력해주세요.');
+
 	        userName.focus();
 	        return false;
     }
     
-    var mobile2 =$('#mobile2').val();
-    // mobile2 입력 유무 체크
-    if(mobile2 == '') {   	
-    	 alert('번호를 입력해주세요.');
-	        mobile2.focus();
+    var email1 =$('#email1').val();
+    // email1 입력 유무 체크
+    if(email1 == '') {   	
+    	 alert('이메일을 입력해주세요.');
+	        email1.focus();
 	        return false;
     }
     
-    var mobile3 = $('#mobile3').val;
-    // mobile3 입력 유무 체크
-    if(mobile3 == '') {   	
-    	 alert('번호를 입력해주세요.');
-	        mobile3.focus();
-	        return false;
-    }
     
     if ( $('#travel0').is(":checked") == false && 
        	 $('#travel1').is(":checked") == false &&
@@ -517,13 +512,13 @@ $("#joinbtn").click(function checkForm() {
     if ($("#agreeCheck").is(":checked") == false || $("#privacyCheck").is(":checked") == false) {
     	alert("이용약관에 동의해주세요.");
     	console.log("가입 안 됨");
+
     	return false;
     }
     
     memberJoinfrm.submit();
  
 	});
-
 
 $('#joinbtn').on({
     'mouseenter': function() {
@@ -535,8 +530,6 @@ $('#joinbtn').on({
         console.log('mouseleave');
     }
    });
-   
-
    
 });
 
