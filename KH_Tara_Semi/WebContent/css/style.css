@@ -262,3 +262,8 @@ header > div {
   top: 200px;
   right: 230px;
 }
+
+.agree-container{
+    display:flex;
+    justify-content: center;
+}

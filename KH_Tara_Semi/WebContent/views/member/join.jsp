@@ -37,7 +37,6 @@
 
 .left {
 	float: left;
-	margin-left: 80px;
 }
 
 .right {

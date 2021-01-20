@@ -180,47 +180,6 @@ public class BoardDAO {
 		return list;
 	}
 
-	public Board findBoardByNo(Connection conn, int boardNo) {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		Board board = null;
-		String query = 
-				"SELECT B.BOARD_NO, "
-				+ "B.BOARD_TITLE, "
-				+ "M.USER_ID, "
-				+ "B.BOARD_CREATE_DATE, "
-				+ "B.BOARD_READCOUNT, "
-				+ 		"(SELECT COUNT(*) FROM LIKECOUNT WHERE BOARD_NO = 1) LCOUNT , "
-				+ 		"(SELECT COUNT(*) FROM COMMENTS WHERE COMMENT_BOARD_NO = 1) CCOUNT"
-				+ "FROM BOARD B, MEMBER M "
-				+ "WHERE B.BOARD_WRITER_NO = M.USER_NO AND B.STATUS ='Y' AND B.BOARD_NO = ? "
-				+ "ORDER BY BOARD_NO DESC";
-		
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, boardNo);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				board = new Board();
-				
-				board.setBoardNo(rs.getInt("BOARD_NO"));
-				board.setBoardTitle(rs.getString("BOARD_TITLE"));
-				board.setUserId(rs.getString("USER_ID"));
-				board.setBoardCreateDate(rs.getDate("BOARD_CREATE_DATE"));
-				board.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
-				//
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(rs);
-			close(pstmt);
-		}
-		
-		return board;
-		}
-
 	public int getBoardCount(Connection conn) {
 	      PreparedStatement pstmt = null;
 	      ResultSet rset = null;

@@ -3,7 +3,7 @@
 /* div 영역 전체 */
 .Transportation_all {
     /* border: 1px solid; */
-    margin-top: 7%;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     font-family: 'Noto Sans KR', sans-serif;

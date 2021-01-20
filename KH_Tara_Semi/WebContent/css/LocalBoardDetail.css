@@ -1,16 +1,13 @@
 @charset "UTF-8";
 
-* {
-    font-size: 15px;
-    font-family: 'Noto Sans KR', sans-serif;
-}
-
 #boardDetail {
     /* width: 750px; */
     width: 10%;
     display: block;
     justify-content: center;
     position: fixed;
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .board_top {

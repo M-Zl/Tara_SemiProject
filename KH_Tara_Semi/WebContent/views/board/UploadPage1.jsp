@@ -3,7 +3,7 @@
 <%@ include file="/views/common/header.jsp" %>
 
     <div class="uploadPageArea">
-        <div class="titleArea">
+        <div class="titleArea_sel">
             <select id="localTitleSel" name="boardCode" required>
                 <option value="">지역 선택</option>
                 <option value="Seoul">서울</option>
