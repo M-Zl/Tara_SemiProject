@@ -80,15 +80,16 @@
 			</div>	   
 		<br>
 		<hr>
-			<div class="board_div">
+		    <div id="board_div">
 			 <%if(list.isEmpty()) { %>	
-			 	<p>조회된 게시글이 없습니다.</p>
+			 <div class="board_div_list"><p id="board_div_list_p">조회된 게시글이 없습니다.</p></div> 
              <%} else { 	                                   
 			  		for(Board board : list) {  %>       
+					<div class="board_div_list">
 						<div id="board_div_count">
-               				<div class="board_div_img_count"> <img src="<%=request.getContextPath() %>/logo/heart.jpg"  class="board_img_count"><p>9999</p></div>
-               				<div class="board_div_img_count"> <img src="<%=request.getContextPath() %>/logo/댓글1.png" class="board_img_count"><p>99999</p></div>
-               				<div class="board_div_img_count"> <img src="<%=request.getContextPath() %>/logo/조회수1.png"  class="board_img_count"><p><%= board.getBoardReadCount() %></p></div>
+               				<div class="board_div_img_count"> <img src="<%=request.getContextPath() %>/logo/heart.jpg"  class="board_img_count"><p class="board_img_count_p">9999</p></div>
+               				<div class="board_div_img_count"> <img src="<%=request.getContextPath() %>/logo/댓글1.png" class="board_img_count"><p class="board_img_count_p">99999</p></div>
+               				<div class="board_div_img_count"> <img src="<%=request.getContextPath() %>/logo/조회수1.png"  class="board_img_count"><p class="board_img_count_p"><%= board.getBoardReadCount() %></p></div>
             			</div>
               		 	<a href=""> 
               	 			<div id="board_div_text">
@@ -100,9 +101,9 @@
               				</div>
                				<div id="board_div_img"><img src="../image/해변.jpg" class="board_list_img"></div>  
             			</a>
-            		<br>
-                     <%} }%>         
-             </div> 
+             	</div> 
+                     <%} }%>   
+           </div>      
         <hr>
         <br>
         <div id="pageBar">
@@ -239,4 +240,5 @@
 
 <%@ include file="/views/common/footer.jsp" %>
 
+ 
  

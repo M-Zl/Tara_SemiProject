@@ -152,6 +152,12 @@ section #board_table tr{
     background-color: white;
 }
 
+#board_div_list_p{
+	text-align: center;
+	font-size: 20px
+}
+
+
 /* 게시판 좋아요 조회수 댓글 css */
 #board_div_count{
     width: 9%;
