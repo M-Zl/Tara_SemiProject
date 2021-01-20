@@ -21,14 +21,13 @@ public class BoardListServlet extends HttpServlet {
      
    
 	public BoardListServlet() {
-    
-      
-   
+
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int page = 0;
 		int listCount = 0;
+
 		PageInfo info = null;
 		List<Board> list = null;
 		String locName = request.getParameter("local");
@@ -36,7 +35,6 @@ public class BoardListServlet extends HttpServlet {
 		String boardUserId = request.getParameter("boardUserId");
 		String boardTitle = request.getParameter("boardTitle");
 		String boardContent = request.getParameter("boardContent");
-	
 		try {
 			page = Integer.parseInt(request.getParameter("page"));
 		}catch(NumberFormatException e) {
@@ -44,7 +42,7 @@ public class BoardListServlet extends HttpServlet {
 		}		    
 		    
 		if(boardName == null ) {
-
+			
 			listCount = new BoardService().getBoardCount();
 			info = new PageInfo(page, 10, listCount, 8);    
 			list = new BoardService().getBoardSerch(locName, boardUserId, boardTitle, boardContent, info); 

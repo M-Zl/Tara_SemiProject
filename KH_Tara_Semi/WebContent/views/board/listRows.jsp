@@ -87,17 +87,18 @@
 			  		for(Board board : list) {  %>       
 					<div class="board_div_list">
 						<div id="board_div_count">
-               				<div class="board_div_img_count"> <img src="<%=request.getContextPath() %>/logo/heart.jpg"  class="board_img_count"><p class="board_img_count_p">9999</p></div>
-               				<div class="board_div_img_count"> <img src="<%=request.getContextPath() %>/logo/댓글1.png" class="board_img_count"><p class="board_img_count_p">99999</p></div>
+               				<div class="board_div_img_count"> <img src="<%=request.getContextPath() %>/logo/heart.jpg"  class="board_img_count"><p class="board_img_count_p"><%=board.getlCount() %></p></div>
+               				<div class="board_div_img_count"> <img src="<%=request.getContextPath() %>/logo/댓글1.png" class="board_img_count"><p class="board_img_count_p"><%=board.getcCount() %></p></div>
                				<div class="board_div_img_count"> <img src="<%=request.getContextPath() %>/logo/조회수1.png"  class="board_img_count"><p class="board_img_count_p"><%= board.getBoardReadCount() %></p></div>
             			</div>
+					    <div id="board_div_menu"> <span id="board_div_menu_span"><%=board.getBoardName()%>게시판</span> <p id="board_div_menu_p"><%=board.getRowNum()%>  </p> </div>
               		 	<a href=""> 
               	 			<div id="board_div_text">
                 				<span id="board_div_text_title"><%= board.getBoardTitle() %> </span> <br><br>
                					<span id="board_div_text_content"><%= board.getBoardContent()%>  </span>
               					<br>
               					<br>
-              					<span ><%= board.getUserId()%> </span> 
+              					<span id="board_div_text_id"><%= board.getUserId()%> </span> <span id="board_div_text_says">says</span>
               				</div>
                				<div id="board_div_img"><img src="../image/해변.jpg" class="board_list_img"></div>  
             			</a>
@@ -109,7 +110,17 @@
         <div id="pageBar">
 			
 			<!-- 맨 처음으로 -->
-			<%if(boardUserId != null) {%>    
+			<%if(menu == null ){ %> 
+				    <%if(boardUserId != null) {%>    
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardTitle=<%=boardTitle%>&page=1'">&lt;&lt;</button>
+					<%}else if(boardTitle != null) { %>	
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardTitle=<%=boardTitle%>&page=1'">&lt;&lt;</button>
+					<%}else if(boardContent != null){ %>
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardContent=<%=boardContent%>&page=1'">&lt;&lt;</button>
+					<%}else{ %>   
+						  <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&page=1'">&lt;&lt;</button>
+					<%} %>
+			<%}else if(boardUserId != null) {%>    
 				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=1'">&lt;&lt;</button>
 			<%}else if(boardTitle != null) { %>	
 				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=1'">&lt;&lt;</button>
@@ -118,8 +129,17 @@
 			<%} %>	
 					
 			<!-- 이전 페이지로 -->
-			<button onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
-            <%if(boardUserId != null) {%>    
+			<%if(menu == null ){ %> 
+				    <%if(boardUserId != null) {%>    
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+					<%}else if(boardTitle != null) { %>	
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+					<%}else if(boardContent != null){ %>
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+					<%}else{ %>   
+						  <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+					<%} %>
+            <%}else if(boardUserId != null) {%>    
 				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
 			<%}else if(boardTitle != null) { %>	
 				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
@@ -157,8 +177,17 @@
 			
 			
 			<!-- 다음 페이지로 -->
-
-			<%if(boardUserId != null) {%>    
+            <%if(menu == null ){ %> 
+				    	<%if(boardUserId != null) {%>    
+							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+						<%}else if(boardTitle != null) { %>	
+							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+						<%}else if(boardContent != null){ %>
+							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+						<%}else{ %>   
+						    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+						<%} %> 
+			<%}else if(boardUserId != null) {%>    
 				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
 			<%}else if(boardTitle != null) { %>	
 				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
@@ -166,7 +195,17 @@
 				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
 			<%} %>			 
 			<!-- 맨 끝으로 -->
-            <%if(boardUserId != null) {%>    
+			 <%if(menu == null ){ %> 
+				    <%if(boardUserId != null) {%>    
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+					<%}else if(boardTitle != null) { %>	
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardTitle=<%=boardTitle%>&page=&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+					<%}else if(boardContent != null){ %>
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&boardContent=<%=boardContent%>&&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+					<%}else{ %>   
+						    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+					<%} %> 
+            <%}else if(boardUserId != null) {%>    
 				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
 			<%}else if(boardTitle != null) { %>	
 				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listRows?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>

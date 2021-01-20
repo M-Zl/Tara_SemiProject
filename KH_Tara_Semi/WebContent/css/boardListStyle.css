@@ -86,12 +86,19 @@ section #board_table tr{
      margin-bottom: 40px;
 }
 
-
 .board_list_div{
-    width: 200px;
-    height: 220px;
+    width: 205px;
+    height: 270px;
     display: inline-block;
     background-color: white;
+    border-color: royalblue;
+    border-style: double;
+    margin-bottom: 10px;
+}
+
+#board_list_menu_span{
+	font-size: 13px;
+	color: rgb(1, 117, 1);
 }
 
 .board_list_div_img{
@@ -135,7 +142,6 @@ section #board_table tr{
     text-overflow: ellipsis;
 }
 
-
 /* boardListRows css */
 
 #board_div{
@@ -150,6 +156,8 @@ section #board_table tr{
     display: inline-block;
     margin-top: 15px;
     background-color: white;
+    border-color: royalblue;
+    border-style: double;
 }
 
 #board_div_list_p{
@@ -170,7 +178,6 @@ section #board_table tr{
     width: 70px;
     height: 35px;
     padding-left: 0px;
-    
     margin-top: 15px;
     
 }
@@ -194,9 +201,10 @@ section #board_table tr{
 
 /* 게시물 텍스트 css */
 
+
 #board_div_text{
-    width: 55%;
-    height: 160px;
+    width: 50%;
+    height: 170px;
     float: right;
     color: black;
     margin-top: 5px;
@@ -207,9 +215,25 @@ section #board_table tr{
     
 }
 
+#board_div_menu{
+     width: 100px;
+    display: inline-block;
+    text-align: center;
+    float: left;
+}
+#board_div_menu_span{
+	font-size: 13px;
+	color: rgb(1, 117, 1);
+}  
+
+#board_div_menu_p{
+	font-size: 13px;
+	color: royalblue;
+}
+
 #board_div_text_content{
     width: 90%;
-    height: 65px;
+    height: 70px;
     display: inline-block;
     overflow: hidden;
  
@@ -218,13 +242,25 @@ section #board_table tr{
 #board_div_img{
     width: 220px;
     height: 180px;
-    padding-top: 2px;
+    margin-bottom: 5px;
+    float: left;
+
 }
 
 .board_list_img{
     width: 225px;
     height: 180px;
 }
+
+#board_div_text_id{
+	color: midnightblue;
+	font-weight: 900;
+}
+
+#board_div_text_says{
+	color: royalblue;
+}
+
 
 
 /* 페이지바 */

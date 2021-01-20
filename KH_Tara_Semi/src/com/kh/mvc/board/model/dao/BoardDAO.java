@@ -28,6 +28,8 @@ public class BoardDAO {
 				+           "BOARD_NAME, "
 				+           "BOARD_CONTENT, "
 				+           "BOARD_SCORE, "
+				+     		"LCOUNT, "
+				+     		"CCOUNT, "
 				+ 			"USER_ID, "
 				+ 			"BOARD_CREATE_DATE, "
 				+ 			"BOARD_ORIGINAL_FILENAME, "
@@ -44,7 +46,9 @@ public class BoardDAO {
 				+ 			   "B.BOARD_CREATE_DATE, "
 				+ 			   "B.BOARD_ORIGINAL_FILENAME, "
 				+ 			   "B.BOARD_READCOUNT, "
-				+ 	   		   "B.STATUS "
+				+ 	   		   "B.STATUS, "
+				+ 	   		   "(SELECT COUNT(*) FROM LIKECOUNT L WHERE L.BOARD_NO = B.BOARD_NO) LCOUNT, "
+				+ 	   		   "(SELECT COUNT(*) FROM COMMENTS C WHERE C.COMMENT_BOARD_NO = B.BOARD_NO)CCOUNT "
 				+ 		"FROM BOARD B "
 				+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NO) "
 				+ 		"WHERE B.STATUS = 'Y'"
@@ -81,6 +85,8 @@ public class BoardDAO {
 				board.setBoardName(rs.getString("BOARD_NAME"));
 				board.setBoardContent(rs.getString("BOARD_CONTENT"));
 				board.setBoardScore(rs.getInt("BOARD_SCORE"));
+				board.setlCount(rs.getInt("LCOUNT"));
+				board.setcCount(rs.getInt("CCOUNT"));
 				board.setUserId(rs.getString("USER_ID"));
 				board.setBoardCreateDate(rs.getDate("BOARD_CREATE_DATE"));
 				board.setBoardOriginalFileName(rs.getString("BOARD_ORIGINAL_FILENAME"));
@@ -113,6 +119,8 @@ public class BoardDAO {
 				+           "BOARD_NAME, "
 				+           "BOARD_CONTENT, "
 				+           "BOARD_SCORE, "
+				+     		"LCOUNT, "
+				+     		"CCOUNT, "
 				+ 			"USER_ID, "
 				+ 			"BOARD_CREATE_DATE, "
 				+ 			"BOARD_ORIGINAL_FILENAME, "
@@ -129,7 +137,9 @@ public class BoardDAO {
 				+ 			   "B.BOARD_CREATE_DATE, "
 				+ 			   "B.BOARD_ORIGINAL_FILENAME, "
 				+ 			   "B.BOARD_READCOUNT, "
-				+ 	   		   "B.STATUS "
+				+ 	   		   "B.STATUS, "
+				+ 	   		   "(SELECT COUNT(*) FROM LIKECOUNT L WHERE L.BOARD_NO = B.BOARD_NO) LCOUNT, "
+				+ 	   		   "(SELECT COUNT(*) FROM COMMENTS C WHERE C.COMMENT_BOARD_NO = B.BOARD_NO)CCOUNT "
 				+ 		"FROM BOARD B "
 				+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NO) "
 				+ 		"WHERE B.STATUS = 'Y'"
@@ -163,6 +173,8 @@ public class BoardDAO {
 				board.setBoardName(rs.getString("BOARD_NAME"));
 				board.setBoardContent(rs.getString("BOARD_CONTENT"));
 				board.setBoardScore(rs.getInt("BOARD_SCORE"));
+				board.setlCount(rs.getInt("LCOUNT"));
+				board.setcCount(rs.getInt("CCOUNT"));
 				board.setUserId(rs.getString("USER_ID"));
 				board.setBoardCreateDate(rs.getDate("BOARD_CREATE_DATE"));
 				board.setBoardOriginalFileName(rs.getString("BOARD_ORIGINAL_FILENAME"));
@@ -203,6 +215,8 @@ public class BoardDAO {
 	      
 	      return result;
 	   }
+
+
 
 
 }
