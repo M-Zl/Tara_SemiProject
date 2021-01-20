@@ -64,8 +64,9 @@ public class MemberLoginServlet extends HttpServlet {
 			
 		} else {
 			request.setAttribute("msg", "아이디나 비밀번호가 일치하지 않습니다.");
-			request.setAttribute("location", "/");
 
+			request.setAttribute("location", "/login");
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/views/common/msg.jsp");
 			dispatcher.forward(request, response);
 
