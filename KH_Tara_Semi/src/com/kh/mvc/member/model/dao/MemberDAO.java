@@ -337,12 +337,11 @@ public class MemberDAO {
 					+ "CREATE_DATE," + "STATUS " + "FROM MEMBER " + "WHERE USER_NAME LIKE ? " + "ORDER BY CREATE_DATE)"
 					+ ")";
 		}
-//		String query = "SELECT COUNT(*) FROM MEMBER";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			if(field.equals("userNo")) {
-				pstmt.setInt(1,Integer.parseInt(value));
+				pstmt.setString(1, value);
 			}else {
 				pstmt.setString(1, "%"+value+"%");
 			}
@@ -387,7 +386,7 @@ public class MemberDAO {
 			pstmt = conn.prepareStatement(query);
 			
 			if(field.equals("userNo")) {
-				pstmt.setInt(1,Integer.parseInt(value));
+				pstmt.setString(1, value);
 			}else {
 				pstmt.setString(1, "%"+value+"%");
 			}
