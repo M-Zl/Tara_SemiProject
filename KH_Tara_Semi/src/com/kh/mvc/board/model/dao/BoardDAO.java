@@ -245,7 +245,7 @@ public class BoardDAO {
 				board.setLocName(rs.getString("LOC_NAME"));
 				board.setBoardName(rs.getString("BOARD_NAME"));
 				board.setBoardTitle(rs.getString("BOARD_TITLE"));
-				board.setBoardContent(rs.getString("BOARD_CONTENT"));
+				board.setBoardContent(rs.getString("BOARD_CONTENT").replace("\r\n", "<br>"));
 				board.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
 				board.setBoardOriginalFileName(rs.getString("BOARD_ORIGINAL_FILENAME"));
 				board.setBoardOriginalFileName(rs.getString("BOARD_RENAMED_FILENAME"));
@@ -413,10 +413,10 @@ public class BoardDAO {
 		PreparedStatement pstmt = null;
 		
 		try {
-			pstmt = conn.prepareStatement("UPDATE COMMENTS SET STATUS=? WHERE COMMENT_NO=? AND BOARD_NO=?");
+			pstmt = conn.prepareStatement("UPDATE COMMENTS SET STATUS=? WHERE COMMENT_NO=? AND COMMENT_BOARD_NO=?");
 			
 			pstmt.setString(1, status);
-			pstmt.setInt(3, commentNo);
+			pstmt.setInt(2, commentNo);
 			pstmt.setInt(3, boardNo);
 			
 			result = pstmt.executeUpdate();

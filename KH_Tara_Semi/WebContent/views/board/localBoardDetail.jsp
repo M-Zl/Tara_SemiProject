@@ -112,7 +112,7 @@
     }
     
     #btn-insert{
-    	width:50px;
+    	width:70px;
     	height:50px;
     	border: none;
     	border-radius: 5px;
@@ -173,7 +173,7 @@
        	<div id="comment-container">
 	    	<div class="comment-editor">
 	    		<form action="<%=request.getContextPath() %>/board/comment" method="post">
-	    			<input type="hidden" name="boardNo" value="<%=board.getBoardNo() %>">
+	    			<input type="hidden" name="boardNo" value="<%=board.getBoardNo()%>">
 	    			<input type="hidden" name="writer" value="<%=loginMember != null ? loginMember.getUserId() : "" %>">
 					<table>
 						<tr>
@@ -196,6 +196,7 @@
 		    		<td>
 	    			<% if(loginMember != null && (loginMember.getUserId().equals(reply.getUserId()) 
 	    					|| loginMember.getUserRole() == 1)) { %>
+	    				<input type="hidden" id="commentNo" name="commentNo" value="<%= reply.getCommentNo()%>">
 	    				<button class="btn-delete" onclick="deleteComment()">삭제</button>
 	    			<%} %>
 		    		</td>
@@ -204,7 +205,6 @@
 	    </table>
     </div>
       </div>
-    </div>
 </section>
 <script>
 	function updateBoard(){
@@ -217,10 +217,13 @@
 		}
 	}
 	
-	function deleteComment(){		
+	function deleteComment(){
+		var commentNo = document.getElementById("commentNo").value;
+		
 		if(confirm("댓글을 삭제 하시겠습니까?")){
-			location.replace('<%=request.getContextPath()%>/comment/delete?boardNo=<%=board.getBoardNo()%>');
+			location.replace("<%=request.getContextPath()%>/comment/delete?boardNo=<%=board.getBoardNo()%>&commentNo=" + commentNo);
 		}
 	}
+
 </script>
 <%@ include file="/views/common/footer.jsp" %> 

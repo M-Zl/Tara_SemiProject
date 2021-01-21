@@ -33,7 +33,7 @@ public class BoardCommentDeleteServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("msg", msg);
-		request.setAttribute("location", "/board/list");
+		request.setAttribute("location", "/board/detail");
 		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 		
 	}
