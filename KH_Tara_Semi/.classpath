@@ -8,13 +8,15 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk-14.0.2">
 		<attributes>
 			<attribute name="module" value="true"/>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/kh/semi/pjt/KH_Tara_Semi/WebContent/WEB-INF/lib/cos.jar"/>
-	<classpathentry kind="lib" path="D:/kh/semi/pjt/KH_Tara_Semi/WebContent/WEB-INF/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="D:/develop/Semi_Sample/KH_Tara_Semi/WebContent/WEB-INF/lib/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="D:/develop/Semi_Sample/KH_Tara_Semi/WebContent/WEB-INF/lib/cos.jar"/>
+	<classpathentry kind="lib" path="D:/develop/Semi_Sample/KH_Tara_Semi/WebContent/WEB-INF/lib/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="D:/develop/Semi_Sample/KH_Tara_Semi/WebContent/WEB-INF/lib/gson-2.5.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
