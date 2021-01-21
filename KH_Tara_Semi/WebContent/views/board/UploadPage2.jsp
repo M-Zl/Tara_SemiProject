@@ -40,24 +40,25 @@
         <form action="">
             <p align="center"><span id="money">경비를 입력해주세요.</span></p>
             <div class="inputMoney">
-                <input type="range" id="moneyRange" value="50" min="0" max="100" step="5" name="moneyValue" required><br>
+                <input type="range" id="moneyRange" value="50000" min="0" max="300000" step="1000" name="moneyValue" oninput="document.getElementById('moneyInfo').innerHTML=this.value;" required ><br>
             </div>
             <div class="infoMoney">
-                <span>00,000 원</span>
+                <span id="moneyInfo">50,000</span><span>원</span>
             </div>
             <br><br>
-            <div class="yourEval">
-              <label id="yourEval_ment" style="font-size: 13pt; ">당신의 평가는? &nbsp;&nbsp;&nbsp; 
+            <div >
+             <p align="center"><span>당신의 평가는?</span>	&nbsp;&nbsp;&nbsp; <span id="grade" style="font-size: 11pt;">0</span><span style="font-size: 11pt;"> / 5</span></p>
+             
           
-                <label id="star_grade">                         
+                <p align="center" id="star_grade">                         
                  <a href="#" name="starGrade" id="starGrade" value="1" style="font-size: 25pt;">★</a> 
                  <a href="#" name="starGrade" id="starGrade" value="2" style="font-size: 25pt;">★</a> 
                  <a href="#" name="starGrade" id="starGrade" value="3" style="font-size: 25pt;">★</a>
 				 <a href="#" name="starGrade" id="starGrade" value="4" style="font-size: 25pt;">★</a> 
 				 <a href="#" name="starGrade" id="starGrade" value="5" style="font-size: 25pt;">★</a> 
-				&nbsp;&nbsp;&nbsp; <span id="grade" style="font-size: 13pt;">0</span><span style="font-size: 13pt;">/ 5</span>
-                </label>
-               </label>
+				
+                </p>
+             
                
             </div>
         </form>
@@ -71,7 +72,7 @@
             </div>
         </div>
         <div id="row_2">
-            <span><input id="row_btn3" type="submit" value="&lt;&nbsp;&nbsp;이전페이지"  onclick="javascript:history.back();"></span>
+            <span><input id="row_btn3" type="submit" value="&lt;&nbsp;&nbsp;이전페이지" onclick="javascript:history.back();"></span>
         </div>
     </div>
     
@@ -90,6 +91,7 @@
       	} 
     	return false;
     });
+   
     
     
   
