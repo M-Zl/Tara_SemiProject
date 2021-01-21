@@ -53,9 +53,9 @@
 			<div id="serchdiv">
 				<div id="Sortdiv">
             		<button id="sort" onclick="listre();">=</button>
-            		<select name="" id="inquirySort">
-               			<option value="">최신순</option>
-                		<option value="">추천순</option>
+            		<select  id="inquirySort" onclick="recommend();">
+               			<option value="최신순">최신순</option>
+                		<option value="추천순">추천순</option>
 
             		</select>
             	</div>
@@ -333,11 +333,11 @@
    }
  
    function serch() {
-	var titlemenu = document.getElementById("title_menu").value;
-	var valueMenu = document.getElementById("serchMenu").value;
-	var valueList = document.getElementById("serchList").value;
-	var page = document.getElementById("btnPage").value;
-	var serchValue = document.getElementById("searchtext").value;
+		var titlemenu = document.getElementById("title_menu").value;
+		var valueMenu = document.getElementById("serchMenu").value;
+		var valueList = document.getElementById("serchList").value;
+		var page = document.getElementById("btnPage").value;
+		var serchValue = document.getElementById("searchtext").value;
 	
 		if(titlemenu === null || valueMenu === '전체'){
 			if(valueMenu === '전체'){
@@ -367,6 +367,14 @@
 			}			
 		}	    
 	}
+   
+   function recommend() {
+   		var  recm = document.getElementById("inquirySort").value;
+	
+   		if(recm === '추천순'){
+   			location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&recommend=" + recm;
+   		}
+   }
     
 </script>
 
