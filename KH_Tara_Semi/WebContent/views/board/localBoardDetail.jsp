@@ -1,3 +1,6 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.kh.mvc.board.model.vo.Board"%>
 <%@page import="com.kh.mvc.board.model.vo.Board"%>
 <%@page import="com.kh.mvc.board.model.vo.BoardComment"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,87 +8,219 @@
 <%@ include file="/views/common/header.jsp" %>
 <%
 	Board board = (Board)request.getAttribute("board");
-	
-	BoardComment boardcomment = (BoardComment)request.getAttribute("boardcomment");
+
+	List<BoardComment> replies = (List)request.getAttribute("replies");
+
 %>
+  <style>
+	@font-face {
+		 font-family: 'TmoneyRoundWindRegular';
+		 src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
+		 font-weight: normal;
+		 font-style: normal;
+	 }
+	 @font-face {
+		 font-family: 'TmoneyRoundWindExtraBold';
+		 src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff') format('woff');
+		 font-weight: normal;
+		 font-style: normal;
+	 }
+    .board__detail{
+	     width: auto;
+	     min-height: 600px;
+	     border: 2px solid gray;
+	     border-radius: 20px;
+	     padding: 30px;
+	     font-family: 'TmoneyRoundWindRegular';
+    }
+    .board__locName{
+    	 height: 35px;
+	     margin: 5px;
+	     font-size:25px;
+	     font-weight:700;
+    }
+    .board__profile{
+	     margin: 5px;
+	     border: 2px solid lightgray;
+	     border-radius: 5px;
+	     height: 25px;
+    }
+    .board__title{
+	     margin: 5px;
+	     border: 2px solid lightgray;
+	     border-radius: 5px;
+	     height: 25px;
+    }
+    .board__contents{
+	     margin: 5px;
+	     border: 2px solid lightgray;
+	     border-radius: 5px;
+	     min-height: 400px;
+    }
+    .board__date{
+	     margin: 5px;
+    }
+    .board__count{
+	     margin: 5px;
+    }
+    .board__count>img{
+    	 margin-top:5px;
+	     width:20px;
+	     height:20px;
+    }
+    .board__button{
+		 margin: 5px;
+    	 text-align:center;
+    	 padding:7px 7px ;
+    	 
+    }
+    .board_button__notUser{
+		 margin: 5px;
+    	 text-align:center;
+    }
+    .board__button>button{
+    	width:80px;
+    	height:30px;
+    	border: none;
+    	font-size:15px;
+    }
+    #modify{
+	     background: royalblue;
+	     color: white;
+    }
+    #delete{
+	     background: lightslategray;
+	     color: white;
+    }
+    
+    #go_list{
+    	 text-align:center;
+    	 width:80px;
+    	 height:30px;
+    	 border: none;
+    	 font-size:15px;
+	     background: royalblue;
+	     color: white;
+    }
+    
+    
+    .board__comments{
+	     margin: 5px;
+	     border: 2px solid lightgray;
+	     border-radius: 5px;
+	     
+    }
+    
+    #btn-insert{
+    	width:50px;
+    	height:50px;
+    	border: none;
+    	border-radius: 5px;
+    	background: royalblue;
+	    color: white;
+    }
+    
+    
 
-		<div class="boardDetail">
-            <div class="board_top">
-                <div class="top_btn">
-                    <div id="top_btn_area">
-                        <input id="goList" type="submit" value="목록" name="goBoardTitle" onclick="javascript:history.back();">
-                        <span><input id="detail_BeforeBtn" type="submit" value="이전글" name="detail_BeforeBtn"></span>
-                        <span><input id="detail_NextBtn" type="submit" value="다음글" name="detail_NextBtn"></span>
-                    </div>
-                </div>
-                <hr>
-                <div class="board_header">
-                    <div>
-                        <span id="LocCode"><%= board.getLocName() %></span><!-- 지역코드 -->
-                        <a href="<%=request.getContextPath() %>" class="boardTitle">게시판</a><br><!-- (숙박 || 맛집 || 포토존) 게시판으로 이동 -->
-                    </div>
-                    <div style="margin-top: 3px;">
-                        <span id="titleName"><%= board.getBoardName() %></span><!-- 글제목 -->
-                    </div>
-                    <!-- 프사 + 아이디 + 글 등록날짜 -->
-                    <div class="userInfo">
-                        <div class="title_Info">
-                            <div>
-                                <div class="userProfileBox">
-                                    <img class="UserImg" src="img/airplane.png" name="userImg">
-                                </div>
-                            </div>
-                            <div class="title_userInfo">
-                                <span id="title_userNo"><%= board.getUserId() %></span><br>
-                                <span id="title_createDate"><%= board.getBoardCreateDate() %></span><!-- 글 생성 날짜 -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="viewInfo">
-                        <img class="viewInfo_img heartImg" src="<%= request.getContextPath() %>/logo/heart.jpg">
-                        <span class="boardInfo commentCount">9999</span><!-- 좋아요 카운팅 -->
 
-                        <span>&nbsp;&nbsp;&nbsp;</span>
-
-                        <img class="viewInfo_img commentImg" src="<%= request.getContextPath() %>/logo/댓글1.png">
-                        <span class="boardInfo commentCount">9999</span><!-- 댓글 수 카운팅 -->
-
-                        <span>&nbsp;&nbsp;&nbsp;</span>
-
-                        <img class="viewInfo_img BrcImg" src="<%= request.getContextPath() %>/logo/조회수1.png">
-                        <span class="boardInfo boardReadCount"><%= board.getBoardReadCount() %></span><!-- 조회수 카운팅 -->
-                    </div>
-                </div>
-
-                <hr>
-                
-                <div>
-                    <p id="boardConent">
-                        <%= board.getBoardContent() %>
-                    </p>
-                </div>             
-                
-                <hr>
-
-                <!-- 하단 댓글 div 일렬정렬 -->
-                <div class="commentAreaAll">
-                    <div class="comment_Info">
-                        <div>
-                            <div class="userProfileBox">
-                                <img class="UserImg" src="img/airplane.png" name="userImg">
-                            </div>
-                        </div>
-                        <div class="comment_userInfo">
-                            <span id="co_userNo"><%= board.getUserId() %></span><br>
-                            <span id="co_createDate"><%= board.getBoardCreateDate() %></span>
-                        </div>
-                    </div>
-                    <div id="comment_area">
-                        <span name="commentContent"><%= boardcomment.getCommentContent() %></span>
-                    </div>
-                    <hr>
-                </div>
-            </div>
+  </style>
+  
+<section>
+    <div class="board__detail">
+      <div class="board__locName">
+      	<%= board.getLocName() %>
+      </div>
+      <div class="board__profile">
+        <img id="board__profile_img" src="" alt="">
+        <span id="board__writer"><%= board.getUserId() %></span>
+      </div>
+      <div class="board__title">
+        <%= board.getBoardTitle() %>
+      </div>
+      <div class="board__contents">
+        <img src="" alt="">게시판 사진 업로드 해야함 <br><br>
+        <div id= "여행 tip">
+          교통수단 : <%= board.getTransport() %><br>
+          여행경비 : <%= board.getTravelMoney() %><br>
+          총 점수 : <%= board.getBoardScore() %><br><br>
         </div>
-
+        <div id="content">
+          <%= board.getBoardContent() %>
+        </div>
+      </div>
+      <div class="board__date">
+        작성일자 : <%= board.getBoardCreateDate() %>
+      </div>
+      <div class="board__count">
+        <img src="<%= request.getContextPath() %>/logo/heart.jpg" alt="">&nbsp; 좋아요 &nbsp;
+        <img src="<%= request.getContextPath() %>/logo/조회수1.png" alt="">&nbsp;<%= board.getBoardReadCount() %> &nbsp;
+        <img src="<%= request.getContextPath() %>/logo/댓글1.png" alt="">&nbsp; 댓글수 &nbsp;
+      </div>
+      <hr>
+      <% if(loginMember != null && (loginMember.getUserId().equals(board.getUserId()) 
+					|| loginMember.getUserRole() == 1)) { %>
+      <div class="board__button">
+        <button id="modify" type="button" onclick="updateBoard()">수정</button>
+        <button id="delete" type="button" onclick="deleteBoard()">삭제</button>
+        <button id="go_list" type="button" onclick="history.back()">뒤로가기</button>
+      </div>
+      <% } else{ %>
+      <div class="board_button__notUser">
+      	<button id="go_list" type="button" onclick="history.back()">뒤로가기</button>
+      </div>
+      <% } %>
+      <div class="board__comments">
+       	<div id="comment-container">
+	    	<div class="comment-editor">
+	    		<form action="<%=request.getContextPath() %>/board/comment" method="post">
+	    			<input type="hidden" name="boardNo" value="<%=board.getBoardNo() %>">
+	    			<input type="hidden" name="writer" value="<%=loginMember != null ? loginMember.getUserId() : "" %>">
+					<table>
+						<tr>
+							<td><textarea name="content" cols="130" rows="3" onfocus="checkLogin()"></textarea></td>
+							<td><button type="submit" id="btn-insert">등록</button></td>	
+						</tr>
+	    			</table>
+	    		</form>
+	    	</div>
+	    </div>
+	    <table id="tbl-comment">
+	    	<% for(BoardComment reply : replies) { %>
+		    	<tr class="level1">
+		    		<td>
+		    			<sub class="comment-writer"><%= reply.getUserId() %></sub>
+		    			<sub class="comment-date"><%= reply.getCommentCreateDate() %></sub>
+		    			<br>
+		    			<%= reply.getCommentContent() %>
+		    		</td>
+		    		<td>
+	    			<% if(loginMember != null && (loginMember.getUserId().equals(reply.getUserId()) 
+	    					|| loginMember.getUserRole() == 1)) { %>
+	    				<button class="btn-delete" onclick="deleteComment()">삭제</button>
+	    			<%} %>
+		    		</td>
+		    	</tr>
+	    	<%} %>
+	    </table>
+    </div>
+      </div>
+    </div>
+</section>
+<script>
+	function updateBoard(){
+		location.href = "<%=request.getContextPath()%>/board/update?boardNo=<%=board.getBoardNo()%>";
+	}
+	
+	function deleteBoard(){		
+		if(confirm("정말로 게시글을 삭제 하시겠습니까?")){
+			location.replace('<%=request.getContextPath()%>/board/delete?boardNo=<%=board.getBoardNo()%>');
+		}
+	}
+	
+	function deleteComment(){		
+		if(confirm("댓글을 삭제 하시겠습니까?")){
+			location.replace('<%=request.getContextPath()%>/comment/delete?boardNo=<%=board.getBoardNo()%>');
+		}
+	}
+</script>
 <%@ include file="/views/common/footer.jsp" %> 
