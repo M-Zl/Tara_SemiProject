@@ -28,7 +28,7 @@
 						<h2>Email : <%=loginMember.getEmail()%></h3>
 					</div>
 					<div class="member-delete_btn">
-						<a href="#"><i class="fas fa-user-alt-slash fa-5x"></i></a>
+						<a href="<%=request.getContextPath()%>/member/delete?userId=<%= loginMember.getUserId() %>"><i class="fas fa-user-alt-slash fa-5x"></i></a>
 						<span>회원탈퇴</span>
 					</div>
 				</div>
