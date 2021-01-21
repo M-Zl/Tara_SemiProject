@@ -9,6 +9,8 @@ import java.util.List;
 import com.kh.mvc.board.model.dao.BoardDAO;
 import com.kh.mvc.board.model.vo.Board;
 import com.kh.mvc.common.util.PageInfo;
+import com.kh.mvc.member.model.dao.MemberDAO;
+import com.kh.mvc.member.model.vo.Member;
 
 public class BoardService {
 
@@ -43,5 +45,27 @@ public class BoardService {
 		return result;			
 	}
 
+	public List<Board> getCreatedBoard(int userNo) {
+
+		Connection conn = getConnection();
+		
+		List<Board> list = new BoardDAO().findCreatedBoard(conn, userNo);
+		
+		close(conn);		
+		
+		return list;
+	}
+	public List<Board> getLikeBoard(int userNo) {
+
+		Connection conn = getConnection();
+		
+		List<Board> list = new BoardDAO().findLikeBoard(conn, userNo);
+		
+		close(conn);		
+		
+		return list;
+	}
+	
+	
 }
 

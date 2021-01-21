@@ -25,8 +25,7 @@ a {
 
 .mypage-header {
 	width: 100%;
-	height: 60px;
-	margin-bottom: 20px;
+	height: 100px;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.3);
 }
 
@@ -34,9 +33,13 @@ a {
 	margin: 0px;
 	padding-top: 15px;
 	padding-left: 15px;
+	font-size:50px;
+	color:#4169E1;
+	font-wieht:900;
 }
 
 .mypage-main {
+	margin-top:50px;
 	display: flex;
 	width: 100%;
 	height: 80%;
@@ -59,6 +62,8 @@ a {
 	display: flex;
 	justify-content: center;
 	margin-bottom: 0px;
+	font-size:50px;
+	color:#4169E1;
 }
 
 .profile__photo {
@@ -87,7 +92,7 @@ a {
 	flex-direction: column;
 }
 
-.profile__info h3 {
+.profile__info h2 {
 	padding-left: 20%;
 	margin: 0px;
 }
@@ -119,7 +124,7 @@ a {
 .board-write__list {
 	display: flex;
 	flex-direction: column;
-	height: 75%;
+	height: 90%;
 }
 
 .board-write__list>div {
@@ -129,14 +134,16 @@ a {
 }
 
 .board-write__list-photo {
-	width: 25%;
+	width: 20%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border : 1px solid black;
 }
 
 .board-write__list-content {
 	width: 60%;
+	padding-left : 15px;
 }
 
 .board-write__list-content h4 {
@@ -160,6 +167,9 @@ a {
 	right: 0;
 }
 
+i{
+	
+}
 i:hover {
 	color: darkgray;
 }
@@ -181,6 +191,9 @@ i:hover {
 }
 
 .board-like__content-photo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	border: 1px solid black;
 	height: 70%;
 }
@@ -200,12 +213,6 @@ i:hover {
 	padding-top: 20px;
 }
 
-.board-write__list-photo div {
-	width: 95%;
-	height: 95%;
-	border: 1px solid black;
-	margin-right: 20px;
-}
 
 .listbox-left {
 	width: 90%;
@@ -229,6 +236,7 @@ i:hover {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+	color:red;
 }
 .member-delete_btn>span{
 	font-weight: 600;
@@ -238,4 +246,29 @@ i:hover {
 }
 .member-delete_btn>a>i:hover{
 	color:red;
+}
+.board-like__title-text,
+.board-write__title-text{
+	font-size:30px;
+	margin:0 0 15px 0;
+	color:#4169E1;
+}
+.board-write__list-content>h3
+{
+	margin:5px 0;
+	overflow: hidden;
+}
+.board-write__list-content>div
+{
+	height:150px;
+	overflow: hidden;
+}
+.board-like__content-text{
+	overflow: hidden;
+}
+.board-like__content-text>h3{
+	margin:5px 0;
+}
+.board-write__list>div:first-child{
+	margin-bottom:5px;
 }

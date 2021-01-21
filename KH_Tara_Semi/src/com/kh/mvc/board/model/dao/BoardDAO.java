@@ -12,6 +12,7 @@ import java.util.List;
 import com.kh.mvc.board.model.vo.Board;
 import com.kh.mvc.board.model.vo.BoardComment;
 import com.kh.mvc.common.util.PageInfo;
+import com.kh.mvc.member.model.vo.Member;
 
 public class BoardDAO {
 	public List<Board> findAll(Connection conn, String locName, String boardName, String boardUserId, String boardTitle, String boardContent, PageInfo info) {
@@ -204,5 +205,67 @@ public class BoardDAO {
 	      return result;
 	   }
 
+
+	public List<Board> findCreatedBoard(Connection conn, int userNo) {
+		List<Board> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query ="SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT FROM BOARD WHERE BOARD_WRITER_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, userNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				Board board = new Board(); 
+				
+				board.setBoardNo(rs.getInt("BOARD_NO"));
+				board.setBoardTitle(rs.getString("BOARD_TITLE"));
+				board.setBoardContent(rs.getString("BOARD_CONTENT"));				
+				list.add(board);	 			
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
+
+
+	public List<Board> findLikeBoard(Connection conn, int userNo) {
+		List<Board> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query ="SELECT B.BOARD_NO, BOARD_TITLE, BOARD_CONTENT "
+				+ "FROM BOARD B, LIKECOUNT L "
+				+ "WHERE B.BOARD_NO = L.BOARD_NO AND L.STATUS = 'Y' AND USER_NO = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, userNo);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				Board board = new Board(); 
+
+				board.setBoardNo(rs.getInt("BOARD_NO"));
+				board.setBoardTitle(rs.getString("BOARD_TITLE"));
+				board.setBoardContent(rs.getString("BOARD_CONTENT"));				
+				list.add(board);	 			
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return list;
+	}
 
 }

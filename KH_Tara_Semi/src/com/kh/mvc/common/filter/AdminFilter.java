@@ -26,12 +26,8 @@ public class AdminFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		// 관리자 페이지 권한처리
-		// - 관리자가 아닌 경우에는 페이지를 못보게 처리하기
-		System.out.println("관리자페이지?");
 		HttpSession session = ((HttpServletRequest) request).getSession(false);
 		Member loginMember = (Member) (session.getAttribute("loginMember"));
-		System.out.println(loginMember.getUserRole());
 		if (loginMember == null || !(loginMember.getUserRole()==2)) {
 			request.setAttribute("msg", "잘못된 경로로 접근하셨습니다.");
 			request.setAttribute("location", "/");
