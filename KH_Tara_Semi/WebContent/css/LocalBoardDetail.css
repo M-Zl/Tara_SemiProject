@@ -1,109 +1,112 @@
 @charset "UTF-8";
 
 #boardDetail {
-  /* width: 750px; */
-  width: 10%;
-  display: block;
-  justify-content: center;
-  position: fixed;
-  font-size: 15px;
-  font-family: "Noto Sans KR", sans-serif;
+    /* width: 750px; */
+    width: 10%;
+    display: block;
+    justify-content: center;
+    position: fixed;
+    font-size: 15px;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .board_top {
-  /* border: 1px solid; */
-  margin-top: 7%;
-  padding: 30px 30px 0;
-  outline: none;
+    /* border: 1px solid; */
+    margin-top: 7%;
+    padding: 30px 30px 0;
+    outline: none;
 }
 
 .viewInfo {
-  border: 1px solid;
-  width: 140px;
-  display: inline-block;
+    border: 1px solid;
+    width: 140px;
+    display: inline-block;
 }
 
 #viewInfoSpan {
-  /* border: 1px solid; */
-  width: 50px;
+    /* border: 1px solid; */
+    width: 50px;
 }
 
 /* 작성한 글 양식 */
 #boardConent {
-  padding: 15px 15px 15px;
+    padding: 15px 15px 15px;
 }
 
 /* 하단 댓글 영역 */
 .commentAreaAll {
-  padding: 15px 15px 15px;
+    padding: 15px 15px 15px;
 }
 
 .commentTitle {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 #commentTitle_span {
-  font-size: 20px;
-  font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #co_info {
-  border: 1px solid;
-  margin-left: 50px;
-  /* position: absolute; */
+    border: 1px solid;
+    margin-left: 50px;
+    /* position: absolute; */
 }
 
 #co_userNo {
-  font-size: 15px;
+    font-size: 15px;
 }
 
 #co_createDate {
-  font-size: 12px;
-  color: #afafaf;
+    font-size: 12px;
+    color: #afafaf;
 }
 
 #co_content {
+    
 }
 
 #top_btn_area {
-  margin-top: 30px;
+    margin-top: 30px;
 }
 
 /* 목록 버튼 */
 #goBoardTitle {
-  margin-top: 10px;
+    margin-top: 10px;
+    
 }
 
 .goBoardTitle {
-  /* border: 1px solid; */
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #goList {
-  width: 60px;
-  height: 30px;
-  font-size: 13px;
-  border: 1px solid #afafaf;
-  background-color: #afafaf;
-  color: white;
-  border-radius: 5px;
-  font-weight: bold;
+    width: 60px;
+    height: 30px;
+    font-size: 13px;
+    border: 1px solid #afafaf;
+    background-color: #afafaf;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    
 }
 
 #goList:hover {
-  color: white;
-  border: 1px solid #4169e1;
-  background-color: #4169e1;
+    color: white;
+    border: 1px solid #4169E1;
+    background-color: #4169E1;
 }
 
 /* 상단 버튼 */
 .top_btn {
-  /* border: 1px solid; */
-  display: block;
-  justify-content: center;
+    /* border: 1px solid; */
+    display: block;
+    justify-content: center;
 }
 
 /* #row_1 {
@@ -116,40 +119,41 @@
 
 /* 버튼사이 간격 */
 #top_detailBtnSpan {
-  width: 20px;
+    width: 20px;
 }
 
 /* 이전글 */
 #detail_BeforeBtn {
-  width: 60px;
-  height: 30px;
-  font-size: 13px;
-  border: 1px solid #afafaf;
-  background-color: #afafaf;
-  color: white;
-  border-radius: 5px;
-  font-family: "Noto Sans KR", sans-serif;
-  margin: 0%;
+    width: 60px;
+    height: 30px;
+    font-size: 13px;
+    border: 1px solid #afafaf;
+    background-color: #afafaf;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0%;
 }
 
 #detail_BeforeBtn:hover {
-  border: 1px solid #4169e1;
-  background-color: #4169e1;
+    border: 1px solid #4169E1;
+    background-color: #4169E1;
 }
 
 /* 다음글 */
 #detail_NextBtn {
-  width: 60px;
-  height: 30px;
-  font-size: 13px;
-  border: 1px solid #afafaf;
-  background-color: #afafaf;
-  color: white;
-  border-radius: 5px;
-  font-family: "Noto Sans KR", sans-serif;
+    width: 60px;
+    height: 30px;
+    font-size: 13px;
+    border: 1px solid #afafaf;
+    background-color: #afafaf;
+    color: white;
+    border-radius: 5px;
+    font-family: 'Noto Sans KR', sans-serif;
+
 }
 
 #detail_NextBtn:hover {
-  border: 1px solid #4169e1;
-  background-color: #4169e1;
+    border: 1px solid #4169E1;
+    background-color: #4169E1;
 }

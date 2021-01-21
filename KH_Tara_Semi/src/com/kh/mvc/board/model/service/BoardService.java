@@ -1,6 +1,9 @@
 package com.kh.mvc.board.model.service;
 
-import static com.kh.mvc.common.jdbc.JDBCTemplate.*;
+import static com.kh.mvc.common.jdbc.JDBCTemplate.close;
+import static com.kh.mvc.common.jdbc.JDBCTemplate.commit;
+import static com.kh.mvc.common.jdbc.JDBCTemplate.getConnection;
+import static com.kh.mvc.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.List;
@@ -42,7 +45,6 @@ public class BoardService {
 		
 		return result;			
 	}
-
 	public Board getBoard(int boardNo, boolean hasRead) {
 		int result = 0;
 		Connection conn = getConnection();
@@ -138,6 +140,7 @@ public class BoardService {
 		
 		return result;
 	}
+
 
 }
 

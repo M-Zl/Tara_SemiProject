@@ -1,6 +1,6 @@
 package com.kh.mvc.board.model.dao;
 
-import static com.kh.mvc.common.jdbc.JDBCTemplate.*;
+import static com.kh.mvc.common.jdbc.JDBCTemplate.close;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -215,7 +215,6 @@ public class BoardDAO {
 	      
 	      return result;
 	   }
-
 
 	public Board findBoardByNo(Connection conn, int boardNo) {
 		PreparedStatement pstmt = null;
@@ -441,4 +440,7 @@ public class BoardDAO {
 		return result;
 	}
 
+
 }
+
+

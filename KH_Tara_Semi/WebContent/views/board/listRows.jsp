@@ -92,7 +92,7 @@
                				<div class="board_div_img_count"> <img src="<%=request.getContextPath() %>/logo/조회수1.png"  class="board_img_count"><p class="board_img_count_p"><%= board.getBoardReadCount() %></p></div>
             			</div>
 					    <div id="board_div_menu"> <span id="board_div_menu_span"><%=board.getBoardName()%>게시판</span> <p id="board_div_menu_p"><%=board.getRowNum()%>  </p> </div>
-              		 	<a href=""> 
+              		 	<a href="<%=request.getContextPath()%>/board/detail?boardNo=<%=board.getBoardNo() %>"> 
               	 			<div id="board_div_text">
                 				<span id="board_div_text_title"><%= board.getBoardTitle() %> </span> <br><br>
                					<span id="board_div_text_content"><%= board.getBoardContent()%>  </span>

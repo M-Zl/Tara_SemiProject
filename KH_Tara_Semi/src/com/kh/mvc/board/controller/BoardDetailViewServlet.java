@@ -22,7 +22,7 @@ public class BoardDetailViewServlet extends HttpServlet {
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int boardNo = 62;
+		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		Board board = null;
 		List<BoardComment> replies = null;
 		

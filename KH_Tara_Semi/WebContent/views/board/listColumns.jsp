@@ -91,11 +91,11 @@
 						for(Board board : list) {  %> 
 							<% if (count < 4){ %>                                                         	               
 								<td >
-									<a href=""> 
+									<a href="<%=request.getContextPath()%>/board/detail?boardNo=<%=board.getBoardNo() %>"> 
 										<div class="board_list_div">
 										    <span id="board_list_menu_span"><span id="board_div_menu_p"><%=board.getRowNum()%>  &nbsp; &nbsp; &nbsp;</span> <%= board.getBoardName() %>게시판</span>
 										    <div class="board_list_div_img">
-												<a href="<%=request.getContextPath() %>/board/detail"><img src="../" class="board_list_image"></a>
+												<img src="../" class="board_list_image">
                           					</div>  
                           					         
                           					<div class="board_list_count">
@@ -120,7 +120,7 @@
 				
 				            <tr>   
                     	     	<td>
-                      	 			<a href=""> 
+                      	 			<a href="<%=request.getContextPath()%>/board/detail?boardNo=<%=board.getBoardNo() %>">
 										<div class="board_list_div">
 										    <span id="board_list_menu_span"><span id="board_div_menu_p"><%=board.getRowNum()%>  &nbsp; &nbsp; &nbsp;</span> <%= board.getBoardName() %>게시판</span>
 										    <div class="board_list_div_img">
@@ -147,7 +147,7 @@
                               <%}else{  %> 	
                     	
                     	     	<td>
-                      	 			<a href=""> 
+                      	 			<a href="<%=request.getContextPath()%>/board/detail?boardNo=<%=board.getBoardNo() %>"> 
 										<div class="board_list_div">
 										    <span id="board_list_menu_span"><span id="board_div_menu_p"><%=board.getRowNum()%>  &nbsp; &nbsp; &nbsp;</span> <%= board.getBoardName() %>게시판</span>
 										    <div class="board_list_div_img">

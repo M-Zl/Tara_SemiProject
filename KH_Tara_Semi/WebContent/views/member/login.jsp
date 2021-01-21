@@ -62,10 +62,10 @@
 
    <div class="login">
       <form action="<%=request.getContextPath() %>/login" id="loginfrm" method="POST">
-         <label> <input id="userId" name="userId" type="text" placeholder="아이디를 입력해주세요." size="30"  value="<%= saveId == null ? "" : saveId %>"> </label> <br>
+         <label> <input id="userId" name="userId" type="text" placeholder="아이디를 입력해주세요." size="30"> </label> <br>
          <label> <input id="userPwd" name="userPwd" type="password" placeholder="패스워드를 입력해주세요." size="30"> </label> <br>
          
-         <label id="checksaveId"> <input type="checkbox" name="saveId" <%= saveId == null ? "" : "checked" %>>아이디 저장</label><br><br>
+         <label id="checksaveId"> <input type="checkbox" name="saveId">아이디 저장</label><br><br>  <!--  saveId == null ? "" : "checked" -->
          
                      
             <label> <input id="btn1" type="submit"  value="로그인" style="width:230px; height:30px;"></label> <br>
