@@ -36,6 +36,7 @@ public class BoardListServletRows extends HttpServlet {
 		String boardUserId = request.getParameter("boardUserId");
 		String boardTitle = request.getParameter("boardTitle");
 		String boardContent = request.getParameter("boardContent");
+		String recommend = request.getParameter("recommend");
 	
 		try {
 			page = Integer.parseInt(request.getParameter("page"));
@@ -43,35 +44,61 @@ public class BoardListServletRows extends HttpServlet {
 			page = 1;
 		}		    
 		  
-		      
-			if(boardName == null) {
-
-				listCount = new BoardService().getBoardCount();
-				info = new PageInfo(page, 10, listCount, 5);    
-				list = new BoardService().getBoardSerch(locName, boardUserId, boardTitle, boardContent, info); 
-					
-			    	request.setAttribute("list", list);
-			    	request.setAttribute("local", locName);
-			    	request.setAttribute("pageInfo", info);
-			    	request.setAttribute("boardUserId", boardUserId);
-			    	request.setAttribute("boardTitle", boardTitle);
-			    	request.setAttribute("boardContent", boardContent);
-		    		request.getRequestDispatcher("/views/board/listRows.jsp").forward(request, response); 
-		    	
-			}else {
-				listCount = new BoardService().getBoardCount();
-				info = new PageInfo(page, 10, listCount, 5);  
-				list = new BoardService().getBoardList(locName, boardName, boardUserId, boardTitle, boardContent, info );   
-					    	    
+        if(recommend != null) {
+    		if(boardName == null ) {
+    			listCount = new BoardService().getBoardCount();
+    			info = new PageInfo(page, 10, listCount, 8);    
+    			list = new BoardService().getfindLikelocal(locName, boardUserId, boardTitle, boardContent, info); 
+		    		request.setAttribute("list", list);
+		    		request.setAttribute("local", locName);
+		    		request.setAttribute("pageInfo", info);
+		    		request.setAttribute("boardUserId", boardUserId);
+		    		request.setAttribute("boardTitle", boardTitle);
+		    		request.setAttribute("boardContent", boardContent);
+		    		request.getRequestDispatcher("/views/board/listRows.jsp").forward(request, response);    	
+    		}else {
+    			listCount = new BoardService().getBoardCount();
+    			info = new PageInfo(page, 10, listCount, 8);  
+    			list = new BoardService().getfindLikeMenu(locName, boardName, boardUserId, boardTitle, boardContent, info );   
+				    	    
 					request.setAttribute("list", list);
-			    	request.setAttribute("local", locName);
-			    	request.setAttribute("menu", boardName);
-			    	request.setAttribute("pageInfo", info);
-			    	request.setAttribute("boardUserId", boardUserId);
-			    	request.setAttribute("boardTitle", boardTitle);
-			    	request.setAttribute("boardContent", boardContent);    		    	
-		    		request.getRequestDispatcher("/views/board/listRows.jsp").forward(request, response); 
-			}
-	}
-	
+					request.setAttribute("local", locName);
+					request.setAttribute("menu", boardName);
+					request.setAttribute("pageInfo", info);
+					request.setAttribute("boardUserId", boardUserId);
+					request.setAttribute("boardTitle", boardTitle);
+					request.setAttribute("boardContent", boardContent);    		    	
+					request.getRequestDispatcher("/views/board/listRows.jsp").forward(request, response); 
+    		}
+    }else {        	
+    	if(boardName == null ) {
+				listCount = new BoardService().getBoardCount();
+				info = new PageInfo(page, 10, listCount, 8);    
+				list = new BoardService().getBoardSerch(locName, boardUserId, boardTitle, boardContent, info); 
+				
+		    		request.setAttribute("list", list);
+		    		request.setAttribute("local", locName);
+		    		request.setAttribute("pageInfo", info);
+		    		request.setAttribute("boardUserId", boardUserId);
+		    		request.setAttribute("boardTitle", boardTitle);
+		    		request.setAttribute("boardContent", boardContent);
+		    		request.getRequestDispatcher("/views/board/listRows.jsp").forward(request, response);    	
+    	}else {	
+				listCount = new BoardService().getBoardCount();
+				info = new PageInfo(page, 10, listCount, 8);  
+				list = new BoardService().getBoardList(locName, boardName, boardUserId, boardTitle, boardContent, info );   
+				    	    
+					request.setAttribute("list", list);
+					request.setAttribute("local", locName);
+					request.setAttribute("menu", boardName);
+					request.setAttribute("pageInfo", info);
+					request.setAttribute("boardUserId", boardUserId);
+					request.setAttribute("boardTitle", boardTitle);
+					request.setAttribute("boardContent", boardContent);    		    	
+					request.getRequestDispatcher("/views/board/listRows.jsp").forward(request, response); 
+    	}	 			
+
+    }
+
+}
 }

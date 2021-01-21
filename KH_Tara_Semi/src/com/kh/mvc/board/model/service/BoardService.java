@@ -25,6 +25,26 @@ public class BoardService {
 		
 		return list;
 	}
+	public List<Board> getfindLikelocal(String locName, String boardUserId, String boardTitle, String boardContent ,  PageInfo info ) {
+		Connection conn = getConnection();
+		
+		List<Board> list = new BoardDAO().findLikelocal(conn, locName, boardUserId, boardTitle, boardContent, info);
+		
+		close(conn);		
+		
+		
+		return list;
+	}
+	public List<Board> getfindLikeMenu(String locName, String boardName, String boardUserId, String boardTitle, String boardContent ,  PageInfo info ) {
+		Connection conn = getConnection();
+		
+		List<Board> list = new BoardDAO().findLikeMenu(conn, locName, boardName, boardUserId, boardTitle, boardContent, info);
+		
+		close(conn);		
+		
+		
+		return list;
+	}
 
 	public List<Board> getBoardSerch(String locName, String boardUserId, String boardTitle, String boardContent,  PageInfo info) {
 		Connection conn = getConnection();

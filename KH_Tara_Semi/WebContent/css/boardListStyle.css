@@ -126,6 +126,7 @@ section #board_table tr{
     display: inline-block;
     text-align: center;
     font-size: 12px;
+    color: black;
 }
 
 #board_list_count3{

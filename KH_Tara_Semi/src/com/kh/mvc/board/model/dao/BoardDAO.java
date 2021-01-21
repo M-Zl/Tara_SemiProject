@@ -103,9 +103,97 @@ public class BoardDAO {
 				
 		return list;
 	}
+	
+	public List<Board> findLikelocal(Connection conn, String locName,  String boardUserId, String boardTitle, String boardContent, PageInfo info) {
+		List<Board> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = 
+				"SELECT * "
+						+ "FROM ("
+						+    "SELECT ROWNUM AS RNUM, "
+						+           "BOARD_NO, "
+						+ 			"BOARD_TITLE, "
+						+           "LOC_NAME, "
+						+           "BOARD_NAME, "
+						+           "BOARD_CONTENT, "
+						+           "BOARD_SCORE, "
+						+     		"LCOUNT, "
+						+     		"CCOUNT, "
+						+ 			"USER_ID, "
+						+ 			"BOARD_CREATE_DATE, "
+						+ 			"BOARD_ORIGINAL_FILENAME, "
+						+  			"BOARD_READCOUNT, "
+						+     		"STATUS "
+						+ 	 "FROM ("
+						+ 	    "SELECT B.BOARD_NO, "
+						+ 			   "B.BOARD_TITLE, "
+						+              "B.LOC_NAME, "
+						+              "B.BOARD_NAME, "
+						+              "B.BOARD_CONTENT, "
+						+              "B.BOARD_SCORE, "
+						+  			   "M.USER_ID, "
+						+ 			   "B.BOARD_CREATE_DATE, "
+						+ 			   "B.BOARD_ORIGINAL_FILENAME, "
+						+ 			   "B.BOARD_READCOUNT, "
+						+ 	   		   "B.STATUS, "
+						+ 	   		   "(SELECT COUNT(*) FROM LIKECOUNT L WHERE L.BOARD_NO = B.BOARD_NO) LCOUNT, "
+						+ 	   		   "(SELECT COUNT(*) FROM COMMENTS C WHERE C.COMMENT_BOARD_NO = B.BOARD_NO)CCOUNT "
+						+ 		"FROM BOARD B "
+						+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NO) "
+						+ 		"WHERE B.STATUS = 'Y'"
+						+       "AND B.LOC_NAME = ? "
+						+       "AND M.USER_ID LIKE '%' || ? || '%' "
+						+       "AND B.BOARD_TITLE LIKE '%' || ? || '%' "
+						+       "AND B.BOARD_CONTENT LIKE '%' || ? || '%' "
+						+       "ORDER BY LCOUNT DESC"
+						+ 	 ")"
+						+ ") WHERE RNUM BETWEEN ? and ?";
+		
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, locName);
+			pstmt.setString(2, boardUserId);
+			pstmt.setString(3, boardTitle);
+			pstmt.setString(4, boardContent);	
+			pstmt.setInt(5, info.getStartList());
+			pstmt.setInt(6, info.getEndList());
+			
+			rs = pstmt.executeQuery();
+		
+			while (rs.next()) {
+				Board board = new Board(); 
+				
+				board.setBoardNo(rs.getInt("BOARD_NO"));
+				board.setRowNum(rs.getInt("RNUM"));
+				board.setBoardTitle(rs.getString("BOARD_TITLE"));
+				board.setLocName(rs.getString("LOC_NAME"));
+				board.setBoardName(rs.getString("BOARD_NAME"));
+				board.setBoardContent(rs.getString("BOARD_CONTENT"));
+				board.setBoardScore(rs.getInt("BOARD_SCORE"));
+				board.setlCount(rs.getInt("LCOUNT"));
+				board.setcCount(rs.getInt("CCOUNT"));
+				board.setUserId(rs.getString("USER_ID"));
+				board.setBoardCreateDate(rs.getDate("BOARD_CREATE_DATE"));
+				board.setBoardOriginalFileName(rs.getString("BOARD_ORIGINAL_FILENAME"));
+				board.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
+				
+				list.add(board);				
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return list;
+	}
 
 
-	public List<Board> findSerch(Connection conn, String locName, String boardUserId, String boardTitle, String boardContent,  PageInfo info ) {
+	public List<Board> findLikeMenu(Connection conn, String locName, String boardName, String boardUserId, String boardTitle, String boardContent,  PageInfo info ) {
 		List<Board> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -144,12 +232,100 @@ public class BoardDAO {
 				+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NO) "
 				+ 		"WHERE B.STATUS = 'Y'"
 				+       "AND B.LOC_NAME = ? "
+				+       "AND B.BOARD_NAME = ? "
 				+       "AND M.USER_ID LIKE '%' || ? || '%' "
 				+       "AND B.BOARD_TITLE LIKE '%' || ? || '%' "
 				+       "AND B.BOARD_CONTENT LIKE '%' || ? || '%' "
-				+       "ORDER BY B.BOARD_CREATE_DATE DESC"
+				+       "ORDER BY LCOUNT DESC"
 				+ 	 ")"
 				+ ") WHERE RNUM BETWEEN ? and ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, locName);
+			pstmt.setString(2, boardName);
+			pstmt.setString(3, boardUserId);
+			pstmt.setString(4, boardTitle);
+			pstmt.setString(5, boardContent);	
+			pstmt.setInt(6, info.getStartList());
+			pstmt.setInt(7, info.getEndList());
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				Board board = new Board(); 
+				
+				board.setBoardNo(rs.getInt("BOARD_NO"));
+				board.setRowNum(rs.getInt("RNUM"));
+				board.setBoardTitle(rs.getString("BOARD_TITLE"));
+				board.setLocName(rs.getString("LOC_NAME"));
+				board.setBoardName(rs.getString("BOARD_NAME"));
+				board.setBoardContent(rs.getString("BOARD_CONTENT"));
+				board.setBoardScore(rs.getInt("BOARD_SCORE"));
+				board.setlCount(rs.getInt("LCOUNT"));
+				board.setcCount(rs.getInt("CCOUNT"));
+				board.setUserId(rs.getString("USER_ID"));
+				board.setBoardCreateDate(rs.getDate("BOARD_CREATE_DATE"));
+				board.setBoardOriginalFileName(rs.getString("BOARD_ORIGINAL_FILENAME"));
+				board.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
+				
+				list.add(board);	 			
+			}			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+	
+		return list;
+	}
+	public List<Board> findSerch(Connection conn, String locName, String boardUserId, String boardTitle, String boardContent,  PageInfo info ) {
+		List<Board> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = 
+				"SELECT * "
+						+ "FROM ("
+						+    "SELECT ROWNUM AS RNUM, "
+						+           "BOARD_NO, "
+						+ 			"BOARD_TITLE, "
+						+           "LOC_NAME, "
+						+           "BOARD_NAME, "
+						+           "BOARD_CONTENT, "
+						+           "BOARD_SCORE, "
+						+     		"LCOUNT, "
+						+     		"CCOUNT, "
+						+ 			"USER_ID, "
+						+ 			"BOARD_CREATE_DATE, "
+						+ 			"BOARD_ORIGINAL_FILENAME, "
+						+  			"BOARD_READCOUNT, "
+						+     		"STATUS "
+						+ 	 "FROM ("
+						+ 	    "SELECT B.BOARD_NO, "
+						+ 			   "B.BOARD_TITLE, "
+						+              "B.LOC_NAME, "
+						+              "B.BOARD_NAME, "
+						+              "B.BOARD_CONTENT, "
+						+              "B.BOARD_SCORE, "
+						+  			   "M.USER_ID, "
+						+ 			   "B.BOARD_CREATE_DATE, "
+						+ 			   "B.BOARD_ORIGINAL_FILENAME, "
+						+ 			   "B.BOARD_READCOUNT, "
+						+ 	   		   "B.STATUS, "
+						+ 	   		   "(SELECT COUNT(*) FROM LIKECOUNT L WHERE L.BOARD_NO = B.BOARD_NO) LCOUNT, "
+						+ 	   		   "(SELECT COUNT(*) FROM COMMENTS C WHERE C.COMMENT_BOARD_NO = B.BOARD_NO)CCOUNT "
+						+ 		"FROM BOARD B "
+						+ 		"JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NO) "
+						+ 		"WHERE B.STATUS = 'Y'"
+						+       "AND B.LOC_NAME = ? "
+						+       "AND M.USER_ID LIKE '%' || ? || '%' "
+						+       "AND B.BOARD_TITLE LIKE '%' || ? || '%' "
+						+       "AND B.BOARD_CONTENT LIKE '%' || ? || '%' "
+						+       "ORDER BY B.BOARD_CREATE_DATE DESC"
+						+ 	 ")"
+						+ ") WHERE RNUM BETWEEN ? and ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -188,7 +364,7 @@ public class BoardDAO {
 			close(rs);
 			close(pstmt);
 		}
-	
+		
 		return list;
 	}
 

@@ -21,6 +21,7 @@
 	String boardUserId = request.getParameter("boardUserId"); 
 	String boardTitle = request.getParameter("boardTitle"); 
 	String boardContent = request.getParameter("boardContent"); 
+	String recommend = request.getParameter("recommend"); 
 	String title[] = {"메인", "숙박", "맛집","포토존" };
 	String local = request.getParameter("local"); 
 	String menu  = request.getParameter("menu"); 
@@ -39,7 +40,7 @@
 		<div id="board_container">
 			<h1 id="title_local"><%=local%></h1> 
              <% if(menu != null){ %>  
-            <h1 id="title_menu"><%=menu%></h1>
+            <h1 id="title_menu" ><%=menu%></h1>
              <%}else{ %>
             <h1 id="title_menu">지역 게시판</h1>
              <%} %>
@@ -52,8 +53,9 @@
            <br>
 			<div id="serchdiv">
 				<div id="Sortdiv">
-            		<button id="sort" onclick="listre();">=</button>
+            		<button id="sort" onclick="listre();"><i class="fas fa-list"></i></button>
             		<select  id="inquirySort" onclick="recommend();">
+               			<option value="">-----</option>
                			<option value="최신순">최신순</option>
                 		<option value="추천순">추천순</option>
 
@@ -184,39 +186,39 @@
 			<!-- 맨 처음으로 -->
 			 <%if(menu == null ){ %> 
 				    <%if(boardUserId != null) {%>    
-						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&page=1'">&lt;&lt;</button>
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=1'">&lt;&lt;</button>
 					<%}else if(boardTitle != null) { %>	
-						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&page=1'">&lt;&lt;</button>
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=1'">&lt;&lt;</button>
 					<%}else if(boardContent != null){ %>
-						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardContent=<%=boardContent%>&page=1'">&lt;&lt;</button>
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardContent=<%=boardContent%>&recommend=<%=recommend%>&page=1'">&lt;&lt;</button>
 					<%}else{ %>   
-					    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=1'">&lt;&lt;</button>
+					    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&recommend=<%=recommend%>&page=1'">&lt;&lt;</button>
 						<%} %>
 			<%}else if(boardUserId != null) {%>    
-				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=1'">&lt;&lt;</button>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=1'">&lt;&lt;</button>
 			<%}else if(boardTitle != null) { %>	
-				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=1'">&lt;&lt;</button>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=1'">&lt;&lt;</button>
 			<%}else{ %>
-				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=1'">&lt;&lt;</button>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&recommend=<%=recommend%>&page=1'">&lt;&lt;</button>
 			<%} %>	
 					
 			<!-- 이전 페이지로 -->
 		     <%if(menu == null ){ %> 
 				    <%if(boardUserId != null) {%>    
-						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
 					<%}else if(boardTitle != null) { %>	
-						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
 					<%}else if(boardContent != null){ %>
-						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardContent=<%=boardContent%>&recommend=<%=recommend%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
 					<%}else{ %>   
-					    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+					    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&recommend=<%=recommend%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
 						<%} %>
             <%}else if(boardUserId != null) {%>    
-				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
 			<%}else if(boardTitle != null) { %>	
-				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
 			<%}else{ %>
-				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&recommend=<%=recommend%>&page=<%= pageInfo.getPrvePage() %>'">&lt;</button>
 			<%} %>			
 			
 			 
@@ -227,22 +229,22 @@
 				<% } else { %>
 				    <%if(menu == null ){ %> 
 				    	<%if(boardUserId != null) {%>    
-							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= p %>'"><%= p %></button>
+							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= p %>'"><%= p %></button>
 						<%}else if(boardTitle != null) { %>	
-							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= p %>'"><%= p %></button>	
+							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= p %>'"><%= p %></button>	
 						<%}else if(boardContent != null){ %>
-							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardContent=<%=boardContent%>&page=<%= p %>'"><%= p %></button>
+							<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardContent=<%=boardContent%>&recommend=<%=recommend%>&page=<%= p %>'"><%= p %></button>
 						<%}else{ %>   
-						    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=<%= p %>'"><%= p %></button>
+						    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&recommend=<%=recommend%>&page=<%= p %>'"><%= p %></button>
 						<%} %>
 					<%}else if(boardUserId != null) {%>    
-						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= p %>'"><%= p %></button>
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= p %>'"><%= p %></button>
 					<%}else if(boardTitle != null) { %>	
-						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= p %>'"><%= p %></button>	
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= p %>'"><%= p %></button>	
 					<%}else if(boardContent != null){ %>
-						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=<%= p %>'"><%= p %></button>
+						<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&recommend=<%=recommend%>&page=<%= p %>'"><%= p %></button>
 					<%}else{ %>	
-					    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&page=<%= p %>'"><%= p %></button>
+					    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&recommend=<%=recommend%>&page=<%= p %>'"><%= p %></button>
 					<%} %>		
 				<% } %>
 			<% } %>
@@ -251,39 +253,39 @@
 			<!-- 다음 페이지로 -->
             <%if(menu == null ){ %> 
 				<%if(boardUserId != null) {%>    
-					<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+					<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
 				<%}else if(boardTitle != null) { %>	
-					<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+					<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
 				<%}else if(boardContent != null){ %>
-					<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+					<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardContent=<%=boardContent%>&recommend=<%=recommend%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
 				<%}else{ %>   
-				    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+				    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&recommend=<%=recommend%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
 				<%} %>
 			<%}else if(boardUserId != null) {%>    
-				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
 			<%}else if(boardTitle != null) { %>	
-				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
 			<%}else{ %>
-				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&recommend=<%=recommend%>&page=<%= pageInfo.getNextPage() %>'">&gt;</button>
 			<%} %>		
 				 
 			<!-- 맨 끝으로 -->
 			<%if(menu == null ){ %> 
 				<%if(boardUserId != null) {%>    
-					<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+					<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
 				<%}else if(boardTitle != null) { %>	
-					<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+					<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
 				<%}else if(boardContent != null){ %>
-					<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+					<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&boardContent=<%=boardContent%>&recommend=<%=recommend%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
 				<%}else{ %>   
-				    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+				    <button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&recommend=<%=recommend%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
 				<%} %>
             <%}else if(boardUserId != null) {%>    
-				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
 			<%}else if(boardTitle != null) { %>	
-				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardTitle=<%=boardTitle%>&recommend=<%=recommend%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
 			<%}else{ %>
-				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
+				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&recommend=<%=recommend%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
 			<%} %>			
             <%if(loginMember != null) {%>
 			<button type="button" id="btn-add"
@@ -368,14 +370,31 @@
 		}	    
 	}
    
-   function recommend() {
-   		var  recm = document.getElementById("inquirySort").value;
+   function recommend(){
+   		var recm = document.getElementById("inquirySort").value;
+		var page = document.getElementById("btnPage").value;
+		if(recm === '추천순'){
+	    	<%if( menu == null ){ %>
+				 location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&page=" + page + "&recommend=추천수";	
 	
-   		if(recm === '추천순'){
-   			location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&recommend=" + recm;
-   		}
+		   <%}else{%>
+		     	location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=<%=menu%>&page=" + page + "&recommend=추천수";
+		
+		   <%}%>
+  		}else if(recm === '최신순'){
+  			<%if( menu == null ){ %>
+				location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&page=" + page;	
+	
+		   <%}else{%>
+		   	  	location.href="<%=request.getContextPath()%>/board/listColumns?local=<%=local%>&menu=<%=menu%>&page=" + page;
+		
+		   <%}%>
+  			
+  		}else{
+  			
+  		} 
    }
-    
+
 </script>
 
 <%@ include file="/views/common/footer.jsp" %>
