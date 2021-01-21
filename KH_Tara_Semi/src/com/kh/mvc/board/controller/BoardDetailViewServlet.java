@@ -62,7 +62,7 @@ public class BoardDetailViewServlet extends HttpServlet {
 		board = new BoardService().getBoard(boardNo, hasRead);
 		replies = new BoardService().getReplyList(boardNo);
 		
-		System.out.println(board);
+//		System.out.println(board);
 		
 		request.setAttribute("board", board);				
 		request.setAttribute("replies", replies);				

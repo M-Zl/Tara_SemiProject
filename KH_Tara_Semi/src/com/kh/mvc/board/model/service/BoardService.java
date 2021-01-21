@@ -124,5 +124,20 @@ public class BoardService {
 		return result;
 	}
 
+	public int deleteComment(int boardNo, int commentNo) {
+		Connection conn = getConnection();
+		int result = new BoardDAO().updateCommentStatus(conn, boardNo, commentNo, "N");
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
 }
 

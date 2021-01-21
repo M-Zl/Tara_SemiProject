@@ -126,11 +126,6 @@
   </style>
   
 <section>
-	<%
-	String local = request.getParameter("local"); 
-	String menu  = request.getParameter("menu");
-	String boardTitle = request.getParameter("boardTitle"); 
-	%>
     <div class="board__detail">
       <div class="board__locName">
       	<%= board.getLocName() %>
@@ -201,7 +196,7 @@
 		    		<td>
 	    			<% if(loginMember != null && (loginMember.getUserId().equals(reply.getUserId()) 
 	    					|| loginMember.getUserRole() == 1)) { %>
-	    				<button class="btn-delete">삭제</button>
+	    				<button class="btn-delete" onclick="deleteComment()">삭제</button>
 	    			<%} %>
 		    		</td>
 		    	</tr>
@@ -219,6 +214,12 @@
 	function deleteBoard(){		
 		if(confirm("정말로 게시글을 삭제 하시겠습니까?")){
 			location.replace('<%=request.getContextPath()%>/board/delete?boardNo=<%=board.getBoardNo()%>');
+		}
+	}
+	
+	function deleteComment(){		
+		if(confirm("댓글을 삭제 하시겠습니까?")){
+			location.replace('<%=request.getContextPath()%>/comment/delete?boardNo=<%=board.getBoardNo()%>');
 		}
 	}
 </script>

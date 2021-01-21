@@ -327,7 +327,7 @@ public class BoardDAO {
 				
 				list.add(reply);
 				
-				System.out.println(reply);
+//				System.out.println(reply);
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -396,6 +396,28 @@ public class BoardDAO {
 			pstmt.setFloat(5, board.getBoardScore());
 			pstmt.setString(6, board.getBoardContent());
 			pstmt.setInt(7, board.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}		
+		
+		return result;
+	}
+
+
+	public int updateCommentStatus(Connection conn, int boardNo, int commentNo, String status) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement("UPDATE COMMENTS SET STATUS=? WHERE COMMENT_NO=? AND BOARD_NO=?");
+			
+			pstmt.setString(1, status);
+			pstmt.setInt(3, commentNo);
+			pstmt.setInt(3, boardNo);
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
