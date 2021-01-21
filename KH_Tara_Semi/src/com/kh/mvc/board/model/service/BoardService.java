@@ -5,9 +5,9 @@ import static com.kh.mvc.common.jdbc.JDBCTemplate.*;
 import java.sql.Connection;
 import java.util.List;
 
-import com.kh.mvc.board.model.vo.BoardReply;
 import com.kh.mvc.board.model.dao.BoardDAO;
 import com.kh.mvc.board.model.vo.Board;
+import com.kh.mvc.board.model.vo.BoardComment;
 import com.kh.mvc.common.util.PageInfo;
 
 public class BoardService {
@@ -49,8 +49,8 @@ public class BoardService {
 		Board board = new BoardDAO().findBoardByNo(conn, boardNo);
 		
 		// 게시글 조회수 증가 로직
-//		if(board != null && !hasRead) {
-//			result = new BoardDAO().updateReadCount(conn, board);
+		if(board != null && !hasRead) {
+			result = new BoardDAO().updateReadCount(conn, board);
 			
 			if(result > 0) {
 				commit(conn);
@@ -58,21 +58,70 @@ public class BoardService {
 				rollback(conn);
 			}
 			
-//		}
+		}
 		
 		close(conn);
 		
 		return board;
 	}
 
-	public List<BoardReply> getReplyList(int boardNo) {
+	public List<BoardComment> getReplyList(int boardNo) {
 		Connection conn = getConnection();
 		
-		List<BoardReply> replies = new BoardDAO().getReplies(conn, boardNo);
+		List<BoardComment> replies = new BoardDAO().getReplies(conn, boardNo);
 		
 		close(conn);		
 		
 		return replies;
+	}
+
+	public int saveBoardReply(BoardComment reply) {
+		int result = 0;
+		Connection conn = getConnection();
+
+		result = new BoardDAO().insertBoardReply(conn, reply);			
+
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+		
+		return result;		
+	}
+
+	public int deleteBoard(int boardNo) {
+		Connection conn = getConnection();
+		int result = new BoardDAO().updateBoardStatus(conn, boardNo, "N");
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
+	}
+
+	public int saveBoard(Board board) {
+		int result = 0;
+		Connection conn = getConnection();
+		
+		result = new BoardDAO().updateBoard(conn, board);
+		
+		if(result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		
+		close(conn);
+		
+		return result;
 	}
 
 }

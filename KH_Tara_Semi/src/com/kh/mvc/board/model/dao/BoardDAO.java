@@ -11,7 +11,6 @@ import java.util.List;
 
 import com.kh.mvc.board.model.vo.Board;
 import com.kh.mvc.board.model.vo.BoardComment;
-import com.kh.mvc.board.model.vo.BoardReply;
 import com.kh.mvc.common.util.PageInfo;
 
 public class BoardDAO {
@@ -291,10 +290,10 @@ public class BoardDAO {
 	}
 
 
-	public List<BoardReply> getReplies(Connection conn, int boardNo) {
+	public List<BoardComment> getReplies(Connection conn, int boardNo) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		List<BoardReply> list = new ArrayList();
+		List<BoardComment> list = new ArrayList();
 		String query = 
 				"SELECT C.COMMENT_NO, "
 				+ 		"C.COMMENT_CONTENT, "
@@ -316,14 +315,15 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
-				BoardReply reply=new BoardReply();
+				BoardComment reply = new BoardComment();
 				
 				reply.setCommentNo(rs.getInt("COMMENT_NO"));
-				reply.setCommentBoardNo(rs.getInt("COMMENT_BOARD_NO"));
+				reply.setCommentBoardNO(rs.getInt("COMMENT_BOARD_NO"));
 				reply.setCommentWriterNo(rs.getInt("COMMENT_WRITER_NO"));
-				reply.setContent(rs.getString("COMMENT_CONTENT"));
-				reply.setCreateDate(rs.getDate("COMMENT_CREATE_DATE"));
-				reply.setCreateDate(rs.getDate("COMMENT_MODIFY_DATE"));
+				reply.setUserId(rs.getString("USER_ID"));
+				reply.setCommentContent(rs.getString("COMMENT_CONTENT"));
+				reply.setCommentCreateDate(rs.getDate("COMMENT_CREATE_DATE"));
+				reply.setCommentModifyDate(rs.getDate("COMMENT_MODIFY_DATE"));
 				
 				list.add(reply);
 				
@@ -335,6 +335,76 @@ public class BoardDAO {
 			close(rs);
 			close(pstmt);
 		}return list;
+	}
+
+
+	public int insertBoardReply(Connection conn, BoardComment reply) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "INSERT INTO COMMENTS VALUES(SEQ_COMMENT_NO.NEXTVAL, ?, ?, ?, SYSDATE, SYSDATE, DEFAULT)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, reply.getCommentBoardNO());
+			pstmt.setInt(2, reply.getCommentWriterNo());
+			pstmt.setString(3, reply.getCommentContent());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+
+	public int updateBoardStatus(Connection conn, int boardNo, String status) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement("UPDATE BOARD SET STATUS=? WHERE BOARD_NO=?");
+			
+			pstmt.setString(1, status);
+			pstmt.setInt(2, boardNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}		
+		
+		return result;
+	}
+
+
+	public int updateBoard(Connection conn, Board board) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement("UPDATE BOARD SET LOC_NAME=?, BOARD_TITLE=?, TRANSPORT=?, TRAVEL_MONEY=?, BOARD_SCORE=?, BOARD_CONTENT=? WHERE BOARD_NO=?");
+			
+			pstmt.setString(1, board.getLocName());
+			pstmt.setString(2, board.getBoardTitle());
+			pstmt.setString(3, board.getTransport());
+			pstmt.setString(4, board.getTravelMoney());
+			pstmt.setFloat(5, board.getBoardScore());
+			pstmt.setString(6, board.getBoardContent());
+			pstmt.setInt(7, board.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}		
+		
+		return result;
 	}
 
 
