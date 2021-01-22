@@ -224,15 +224,19 @@ public class BoardDAO {
 				+ 		"B.TRAVEL_MONEY, "
 				+ 		"B.BOARD_SCORE, "
 				+ 		"B.BOARD_CREATE_DATE, "
-				+ 		"B.BOARD_MODIFY_DATE "
+				+ 		"B.BOARD_MODIFY_DATE, "
+				+ 		"(SELECT COUNT(*) FROM LIKECOUNT WHERE BOARD_NO = ? AND STATUS ='Y') LCOUNT, "
+				+ 		"(SELECT COUNT(*) FROM COMMENTS WHERE COMMENT_BOARD_NO = ? AND STATUS ='Y') CCOUNT "
 				+ "FROM BOARD B, MEMBER M "
-				+ "WHERE (B.BOARD_WRITER_NO = M.USER_NO) AND B.STATUS ='Y' AND B.BOARD_NO = ?";
-
+				+ "WHERE (B.BOARD_WRITER_NO = M.USER_NO) AND B.STATUS ='Y' AND B.BOARD_NO = ? "
+				+ "ORDER BY BOARD_NO DESC";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			
 			pstmt.setInt(1, boardNo);
+			pstmt.setInt(2, boardNo);
+			pstmt.setInt(3, boardNo);
 			
 			rs = pstmt.executeQuery();
 			
@@ -241,6 +245,8 @@ public class BoardDAO {
 				
 				board.setBoardNo(rs.getInt("BOARD_NO"));
 				board.setBoardWriteNo(rs.getInt("USER_NO"));
+				board.setlCount(rs.getInt("LCOUNT"));
+				board.setcCount(rs.getInt("CCOUNT"));
 				board.setUserId(rs.getString("USER_ID"));
 				board.setLocName(rs.getString("LOC_NAME"));
 				board.setBoardName(rs.getString("BOARD_NAME"));
@@ -430,4 +436,86 @@ public class BoardDAO {
 	}
 
 
+	public int updateLikeCount(Connection conn, int boardNo, int writerNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String updateQuery = "INSERT INTO LIKECOUNT VALUES(?,?,'Y')";
+		
+		try {
+				pstmt = conn.prepareStatement(updateQuery);
+				
+				pstmt.setInt(1, boardNo);
+				pstmt.setInt(2, writerNo);
+				
+				result = pstmt.executeUpdate();
+				
+	            System.out.println("update"+ result);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+
+	public int likeCheck(Connection conn, int boardNo, int writerNo) {
+		int result = 0;
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		String query="SELECT COUNT(*) FROM LIKECOUNT WHERE STATUS='Y' AND USER_NO=? AND BOARD_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+	        
+			pstmt.setInt(1, writerNo);
+			pstmt.setInt(2, boardNo);
+			
+	        rset = pstmt.executeQuery();
+	         
+	         if(rset.next()) {
+	            result = rset.getInt(1);
+	         }
+	         System.out.println("Check "+result);
+			
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
+
+
+	public int deleteLikeCount(Connection conn, int boardNo, int writerNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "UPDATE LIKECOUNT SET STATUS='N' WHERE USER_NO=? AND BOARD_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, writerNo);
+			pstmt.setInt(2, boardNo);
+			
+			result = pstmt.executeUpdate();
+			
+            System.out.println("Delete"+result);
+
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+
+		return result;
+	}
 }
+
+
+

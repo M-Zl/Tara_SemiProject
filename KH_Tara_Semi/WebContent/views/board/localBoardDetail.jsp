@@ -68,6 +68,15 @@
 	     width:20px;
 	     height:20px;
     }
+    .board__count>button{
+    	border:none;
+    	background-color: transparent;
+    }
+    .board__count>button>img{
+    	 margin-top:5px;
+	     width:20px;
+	     height:20px;
+    }
     .board__button{
 		 margin: 5px;
     	 text-align:center;
@@ -152,7 +161,7 @@
         작성일자 : <%= board.getBoardCreateDate() %>
       </div>
       <div class="board__count">
-        <img src="<%= request.getContextPath() %>/logo/heart.jpg" alt="">&nbsp; 좋아요 &nbsp;
+        <button onclick="likeUpdate()"><img src="<%= request.getContextPath() %>/logo/heart.jpg" alt=""></button>&nbsp; <%= board.getlCount() %> &nbsp;
         <img src="<%= request.getContextPath() %>/logo/조회수1.png" alt="">&nbsp;<%= board.getBoardReadCount() %> &nbsp;
         <img src="<%= request.getContextPath() %>/logo/댓글1.png" alt="">&nbsp; 댓글수 &nbsp;
       </div>
@@ -173,7 +182,8 @@
        	<div id="comment-container">
 	    	<div class="comment-editor">
 	    		<form action="<%=request.getContextPath() %>/board/comment" method="post">
-	    			<input type="hidden" name="boardNo" value="<%=board.getBoardNo()%>">
+	    			<input type="hidden" name="boardNo"  id="boardNo" value="<%=board.getBoardNo()%>">
+	    			<input type="hidden" name="writerNo"  id="writerNo" value="<%=board.getBoardWriteNo()%>">
 	    			<input type="hidden" name="writer" value="<%=loginMember != null ? loginMember.getUserId() : "" %>">
 					<table>
 						<tr>
@@ -224,6 +234,9 @@
 			location.replace("<%=request.getContextPath()%>/comment/delete?boardNo=<%=board.getBoardNo()%>&commentNo=" + commentNo);
 		}
 	}
-
+	
+	function likeUpdate(){
+		location.href = "<%=request.getContextPath()%>/board/like?boardNo=<%=board.getBoardNo()%>&userNo=<%=board.getBoardWriteNo()%>";
+	}
 </script>
 <%@ include file="/views/common/footer.jsp" %> 
