@@ -1,49 +1,39 @@
 package com.kh.mvc.board.model.vo;
 
-public class LikeCount {
+public class Like {
 	private int boardNo;
-	
 	private int userNo;
+	private String status;
 	
-	private String Status;
-
-	public LikeCount() {
+	
+	public Like() {
 	}
-	
-	public LikeCount(int boardNo, int userNo, String status) {
-		super();
+	public Like(int boardNo, int userNo, String status) {
 		this.boardNo = boardNo;
 		this.userNo = userNo;
-		Status = status;
+		this.status = status;
 	}
-
 	public int getBoardNo() {
 		return boardNo;
 	}
-
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
-
 	public int getUserNo() {
 		return userNo;
 	}
-
 	public void setUserNo(int userNo) {
 		this.userNo = userNo;
 	}
-
 	public String getStatus() {
-		return Status;
+		return status;
 	}
-
 	public void setStatus(String status) {
-		Status = status;
+		this.status = status;
 	}
-
 	@Override
 	public String toString() {
-		return "LikeCount [boardNo=" + boardNo + ", userNo=" + userNo + ", Status=" + Status + "]";
+		return "Like [boardNo=" + boardNo + ", userNo=" + userNo + ", status=" + status + "]";
 	}
 	
 }

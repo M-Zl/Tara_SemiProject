@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.kh.mvc.board.model.vo.Board;
 import com.kh.mvc.board.model.vo.BoardComment;
+import com.kh.mvc.board.model.vo.Like;
 import com.kh.mvc.common.util.PageInfo;
 import com.kh.mvc.member.model.vo.Member;
 
@@ -734,83 +735,83 @@ public class BoardDAO {
       
       return result;
    }
-	public int updateLikeCount(Connection conn, int boardNo, int writerNo) {
-		int result = 0;
-		PreparedStatement pstmt = null;
-		String updateQuery = "INSERT INTO LIKECOUNT VALUES(?,?,'Y')";
-		
-		try {
-				pstmt = conn.prepareStatement(updateQuery);
-				
-				pstmt.setInt(1, boardNo);
-				pstmt.setInt(2, writerNo);
-				
-				result = pstmt.executeUpdate();
-				
-	            System.out.println("update"+ result);
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close(pstmt);
-		}
 
-		return result;
-	}
-
-
-	public int likeCheck(Connection conn, int boardNo, int writerNo) {
-		int result = 0;
+	public Like likeCheck(Connection conn, int boardNo, int userNo) {
+		Like like =null;
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
-		String query="SELECT COUNT(*) FROM LIKECOUNT WHERE STATUS='Y' AND USER_NO=? AND BOARD_NO=?";
+		String query="SELECT * FROM LIKECOUNT WHERE USER_NO=? AND BOARD_NO=?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 	        
-			pstmt.setInt(1, writerNo);
+			pstmt.setInt(1, userNo);
 			pstmt.setInt(2, boardNo);
 			
 	        rset = pstmt.executeQuery();
 	         
 	         if(rset.next()) {
-	            result = rset.getInt(1);
+	        	 like = new Like(
+	        			 rset.getInt("BOARD_NO"),
+	        			 rset.getInt("USER_NO"),
+	        			 rset.getString("STATUS")
+	        			 );
 	         }
-	         System.out.println("Check "+result);
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
+			close(conn);
 		}
 
-		return result;
+		return like;
 	}
 
-
-	public int deleteLikeCount(Connection conn, int boardNo, int writerNo) {
+	public int insertLike(Connection conn, int boardNo, int userNo) {
 		int result = 0;
 		PreparedStatement pstmt = null;
-		String query = "UPDATE LIKECOUNT SET STATUS='N' WHERE USER_NO=? AND BOARD_NO=?";
-		
+
 		try {
-			pstmt = conn.prepareStatement(query);
-			
-			pstmt.setInt(1, writerNo);
-			pstmt.setInt(2, boardNo);
+			pstmt = conn.prepareStatement(
+					"INSERT INTO LIKECOUNT VALUES(?,?,'Y')");
+			pstmt.setInt(1, boardNo);
+			pstmt.setInt(2, userNo);
 			
 			result = pstmt.executeUpdate();
-			
-            System.out.println("Delete"+result);
 
-			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			close(pstmt);
 		}
-
 		return result;
 	}
+
+	public int updateLike(Connection conn, Like like) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query =null;
+		if(like.getStatus().equals("Y")) {
+			query="UPDATE LIKECOUNT SET STATUS='N' WHERE USER_NO=? AND BOARD_NO=?";
+		}else {
+			query="UPDATE LIKECOUNT SET STATUS='Y' WHERE USER_NO=? AND BOARD_NO=?";
+		}
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, like.getUserNo());
+			pstmt.setInt(2, like.getBoardNo());
+
+			result = pstmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+
+
 }

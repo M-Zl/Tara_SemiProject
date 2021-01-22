@@ -11,6 +11,7 @@ import java.util.List;
 import com.kh.mvc.board.model.dao.BoardDAO;
 import com.kh.mvc.board.model.vo.Board;
 import com.kh.mvc.board.model.vo.BoardComment;
+import com.kh.mvc.board.model.vo.Like;
 import com.kh.mvc.common.util.PageInfo;
 import com.kh.mvc.member.model.dao.MemberDAO;
 import com.kh.mvc.member.model.vo.Member;
@@ -205,57 +206,45 @@ public class BoardService {
       
       return result;
    }
-   public int updateLikeCount(int boardNo, int writerNo) {
-      int result = 0;
-      Connection conn = getConnection();
-      
-      result = new BoardDAO().updateLikeCount(conn, boardNo, writerNo);
-      System.out.println(result);
-      if(result > 0) {
-         commit(conn);
-      } else {
-         rollback(conn);
-      }
-      
-      close(conn);
-      
-      return result;
-   }
-   
-   public int LikeCheck(int boardNo, int writerNo) {
-      int result = 0;
-      Connection conn = getConnection();
-      
-      result = new BoardDAO().likeCheck(conn, boardNo, writerNo);
-      System.out.println(result);
-      if(result > 0) {
-         commit(conn);
-      } else {
-         rollback(conn);
-      }
-      
-      close(conn);
-      
-      return result;
-   }
-   
 
-   public int deleteLikeCount(int boardNo, int userNo) {
-      int result = 0;
-      Connection conn = getConnection();
-      
-      result = new BoardDAO().deleteLikeCount(conn, boardNo, userNo);
-      System.out.println(result);
-      if(result > 0) {
-         commit(conn);
-      } else {
-         rollback(conn);
-      }
-      
-      close(conn);
-      
-      return result;
-   }
+
+	public Like LikeCheck(int boardNo, int userNo) {
+		Connection conn = getConnection();
+		
+		Like like = new BoardDAO().likeCheck(conn, boardNo, userNo);
+		
+		close(conn);
+		
+		return like;
+	}
+	public int insertLike(int boardNo, int userNo) {
+		 int result = 0;
+	      Connection conn = getConnection();
+	      
+	      result = new BoardDAO().insertLike(conn, boardNo, userNo);
+	      if(result > 0) {
+	         commit(conn);
+	      } else {
+	         rollback(conn);
+	      }
+	      close(conn);
+	      
+	      return result;
+	}
+	public void setLike(Like like) {
+		int result = 0;
+		Connection conn = getConnection();
+
+		result = new BoardDAO().updateLike(conn, like);
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+		close(conn);
+
+	}
+	
 
    
 }
