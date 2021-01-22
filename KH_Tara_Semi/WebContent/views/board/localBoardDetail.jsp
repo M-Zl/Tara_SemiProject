@@ -11,124 +11,145 @@
 	List<BoardComment> replies = (List)request.getAttribute("replies");
 %>
   <style>
-	@font-face {
-		 font-family: 'TmoneyRoundWindRegular';
-		 src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff') format('woff');
-		 font-weight: normal;
-		 font-style: normal;
-	 }
-	 @font-face {
-		 font-family: 'TmoneyRoundWindExtraBold';
-		 src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff') format('woff');
-		 font-weight: normal;
-		 font-style: normal;
-	 }
-    .board__detail{
-	     width: auto;
-	     min-height: 600px;
-	     border: 2px solid gray;
-	     border-radius: 20px;
-	     padding: 30px;
-	     font-family: 'TmoneyRoundWindRegular';
-    }
-    .board__locName{
-    	 height: 35px;
-	     margin: 5px;
-	     font-size:25px;
-	     font-weight:700;
-    }
-    .board__profile{
-	     margin: 5px;
-	     border: 2px solid lightgray;
-	     border-radius: 5px;
-	     height: 25px;
-    }
-    .board__title{
-	     margin: 5px;
-	     border: 2px solid lightgray;
-	     border-radius: 5px;
-	     height: 25px;
-    }
-    .board__contents{
-	     margin: 5px;
-	     border: 2px solid lightgray;
-	     border-radius: 5px;
-	     min-height: 400px;
-    }
-    .board__date{
-	     margin: 5px;
-    }
-    .board__count{
-	     margin: 5px;
-    }
-    .board__count>img{
-    	 margin-top:5px;
-	     width:20px;
-	     height:20px;
-    }
-    .board__count>button{
-    	border:none;
-    	background-color: transparent;
-    }
-    .board__count>button>img{
-    	 margin-top:5px;
-	     width:20px;
-	     height:20px;
-    }
-    .board__button{
-		 margin: 5px;
-    	 text-align:center;
-    	 padding:7px 7px ;
-    	 
-    }
-    .board_button__notUser{
-		 margin: 5px;
-    	 text-align:center;
-    }
-    .board__button>button{
-    	width:80px;
-    	height:30px;
-    	border: none;
-    	font-size:15px;
-    }
-    #modify{
-	     background: royalblue;
-	     color: white;
-    }
-    #delete{
-	     background: lightslategray;
-	     color: white;
-    }
-    
-    #go_list{
-    	 text-align:center;
-    	 width:80px;
-    	 height:30px;
-    	 border: none;
-    	 font-size:15px;
-	     background: royalblue;
-	     color: white;
-    }
-    
-    
-    .board__comments{
-	     margin: 5px;
-	     border: 2px solid lightgray;
-	     border-radius: 5px;
-	     
-    }
-    
-    #btn-insert{
-    	width:70px;
-    	height:50px;
-    	border: none;
-    	border-radius: 5px;
-    	background: royalblue;
-	    color: white;
-    }
-    
-    
-  </style>
+@font-face {
+	font-family: 'TmoneyRoundWindRegular';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindRegular.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'TmoneyRoundWindExtraBold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.board__detail {
+	width: auto;
+	min-height: 600px;
+	border: 2px solid gray;
+	border-radius: 20px;
+	padding: 30px;
+	font-family: 'TmoneyRoundWindRegular';
+}
+
+.board__locName {
+	height: 35px;
+	margin: 5px;
+	font-size: 25px;
+	font-weight: 700;
+}
+
+.board__profile {
+	margin: 5px;
+	border: 2px solid lightgray;
+	border-radius: 5px;
+	height: 25px;
+}
+
+.board__title {
+	margin: 5px;
+	border: 2px solid lightgray;
+	border-radius: 5px;
+	height: 25px;
+}
+
+.board__contents {
+	margin: 5px;
+	border: 2px solid lightgray;
+	border-radius: 5px;
+	min-height: 400px;
+	overflow: scroll;
+}
+
+.board__contents>img {
+	width: 800px;
+	hedth: 500px;
+}
+
+.board__date {
+	margin: 5px;
+}
+
+.board__count {
+	margin: 5px;
+}
+
+.board__count>img {
+	margin-top: 5px;
+	width: 20px;
+	height: 20px;
+}
+
+.board__count>button {
+	border: none;
+	background-color: transparent;
+}
+
+.board__count>button>img {
+	margin-top: 5px;
+	width: 20px;
+	height: 20px;
+}
+
+.board__button {
+	margin: 5px;
+	text-align: center;
+	padding: 7px 7px;
+}
+
+.board_button__notUser {
+	margin: 5px;
+	text-align: center;
+}
+
+.board__button>button {
+	width: 80px;
+	height: 30px;
+	border: none;
+	font-size: 15px;
+}
+
+#modify {
+	background: royalblue;
+	color: white;
+}
+
+#delete {
+	background: lightslategray;
+	color: white;
+}
+
+#go_list {
+	text-align: center;
+	width: 80px;
+	height: 30px;
+	border: none;
+	font-size: 15px;
+	background: royalblue;
+	color: white;
+}
+
+.board__comments {
+	margin: 5px;
+	border: 2px solid lightgray;
+	border-radius: 5px;
+}
+
+#btn-insert {
+	width: 70px;
+	height: 50px;
+	border: none;
+	border-radius: 5px;
+	background: royalblue;
+	color: white;
+}
+</style>
   
 <section>
     <div class="board__detail">
