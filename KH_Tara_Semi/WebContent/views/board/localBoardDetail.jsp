@@ -158,7 +158,7 @@
       </div>
       <hr>
       <% if(loginMember != null && (loginMember.getUserId().equals(board.getUserId()) 
-					|| loginMember.getUserRole() == 1)) { %>
+					|| loginMember.getUserRole() == 2)) { %>
       <div class="board__button">
         <button id="modify" type="button" onclick="updateBoard()">수정</button>
         <button id="delete" type="button" onclick="deleteBoard()">삭제</button>
@@ -195,7 +195,7 @@
 		    		</td>
 		    		<td>
 	    			<% if(loginMember != null && (loginMember.getUserId().equals(reply.getUserId()) 
-	    					|| loginMember.getUserRole() == 1)) { %>
+	    					|| loginMember.getUserRole() == 2)) { %>
 	    				<input type="hidden" id="commentNo" name="commentNo" value="<%= reply.getCommentNo()%>">
 	    				<button class="btn-delete" onclick="deleteComment()">삭제</button>
 	    			<%} %>
