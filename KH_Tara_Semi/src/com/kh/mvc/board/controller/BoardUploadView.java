@@ -50,8 +50,7 @@ public class BoardUploadView extends HttpServlet {
       
       HttpSession session = request.getSession(false);
       Member loginMember = session != null ? (Member)session.getAttribute("loginMember") : null;
-      
-      System.out.println(loginMember);
+     
       
       
       if (loginMember != null) {         
