@@ -33,7 +33,7 @@ public class Board {
 	
 	private String travelMoney;
 	
-	private float boardScore;
+	private int boardScore;
 
 	private Date boardCreateDate;
 
@@ -48,7 +48,7 @@ public class Board {
 
 	public Board(int boardNo, int rowNum, int boardWriteNo, int lCount, int cCount, String userId, String locName,
 			String boardName, String boardTitle, String boardContent, int boardReadCount, String boardOriginalFileName,
-			String boardRenamedFileName, String transport, String travelMoney, float boardScore, Date boardCreateDate,
+			String boardRenamedFileName, String transport, String travelMoney, int boardScore, Date boardCreateDate,
 			Date boardModifyDate, String status) {
 		super();
 		this.boardNo = boardNo;
@@ -192,11 +192,11 @@ public class Board {
 		this.travelMoney = travelMoney;
 	}
 
-	public float getBoardScore() {
+	public int getBoardScore() {
 		return boardScore;
 	}
 
-	public void setBoardScore(float boardScore) {
+	public void setBoardScore(int boardScore) {
 		this.boardScore = boardScore;
 	}
 
@@ -234,5 +234,6 @@ public class Board {
 				+ boardScore + ", boardCreateDate=" + boardCreateDate + ", boardModifyDate=" + boardModifyDate
 				+ ", status=" + status + "]";
 	}
+
 	
 }

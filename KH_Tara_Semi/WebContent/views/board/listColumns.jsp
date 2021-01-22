@@ -288,10 +288,10 @@
 				<button id="btnPage" onclick="location.href='<%= request.getContextPath() %>/board/listColumns?local=<%=local%>&menu=<%=menu%>&boardContent=<%=boardContent%>&recommend=<%=recommend%>&page=<%= pageInfo.getMaxPage() %>'">&gt;&gt;</button>
 			<%} %>			
             <%if(loginMember != null) {%>
-            <form action="<%= request.getContextPath() %>/board/upload" method="post">
-			<button type="submit" id="btn-add">글쓰기</button>
-			</form>
+            <button type="button" id="btn-add"
+			onclick="location.href ='<%=request.getContextPath() %>/board/upload'">글쓰기</button>
 	     	<%}%>
+	
         </div>
         <br>
         <br>

@@ -38,7 +38,7 @@ public class BoardUpdateServlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String transport = request.getParameter("transport");
 		String travelMoney = request.getParameter("travelMoney");
-		Float boardScore = Float.parseFloat(request.getParameter("boardScore"));
+		int boardScore = Integer.parseInt(request.getParameter("boardScore"));
 		String content = request.getParameter("content");
 		Board board = new Board();
 		
