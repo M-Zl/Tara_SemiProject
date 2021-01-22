@@ -30,6 +30,7 @@
 <link rel="stylesheet" href="/KH_Tara_Semi/css/LocalBoardDetail.css" type="text/css">
 <link rel="stylesheet" href="/KH_Tara_Semi/css/UploadPage1.css" type="text/css">
 <link rel="stylesheet" href="/KH_Tara_Semi/css/UploadPage2.css" type="text/css">
+<script src="<%= request.getContextPath() %>/js/jquery-3.5.1.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
