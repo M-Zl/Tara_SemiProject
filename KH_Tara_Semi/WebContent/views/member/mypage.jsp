@@ -19,9 +19,12 @@
 			<div>
 				<h1 class="profile__title">Profile</h2>
 				<div class="profile__photo">
-					<div>
-					<img class="profile" src="/profile/<%=loginMember.getUserimg()%>"> 
+				<%if(loginMember.getUserimg()!=null) {%>
+					<img class="profile" src="/profile/<%=loginMember.getUserimg()%>">
+					<%} else{%>
+					<div> 
 					</div>
+					<%} %>
 					<span><a href="<%=request.getContextPath()%>/member/profile?userId=<%=loginMember.getUserId()%>">
 					<i class="fas fa-camera-retro fa-3x"></i></a></span>
 				</div>

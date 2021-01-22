@@ -23,10 +23,7 @@ public class MemberProfileImgServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		HttpSession session = ((HttpServletRequest)request).getSession(false);
-//		Member loginMember = (Member)(session.getAttribute("loginMember"));
-//		String userId = request.getParameter("userId");	
-		
+
 		request.getRequestDispatcher("/views/member/profileImg.jsp").forward(request, response);
 	}
 
@@ -48,25 +45,18 @@ public class MemberProfileImgServlet extends HttpServlet {
 		String encoding = "UTF-8";
 		
 		MultipartRequest mr = new MultipartRequest(request, path, maxSize, encoding, new FileRename());
-		
-		String title = mr.getParameter("title");
-		String writer = mr.getParameter("writer");
-		String content = mr.getParameter("content");		
-		
+
 		String fileName = mr.getFilesystemName("upfile");
 		
 		HttpSession session = request.getSession(false);
 		Member loginMember = session != null ? (Member)session.getAttribute("loginMember") : null;
 		
-		System.out.println(loginMember);
 		
 		if (loginMember != null) {			
 				Member member = new Member();
 				
 				member.setUserId(loginMember.getUserId());
 				member.setUserimg(fileName);
-				
-				System.out.println(member);
 				
 				int result = new MemberService().saveImg(member);
 				

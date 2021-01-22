@@ -38,9 +38,22 @@ pageEncoding="UTF-8"%>
         >
             <div class="profile">
                 <span>프로필 사진</span>
-                <input type="file" name="upfile" /><br />
+                <input type="file" name="upfile" onchange="checkFile(this)"/><br />
                 <input class="button" type="submit" value="등록""/>
             </div>
         </form>
+        <script>
+        function checkFile(f) {
+            var file = f.files;
+
+            if (!/\.(gif|jpg|jpeg|png)$/i.test(file[0].name))
+                alert(
+                    "gif, jpg, png 파일만 선택해 주세요.\n\n현재 파일 : " +
+                        file[0].name
+                );
+            else return;
+            f.outerHTML = f.outerHTML;
+        }
+        </script>
     </body>
 </html>
