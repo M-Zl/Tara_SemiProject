@@ -435,6 +435,25 @@ public class MemberDAO {
 
 		return result;
 	}
-	
+	public int updateImg(Connection conn, Member member) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(
+					"UPDATE MEMBER SET USER_IMG=?,MODIFY_DATE=SYSDATE WHERE USER_ID=?");
+			
+			pstmt.setString(1, member.getUserimg());
+			pstmt.setString(2, member.getUserId());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}		
+		
+		return result;
+	}
 	
 }
