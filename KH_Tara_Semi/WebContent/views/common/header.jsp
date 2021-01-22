@@ -52,7 +52,19 @@
 				<li><input id="search_input" type="text" placeholder="Search"></li>
 			</ul>
 		</form>
-	<% } else{ %>
+	<% } else{
+		if(loginMember.getUserRole()==2){
+	%>
+		<form >
+			<ul>
+				<li><a href="<%= request.getContextPath()%>">Home</a></li>
+				<li><a href="<%= request.getContextPath()%>/logout">Logout</a></li>
+				<li><a href="<%= request.getContextPath()%>/member/mypage"><%= loginMember.getUserName() %>님 Page</a></li>
+				<li><a href="<%= request.getContextPath()%>/admin/members" style="color:red;">멤버관리</a></li>
+				<li><input id="search_input" type="text" placeholder="Search"></li>
+			</ul>
+		</form>
+	<% }else{ %>
 		<form >
 			<ul>
 				<li><a href="<%= request.getContextPath()%>">Home</a></li>
@@ -61,7 +73,8 @@
 				<li><input id="search_input" type="text" placeholder="Search"></li>
 			</ul>
 		</form>
-	<% } %>	
+	<%}
+}%>	
 	</div>
 	<div class= "main_logo">
 		<a href="<%= request.getContextPath()%>"><img src="<%= request.getContextPath()%>/images/logo/logo3.png"/></a>
