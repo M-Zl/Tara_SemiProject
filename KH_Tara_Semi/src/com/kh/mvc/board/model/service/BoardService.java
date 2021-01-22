@@ -2,6 +2,8 @@ package com.kh.mvc.board.model.service;
 
 import static com.kh.mvc.common.jdbc.JDBCTemplate.close;
 import static com.kh.mvc.common.jdbc.JDBCTemplate.getConnection;
+import static com.kh.mvc.common.jdbc.JDBCTemplate.commit;
+import static com.kh.mvc.common.jdbc.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.List;
@@ -41,6 +43,29 @@ public class BoardService {
 		close(conn);
 		
 		return result;			
+	}
+
+	public int saveBoard(Board board) {
+		int result = 0;
+		Connection conn = getConnection();
+		
+		if(board.getBoardNo() != 0) {
+			result = new BoardDAO().updateBoard(conn,board);
+		} else {
+			result = new BoardDAO().insertBoard(conn,board);
+		}
+		
+		result = new BoardDAO().insertBoard(conn, board);
+		
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+		
+		return result;
 	}
 
 }
