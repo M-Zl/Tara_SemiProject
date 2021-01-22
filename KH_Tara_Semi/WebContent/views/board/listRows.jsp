@@ -102,7 +102,7 @@
               					<br>
               					<span id="board_div_text_id"><%= board.getUserId()%> </span> <span id="board_div_text_says">says</span>
               				</div>
-               				<div id="board_div_img"><img src="../image/해변.jpg" class="board_list_img"></div>  
+               				<div id="board_div_img"><img src="../images/logo/logo3.png" class="board_list_img"></div>  
             			</a>
              	</div> 
                      <%} }%>   

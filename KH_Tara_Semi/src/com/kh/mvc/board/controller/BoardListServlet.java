@@ -30,12 +30,14 @@ public class BoardListServlet extends HttpServlet {
 
 		PageInfo info = null;
 		List<Board> list = null;
+		List<Board> imglist = null;
 		String locName = request.getParameter("local");
 		String boardName = request.getParameter("menu");
 		String boardUserId = request.getParameter("boardUserId");
 		String boardTitle = request.getParameter("boardTitle");
 		String boardContent = request.getParameter("boardContent");
 		String recommend = request.getParameter("recommend");
+
 		
 		try {
 			page = Integer.parseInt(request.getParameter("page"));
@@ -43,6 +45,8 @@ public class BoardListServlet extends HttpServlet {
 			page = 1;
 		}		   
 
+	
+		
         if(recommend != null) {
         		if(boardName == null ) {
         			listCount = new BoardService().getBoardCount();
@@ -86,8 +90,9 @@ public class BoardListServlet extends HttpServlet {
 			    		request.setAttribute("boardContent", boardContent);
 			    		request.getRequestDispatcher("/views/board/listColumns.jsp").forward(request, response);    
 			    		
-                        
-			    		
+                      
+                          
+   
 			    		
         	}else {	
 					listCount = new BoardService().getBoardCount();

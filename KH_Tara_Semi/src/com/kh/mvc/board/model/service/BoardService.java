@@ -23,7 +23,7 @@ public class BoardService {
       List<Board> list = new BoardDAO().findAll(conn, locName, boardName, boardUserId, boardTitle, boardContent, info);
       
       close(conn);      
-   
+       
       
       return list;
    }
@@ -238,26 +238,7 @@ public class BoardService {
 		
 		return result;
 	}
-	
 
-	public int deleteLikeCount(int boardNo, int userNo) {
-		int result = 0;
-		Connection conn = getConnection();
-		
-		result = new BoardDAO().deleteLikeCount(conn, boardNo, userNo);
-		System.out.println(result);
-		if(result > 0) {
-			commit(conn);
-		} else {
-			rollback(conn);
-		}
-		
-		close(conn);
-		
-		return result;
-	}
-
-	
 }
   
    

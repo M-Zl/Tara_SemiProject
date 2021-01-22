@@ -11,6 +11,7 @@
 <%
 	List<Board> list = (ArrayList) request.getAttribute("list");
 	PageInfo pageInfo = (PageInfo) request.getAttribute("pageInfo");
+	  
 %>
 
 <%
@@ -34,6 +35,9 @@
 		}else{
 			btnfirst = title[0]; btnsecond = title[1]; btnThird= title[2];			
 	}
+	
+	
+	
 	
 %>
 
@@ -98,7 +102,7 @@
 										<div class="board_list_div">
 										    <span id="board_list_menu_span"><span id="board_div_menu_p"><%=board.getRowNum()%>  &nbsp; &nbsp; &nbsp;</span> <%= board.getBoardName() %>게시판</span>
 										    <div class="board_list_div_img">
-												<img src="" class="board_list_image">
+												<img src="../images/logo/logo3.png" class="board_list_image">
                           					</div>  
                           					         
                           					<div class="board_list_count">
@@ -127,7 +131,7 @@
 										<div class="board_list_div">
 										    <span id="board_list_menu_span"><span id="board_div_menu_p"><%=board.getRowNum()%>  &nbsp; &nbsp; &nbsp;</span> <%= board.getBoardName() %>게시판</span>
 										    <div class="board_list_div_img">
-												<img src="../" class="board_list_image">
+												<img src="../images/logo/logo3.png" class="board_list_image">
                           					</div>  
                           					         
                           					<div class="board_list_count">
@@ -154,7 +158,7 @@
 										<div class="board_list_div">
 										    <span id="board_list_menu_span"><span id="board_div_menu_p"><%=board.getRowNum()%>  &nbsp; &nbsp; &nbsp;</span> <%= board.getBoardName() %>게시판</span>
 										    <div class="board_list_div_img">
-												<img src="../" class="board_list_image">
+												<img src="../images/logo/logo3.png" class="board_list_image">
                           					</div>  
                           					         
                           					<div class="board_list_count">
