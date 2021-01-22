@@ -188,10 +188,12 @@ public class BoardService {
    public int cke_saveBoard(Board board) {
       int result = 0;
       Connection conn = getConnection();
-      System.out.println("여기는 서비스 " + result);
       
- 
-      result = new BoardDAO().cke_insertBoard(conn, board);
+      if(board.getBoardNo() != 0) {
+         result = new BoardDAO().cke_updateBoard(conn,board);
+      } else {
+         result = new BoardDAO().cke_insertBoard(conn,board);
+      }
       
       if (result > 0) {
          commit(conn);
@@ -203,4 +205,6 @@ public class BoardService {
       
       return result;
    }
-}   
+   
+   
+}
