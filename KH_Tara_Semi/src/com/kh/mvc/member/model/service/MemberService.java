@@ -137,5 +137,20 @@ public class MemberService {
 
 		return result;			
 	}
+	
+	public int deleteMember(String id) {
+		Connection conn = getConnection();
+		int result = dao.updateMemberStatus(conn, id, "N");
+
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+
+		return result;
+	}
 
 }

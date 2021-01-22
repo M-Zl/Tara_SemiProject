@@ -22,7 +22,6 @@
             <table>
                <thead>
                   <tr>
-                     <th>번호</th>
                      <th>회원번호</th>
                      <th>아이디</th>
                      <th>이름</th>
@@ -42,14 +41,16 @@
                   <%} else {
                      for(Member member : list){%>
                   <tr class="row">
-                     <td><%=member.getRowNum() %></td>
                      <td><%=member.getUserNo() %></td>
                      <td><%=member.getUserId() %></td>
                      <td><%=member.getUserName() %></td>
                      <td><%=member.getEmail() %></td>
                      <td><%=member.getCreateDate() %></td>
                      <td><%=member.getStatus() %></td>
-                     <td><a href="#"><i class="fas fa-user-slash lg"></i></a></td>
+                     <td>
+                     	<a href="<%=request.getContextPath()%>/member/delete?userId=<%= member.getUserId() %>">
+                     <i class="fas fa-user-slash lg"></i></a></td>
+                     
                   </tr>
                   <%} 
                      }%>
