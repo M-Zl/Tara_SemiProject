@@ -43,11 +43,12 @@ public class BoardUploadView extends HttpServlet {
       String boardContent = request.getParameter("ck_content");
       String transport = request.getParameter("choice");
       String travelMoney = request.getParameter("moneyRange");
-//      int boardScore = Integer.parseInt(request.getParameter("starGrade"));
-      int boardScore = 4;
+//      int boardScore = Integer.parseInt(request.getParameter("star_grade"));
+      int boardScore = 1;
       String msg = null;
       
-      System.out.println(locName + ", " + boardName + ", " + boardTitle + ", " + boardContent + ", " + transport + ", " + travelMoney + ", " + boardScore);
+      System.out.println("boardScore : " + boardScore);
+     
       
       HttpSession session = request.getSession(false);
       Member loginMember = session != null ? (Member)session.getAttribute("loginMember") : null;

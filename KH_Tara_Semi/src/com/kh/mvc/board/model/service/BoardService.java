@@ -188,10 +188,12 @@ public class BoardService {
    public int cke_saveBoard(Board board) {
       int result = 0;
       Connection conn = getConnection();
-      System.out.println("여기는 서비스 " + result);
       
- 
-      result = new BoardDAO().cke_insertBoard(conn, board);
+      if(board.getBoardNo() != 0) {
+         result = new BoardDAO().cke_updateBoard(conn,board);
+      } else {
+         result = new BoardDAO().cke_insertBoard(conn,board);
+      }
       
       if (result > 0) {
          commit(conn);
@@ -203,4 +205,59 @@ public class BoardService {
       
       return result;
    }
-}   
+   public int updateLikeCount(int boardNo, int writerNo) {
+      int result = 0;
+      Connection conn = getConnection();
+      
+      result = new BoardDAO().updateLikeCount(conn, boardNo, writerNo);
+      System.out.println(result);
+      if(result > 0) {
+         commit(conn);
+      } else {
+         rollback(conn);
+      }
+      
+      close(conn);
+      
+      return result;
+   }
+   
+   public int LikeCheck(int boardNo, int writerNo) {
+      int result = 0;
+      Connection conn = getConnection();
+      
+      result = new BoardDAO().likeCheck(conn, boardNo, writerNo);
+      System.out.println(result);
+      if(result > 0) {
+         commit(conn);
+      } else {
+         rollback(conn);
+      }
+      
+      close(conn);
+      
+      return result;
+   }
+   
+
+   public int deleteLikeCount(int boardNo, int userNo) {
+      int result = 0;
+      Connection conn = getConnection();
+      
+      result = new BoardDAO().deleteLikeCount(conn, boardNo, userNo);
+      System.out.println(result);
+      if(result > 0) {
+         commit(conn);
+      } else {
+         rollback(conn);
+      }
+      
+      close(conn);
+      
+      return result;
+   }
+
+   
+}
+  
+   
