@@ -205,7 +205,7 @@ public class BoardDAO {
 	   }
 
 	
-	public int insertBoard(Connection conn, Board board) {
+	public int cke_insertBoard(Connection conn, Board board) {
 		// 게시글 작성 INSERT INTO BOARD VALUES(SEQ_BOARD_NO.NEXTVAL,?,?,?,?,?,DEFAULT,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT);
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -237,7 +237,7 @@ public class BoardDAO {
 	}
 
 
-	public int updateBoard(Connection conn, Board board) {
+	public int cke_updateBoard(Connection conn, Board board) {
 		// 게시글 수정 UPDATE BOARD SET BOARD_TITLE=?,BOARD_CONTENT=? WHERE BOARD_NO=?
 		PreparedStatement pstmt = null;
 		int result = 0;

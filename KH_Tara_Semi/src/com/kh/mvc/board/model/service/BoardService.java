@@ -45,17 +45,17 @@ public class BoardService {
 		return result;			
 	}
 
-	public int saveBoard(Board board) {
+	public int cke_saveBoard(Board board) {
 		int result = 0;
 		Connection conn = getConnection();
 		
 		if(board.getBoardNo() != 0) {
-			result = new BoardDAO().updateBoard(conn,board);
+			result = new BoardDAO().cke_updateBoard(conn,board);
 		} else {
-			result = new BoardDAO().insertBoard(conn,board);
+			result = new BoardDAO().cke_insertBoard(conn,board);
 		}
 		
-		result = new BoardDAO().insertBoard(conn, board);
+		result = new BoardDAO().cke_insertBoard(conn, board);
 		
 		if (result > 0) {
 			commit(conn);

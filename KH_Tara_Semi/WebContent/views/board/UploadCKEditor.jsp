@@ -18,9 +18,9 @@
 </style>
 
 <div class="uploadPageArea">
-	<form id="uploadPage" action="<%= request.getContextPath() %>/board/upload" method="post" enctype="multipart/form-data">
+	<form id="uploadPage" action="<%= request.getContextPath() %>/board/upload" method="post">
 		<div class="titleArea_sel">
-			<select id="localTitleSel" name="boardCode" required>
+			<select id="localTitleSel" name="LocalboardCode" required>
                 <option value="">지역 선택</option>
                 <option value="서울">서울</option>
                 <option value="경기도">경기도</option>
@@ -41,39 +41,39 @@
                 <option value="포토존">포토존</option>
                 <option value="맛집">맛집</option>
             </select>
-            <input id="titleName" type="text" placeholder="제목을 입력해주세요." size="66" required>
+            <input id="titleName" name="titleName" type="text" placeholder="제목을 입력해주세요." size="66" required>
 		</div>
 		
 		<br>
 		
 		<div class="ckedit">
-			<textarea class="form-control" id="ck_content"></textarea>
+			<textarea class="form-control" id="ck_content" name="ck_content"></textarea>
 		</div>
-	</form>
+
 		<br><br><br>
         <p align="center" id="questions">여행지까지 이동할때 이용했던 교통수단을 체크해주세요.</p><br>
-<form id="uploadPage" action="<%= request.getContextPath() %>/board/upload" method="post" enctype="multipart/form-data">
+
 	<div>
         <div class="Transportation_all">
             <div class="Transportation" id="border1">
                 <span id="Img_span1"><img src="<%= request.getContextPath() %>/logo/carIcon.png" width="35px"></span><br>
                 <span id="Tpt_span_car">자차</span><br>
-                <span id="Tpt_choice"><input type="radio" name="choice"></span>
+                <span id="Tpt_choice"><input type="radio" name="choice" value="자차"></span>
             </div>
             <div class="Transportation" id="border1">
                 <span id="Img_span2"><img src="<%= request.getContextPath() %>/logo/trainIcon.png" width="40px"></span><br>
                 <span id="Tpt_span_train">대중교통</span><br>
-                <span id="Tpt_choice"><input type="radio" name="choice"></span>
+                <span id="Tpt_choice"><input type="radio" name="choice" value="대중교통"></span>
             </div>
             <div class="Transportation" id="border1">
                 <span id="Img_span3"><img src="<%= request.getContextPath() %>/logo/warking.png" width="40px"></span><br>
                 <span id="Tpt_span_walking">뚜벅이</span><br>
-                <span id="Tpt_choice"><input type="radio" name="choice"></span>
+                <span id="Tpt_choice"><input type="radio" name="choice" value="뚜벅이"></span>
             </div>
             <div class="Transportation" id="border1">
                 <span id="Img_span4"><img src="<%= request.getContextPath() %>/logo/airplane.png" width="40px"></span><br>
                 <span id="Tpt_span_airplane">비행기</span><br>
-                <span id="Tpt_choice"><input type="radio" name="choice"></span>
+                <span id="Tpt_choice"><input type="radio" name="choice" value="비행기"></span>
             </div>
         </div>
         
@@ -81,7 +81,7 @@
         
             <p align="center" id="questions"><span id="money">경비를 입력해주세요.</span></p>
             <div class="inputMoney">
-                <input type="range" id="moneyRange" value="50000" min="0" max="300000" step="1000" name="moneyValue" oninput="document.getElementById('moneyInfo').innerHTML=this.value;" required ><br>
+                <input type="range" id="moneyRange" name="moneyRange" value="50000" min="0" max="300000" step="1000" name="moneyValue" oninput="document.getElementById('moneyInfo').innerHTML=this.value;" required ><br>
             </div>
 		<div class="infoMoney">
 			<span id="moneyInfo">50,000</span><span>원</span>
@@ -102,7 +102,6 @@
              
 		</div>
 	</div>
-</form>
 
         <br>		
 		
@@ -117,6 +116,7 @@
         <div id="row_2">
             <span><input id="row_btn3" type="submit" value="&lt; 이전페이지" onclick="javascript:history.back();"></span>
         </div>
+</form>
 </div>
 <br>
 	
@@ -136,12 +136,7 @@
 	        return false;
 	    });
 	    
-	    $("#row_btn2").click(function() {
-	    	if( $("#grade").text() == 0) {
-	      		alert("별점을 주세요.");
-	      	} 
-	    	return false;
-	    });
+	    
 </script>
 
 
