@@ -40,16 +40,16 @@ public class BoardCommentServlet extends HttpServlet {
 				
 				int result = new BoardService().saveBoardReply(reply);
 				
-				if(result > 0) {
-					msg = "댓글 등록 성공";			
-					loc = "/board/detail";
+				if (result > 0) {
+					msg = "댓글 등록 성공";
+					loc = "/board/detail?boardNo=" + boardNo;
 				} else {
-					msg = "댓글 등록 실패";	
-					loc = "/board/detail";
+					msg = "댓글 등록 실패";
+					loc = "/board/detail?boardNo=" + boardNo;
 				}
 			} else {
 				msg = "잘못된 접근입니다.";
-				loc = "/board/detail";
+				loc = "/board/detail?boardNo=" + boardNo;
 			}
 		} else {
 			msg = "로그인 진행 후 작성해주세요. ";

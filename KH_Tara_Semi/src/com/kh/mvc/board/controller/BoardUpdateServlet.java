@@ -60,7 +60,7 @@ public class BoardUpdateServlet extends HttpServlet {
 		}
 		
 		request.setAttribute("msg", msg);
-		request.setAttribute("location", "/board/detail");
+		request.setAttribute("location", "/board/detail?boardNo=" + boardNo);
 		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 		
 	}
