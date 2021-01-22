@@ -323,19 +323,11 @@ public class MemberDAO {
 		int result = 0;
 		String query ="";
 		if(field.equals("userNo")) {
-			query = "SELECT COUNT(*) FROM(SELECT ROWNUM AS RNUM, " + "USER_NO, " + "USER_ID, " + "USER_NAME, " + "USER_EMAIL, "
-					+ "CREATE_DATE, " + "STATUS " + "FROM(SELECT USER_NO, " + "USER_ID," + "USER_NAME," + "USER_EMAIL,"
-					+ "CREATE_DATE," + "STATUS " + "FROM MEMBER " + "WHERE USER_NO=?" + "ORDER BY CREATE_DATE)" + ")";
+			query = "SELECT COUNT(*) FROM MEMBER WHERE USER_NO=? ORDER BY CREATE_DATE";
 		}else if(field.equals("userId")) {
-			query = "SELECT COUNT(*) FROM(SELECT ROWNUM AS RNUM, " + "USER_NO, " + "USER_ID, " + "USER_NAME, " + "USER_EMAIL, "
-					+ "CREATE_DATE, " + "STATUS " + "FROM(SELECT USER_NO, " + "USER_ID," + "USER_NAME," + "USER_EMAIL,"
-					+ "CREATE_DATE," + "STATUS " + "FROM MEMBER " + "WHERE USER_ID LIKE ? " + "ORDER BY CREATE_DATE)"
-					+ ")";
+			query = "SELECT COUNT(*) FROM MEMBER WHERE USER_ID LIKE ? ORDER BY CREATE_DATE";
 		}else {
-			query = "SELECT COUNT(*) FROM(SELECT ROWNUM AS RNUM, " + "USER_NO, " + "USER_ID, " + "USER_NAME, " + "USER_EMAIL, "
-					+ "CREATE_DATE, " + "STATUS " + "FROM(SELECT USER_NO, " + "USER_ID," + "USER_NAME," + "USER_EMAIL,"
-					+ "CREATE_DATE," + "STATUS " + "FROM MEMBER " + "WHERE USER_NAME LIKE ? " + "ORDER BY CREATE_DATE)"
-					+ ")";
+			query = "SELECT COUNT(*) FROM MEMBER WHERE USER_NAME LIKE ? ORDER BY CREATE_DATE";
 		}
 		
 		try {
