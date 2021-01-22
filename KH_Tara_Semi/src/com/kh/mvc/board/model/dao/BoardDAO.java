@@ -679,6 +679,59 @@ public class BoardDAO {
 		}
 		return list;
 	}
+	public int cke_insertBoard(Connection conn, Board board) {
+		// 게시글 작성 INSERT INTO BOARD VALUES(SEQ_BOARD_NO.NEXTVAL,?,?,?,?,?,DEFAULT,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT);
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(
+					"INSERT INTO BOARD VALUES(INSERT INTO BOARD VALUES(SEQ_BOARD_NO.NEXTVAL,?,?,?,?,?,DEFAULT,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT)");
+			
+			pstmt.setInt(1, board.getBoardNo());
+			pstmt.setInt(2, board.getBoardWriteNo());
+			pstmt.setString(3, board.getLocName());
+			pstmt.setString(4, board.getBoardName());
+			pstmt.setString(5, board.getBoardTitle());
+			
+			pstmt.setString(6, board.getBoardOriginalFileName());
+			pstmt.setString(7, board.getBoardRenamedFileName());
+			pstmt.setString(8, board.getTransport());
+			pstmt.setString(9, board.getTravelMoney());
+			pstmt.setFloat(10, board.getBoardScore());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}		
+		
+		return result;
+	}
+
+
+	public int cke_updateBoard(Connection conn, Board board) {
+		// 게시글 수정 UPDATE BOARD SET BOARD_TITLE=?,BOARD_CONTENT=? WHERE BOARD_NO=?
+		PreparedStatement pstmt = null;
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement("UPDATE BOARD SET BOARD_TITLE=?,BOARD_CONTENT=? WHERE BOARD_NO=?");
+			
+			pstmt.setString(1, board.getBoardTitle());
+			pstmt.setString(2, board.getBoardContent());
+			pstmt.setInt(3, board.getBoardNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}		
+		
+		return result;
+	}
 
 }
 

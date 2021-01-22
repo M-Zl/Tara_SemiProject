@@ -22,22 +22,31 @@ public class BoardUploadView extends HttpServlet {
     public BoardUploadView() {
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getRequestDispatcher("/views/board/UploadCKEditor.jsp").forward(request, response);
-	}
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		request.getRequestDispatcher("/views/board/UploadCKEditor.jsp").forward(request, response);
+//	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String locName = request.getParameter("localTitleSel");
-		String boardName = request.getParameter("titleSel");
+		
+		request.setCharacterEncoding("UTF-8");
+		
+		String locName = request.getParameter("LocalboardCode");
+		String boardName = request.getParameter("boardCode");
 		String boardTitle = request.getParameter("titleName");
 		String boardContent = request.getParameter("ck_content");
+		String transport = request.getParameter("choice");
+		String travelMoney = request.getParameter("moneyRange");
+		String boardScore = "4";
+//		float boardScore = Float.parseFloat(request.getParameter("starGrade"));
 		String msg = null;
+		
+		System.out.println(locName + ", " + boardName + ", " + boardTitle + ", " + boardContent + ", " + transport + ", " + travelMoney + ", " + boardScore);
 		
 		HttpSession session = request.getSession(false);
 		Member loginMember = session != null ? (Member)session.getAttribute("loginMember") : null;
 		
 		System.out.println(loginMember);
+		
 		
 		if (loginMember != null) {			
 			if(loginMember.getUserId().equals(boardName)) {
@@ -47,8 +56,11 @@ public class BoardUploadView extends HttpServlet {
 				board.setBoardName(boardName);
 				board.setBoardTitle(boardTitle);
 				board.setBoardContent(boardContent);
+				board.setTransport(transport);
+				board.setTravelMoney(travelMoney);
+//				board.setBoardScore(boardScore);
 				
-				int result = new BoardService().saveBoard(board);
+				int result = new BoardService().cke_saveBoard(board);
 				
 				if(result > 0) {
 					msg = "게시글 등록 성공";			
@@ -63,7 +75,7 @@ public class BoardUploadView extends HttpServlet {
 			msg = "로그인 진행 후 작성해주세요. ";
 		}
 		
-		
+		request.setAttribute("msg", msg);
+		request.getRequestDispatcher("/views/board/UploadCKEditor.jsp").forward(request, response);
 	}
-
 }
