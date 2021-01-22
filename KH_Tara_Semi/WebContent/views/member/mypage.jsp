@@ -24,10 +24,6 @@
 					<i class="fas fa-camera-retro fa-3x"></i></a></span>
 				</div>
 				<div class="profile__info">
-<<<<<<< HEAD
-					<h3>ID :  <!-- loginMember.getUserId() --></h3>
-					<h3>Email : <!-- loginMember.getEmail() --></h3>
-=======
 					<div style="margin-bottom:50px;">
 						<h2>ID :  <%=loginMember.getUserId()%></h3>
 						<h2>Email : <%=loginMember.getEmail()%></h3>
@@ -36,7 +32,6 @@
 						<a href="<%=request.getContextPath()%>/member/delete?userId=<%= loginMember.getUserId() %>"><i class="fas fa-user-alt-slash fa-5x"></i></a>
 						<span>회원탈퇴</span>
 					</div>
->>>>>>> e2fdbab241b0397cbb526e3e6fb461a2f05c2aea
 				</div>
 			</div>
 			<div>

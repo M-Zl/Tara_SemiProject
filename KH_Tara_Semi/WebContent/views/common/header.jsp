@@ -56,7 +56,7 @@
 			<ul>
 				<li><a href="<%= request.getContextPath()%>">Home</a></li>
 				<li><a href="<%= request.getContextPath()%>/logout">Logout</a></li>
-				<li><a href="#"><%= loginMember.getUserName() %>님 Page</a></li>
+				<li><a href="<%= request.getContextPath()%>/member/mypage"><%= loginMember.getUserName() %>님 Page</a></li>
 				<li><input id="search_input" type="text" placeholder="Search"></li>
 			</ul>
 		</form>
