@@ -1,4 +1,4 @@
-package com.kh.mvc.visit.action;
+package com.kh.mvc.action;
  
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
