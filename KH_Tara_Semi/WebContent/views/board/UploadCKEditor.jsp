@@ -93,11 +93,11 @@
 		<p align="center" id="questions"><span>당신의 평가는?</span>	&nbsp;&nbsp;&nbsp; <span id="grade" style="font-size: 18pt;">0</span><span style="font-size: 18pt;"> / 5</span></p>
 	
 		<p align="center" id="star_grade">                         
-			<a href="#" name="starGrade" id="starGrade" value="1" style="font-size: 25pt;">★</a> 
-			<a href="#" name="starGrade" id="starGrade" value="2" style="font-size: 25pt;">★</a> 
-			<a href="#" name="starGrade" id="starGrade" value="3" style="font-size: 25pt;">★</a>
-			<a href="#" name="starGrade" id="starGrade" value="4" style="font-size: 25pt;">★</a> 
-			<a href="#" name="starGrade" id="starGrade" value="5" style="font-size: 25pt;">★</a> 
+			<a href="1" name="starGrade" id="starGrade" value="1" style="font-size: 25pt;">★</a> 
+			<a href="2" name="starGrade" id="starGrade" value="2" style="font-size: 25pt;">★</a> 
+			<a href="3" name="starGrade" id="starGrade" value="3" style="font-size: 25pt;">★</a>
+			<a href="4" name="starGrade" id="starGrade" value="4" style="font-size: 25pt;">★</a> 
+			<a href="5" name="starGrade" id="starGrade" value="5" style="font-size: 25pt;">★</a> 
 		</p>
              
 		</div>
