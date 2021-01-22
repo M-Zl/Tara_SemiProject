@@ -30,8 +30,8 @@ public class BoardLikeCountServlet extends HttpServlet {
 			new BoardService().deleteLikeCount(boardNo, userNo);
 		}
 		
-		request.getRequestDispatcher("/board/detail/").forward(request, response);
-		
+		request.getRequestDispatcher("/board/detail?boardNo" + boardNo).forward(request, response);
+
 	}
 		
 }

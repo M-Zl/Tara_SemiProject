@@ -48,8 +48,8 @@ public class BoardDAO {
             +             "B.BOARD_ORIGINAL_FILENAME, "
             +             "B.BOARD_READCOUNT, "
             +                "B.STATUS, "
-            +                "(SELECT COUNT(*) FROM LIKECOUNT L WHERE L.BOARD_NO = B.BOARD_NO) LCOUNT, "
-            +                "(SELECT COUNT(*) FROM COMMENTS C WHERE C.COMMENT_BOARD_NO = B.BOARD_NO)CCOUNT "
+            +                "(SELECT COUNT(*) FROM LIKECOUNT L WHERE L.BOARD_NO = B.BOARD_NO AND L.STATUS='Y') LCOUNT, "
+            +                "(SELECT COUNT(*) FROM COMMENTS C WHERE C.COMMENT_BOARD_NO = B.BOARD_NO AND C.STATUS='Y')CCOUNT "
             +       "FROM BOARD B "
             +       "JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NO) "
             +       "WHERE B.STATUS = 'Y'"
@@ -138,8 +138,8 @@ public class BoardDAO {
                   +             "B.BOARD_ORIGINAL_FILENAME, "
                   +             "B.BOARD_READCOUNT, "
                   +                "B.STATUS, "
-                  +                "(SELECT COUNT(*) FROM LIKECOUNT L WHERE L.BOARD_NO = B.BOARD_NO) LCOUNT, "
-                  +                "(SELECT COUNT(*) FROM COMMENTS C WHERE C.COMMENT_BOARD_NO = B.BOARD_NO)CCOUNT "
+                  +                "(SELECT COUNT(*) FROM LIKECOUNT L WHERE L.BOARD_NO = B.BOARD_NO AND L.STATUS='Y') LCOUNT, "
+                  +                "(SELECT COUNT(*) FROM COMMENTS C WHERE C.COMMENT_BOARD_NO = B.BOARD_NO AND C.STATUS='Y')CCOUNT "
                   +       "FROM BOARD B "
                   +       "JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NO) "
                   +       "WHERE B.STATUS = 'Y'"
@@ -227,8 +227,8 @@ public class BoardDAO {
             +             "B.BOARD_ORIGINAL_FILENAME, "
             +             "B.BOARD_READCOUNT, "
             +                "B.STATUS, "
-            +                "(SELECT COUNT(*) FROM LIKECOUNT L WHERE L.BOARD_NO = B.BOARD_NO) LCOUNT, "
-            +                "(SELECT COUNT(*) FROM COMMENTS C WHERE C.COMMENT_BOARD_NO = B.BOARD_NO)CCOUNT "
+            +                "(SELECT COUNT(*) FROM LIKECOUNT L WHERE L.BOARD_NO = B.BOARD_NO AND L.STATUS='Y') LCOUNT, "
+            +                "(SELECT COUNT(*) FROM COMMENTS C WHERE C.COMMENT_BOARD_NO = B.BOARD_NO AND C.STATUS='Y')CCOUNT "
             +       "FROM BOARD B "
             +       "JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NO) "
             +       "WHERE B.STATUS = 'Y'"
@@ -315,8 +315,8 @@ public class BoardDAO {
                   +             "B.BOARD_ORIGINAL_FILENAME, "
                   +             "B.BOARD_READCOUNT, "
                   +                "B.STATUS, "
-                  +                "(SELECT COUNT(*) FROM LIKECOUNT L WHERE L.BOARD_NO = B.BOARD_NO) LCOUNT, "
-                  +                "(SELECT COUNT(*) FROM COMMENTS C WHERE C.COMMENT_BOARD_NO = B.BOARD_NO)CCOUNT "
+                  +                "(SELECT COUNT(*) FROM LIKECOUNT L WHERE L.BOARD_NO = B.BOARD_NO AND L.STATUS='Y') LCOUNT, "
+                  +                "(SELECT COUNT(*) FROM COMMENTS C WHERE C.COMMENT_BOARD_NO = B.BOARD_NO AND C.STATUS='Y')CCOUNT "
                   +       "FROM BOARD B "
                   +       "JOIN MEMBER M ON(B.BOARD_WRITER_NO = M.USER_NO) "
                   +       "WHERE B.STATUS = 'Y'"
@@ -394,65 +394,71 @@ public class BoardDAO {
       }
 
    public Board findBoardByNo(Connection conn, int boardNo) {
-      PreparedStatement pstmt = null;
-      ResultSet rs = null;
-      Board board = null;
-      String query = 
-            "SELECT  B.BOARD_NO, "
-            +       "M.USER_NO, "
-            +       "M.USER_ID, "
-            +       "B.LOC_NAME, "
-            +       "B.BOARD_NAME, "
-            +       "B.BOARD_TITLE, "
-            +       "B.BOARD_CONTENT, "
-            +       "B.BOARD_READCOUNT, "
-            +       "B.BOARD_ORIGINAL_FILENAME, "
-            +       "B.BOARD_RENAMED_FILENAME, "
-            +       "B.TRANSPORT, "
-            +       "B.TRAVEL_MONEY, "
-            +       "B.BOARD_SCORE, "
-            +       "B.BOARD_CREATE_DATE, "
-            +       "B.BOARD_MODIFY_DATE "
-            + "FROM BOARD B, MEMBER M "
-            + "WHERE (B.BOARD_WRITER_NO = M.USER_NO) AND B.STATUS ='Y' AND B.BOARD_NO = ?";
-
-      
-      try {
-         pstmt = conn.prepareStatement(query);
-         
-         pstmt.setInt(1, boardNo);
-         
-         rs = pstmt.executeQuery();
-         
-         if(rs.next()) {
-            board = new Board();
-            
-            board.setBoardNo(rs.getInt("BOARD_NO"));
-            board.setBoardWriteNo(rs.getInt("USER_NO"));
-            board.setUserId(rs.getString("USER_ID"));
-            board.setLocName(rs.getString("LOC_NAME"));
-            board.setBoardName(rs.getString("BOARD_NAME"));
-            board.setBoardTitle(rs.getString("BOARD_TITLE"));
-            board.setBoardContent(rs.getString("BOARD_CONTENT").replace("\r\n", "<br>"));
-            board.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
-            board.setBoardOriginalFileName(rs.getString("BOARD_ORIGINAL_FILENAME"));
-            board.setBoardOriginalFileName(rs.getString("BOARD_RENAMED_FILENAME"));
-            board.setTransport(rs.getString("TRANSPORT"));
-            board.setTravelMoney(rs.getString("TRAVEL_MONEY"));
-            board.setBoardScore(rs.getInt("BOARD_SCORE"));
-            board.setBoardCreateDate(rs.getDate("BOARD_CREATE_DATE"));
-            board.setBoardCreateDate(rs.getDate("BOARD_MODIFY_DATE"));
-            
-         }         
-      } catch (SQLException e) {
-         e.printStackTrace();
-      } finally {
-         close(rs);
-         close(pstmt);
-      }      
-      
-      return board;
-   }
+	      PreparedStatement pstmt = null;
+	      ResultSet rs = null;
+	      Board board = null;
+	      String query = 
+	            "SELECT  B.BOARD_NO, "
+	            +       "M.USER_NO, "
+	            +       "M.USER_ID, "
+	            +       "B.LOC_NAME, "
+	            +       "B.BOARD_NAME, "
+	            +       "B.BOARD_TITLE, "
+	            +       "B.BOARD_CONTENT, "
+	            +       "B.BOARD_READCOUNT, "
+	            +       "B.BOARD_ORIGINAL_FILENAME, "
+	            +       "B.BOARD_RENAMED_FILENAME, "
+	            +       "B.TRANSPORT, "
+	            +       "B.TRAVEL_MONEY, "
+	            +       "B.BOARD_SCORE, "
+	            +       "B.BOARD_CREATE_DATE, "
+	            +       "B.BOARD_MODIFY_DATE, "
+	            +       "(SELECT COUNT(*) FROM LIKECOUNT WHERE BOARD_NO = ? AND STATUS ='Y') LCOUNT, "
+	            +       "(SELECT COUNT(*) FROM COMMENTS WHERE COMMENT_BOARD_NO = ? AND STATUS ='Y') CCOUNT "
+	            + "FROM BOARD B, MEMBER M "
+	            + "WHERE (B.BOARD_WRITER_NO = M.USER_NO) AND B.STATUS ='Y' AND B.BOARD_NO = ? "
+	            + "ORDER BY BOARD_NO DESC";
+	      
+	      try {
+	         pstmt = conn.prepareStatement(query);
+	         
+	         pstmt.setInt(1, boardNo);
+	         pstmt.setInt(2, boardNo);
+	         pstmt.setInt(3, boardNo);
+	         
+	         rs = pstmt.executeQuery();
+	         
+	         if(rs.next()) {
+	            board = new Board();
+	            
+	            board.setBoardNo(rs.getInt("BOARD_NO"));
+	            board.setBoardWriteNo(rs.getInt("USER_NO"));
+	            board.setlCount(rs.getInt("LCOUNT"));
+	            board.setcCount(rs.getInt("CCOUNT"));
+	            board.setUserId(rs.getString("USER_ID"));
+	            board.setLocName(rs.getString("LOC_NAME"));
+	            board.setBoardName(rs.getString("BOARD_NAME"));
+	            board.setBoardTitle(rs.getString("BOARD_TITLE"));
+	            board.setBoardContent(rs.getString("BOARD_CONTENT").replace("\r\n", "<br>"));
+	            board.setBoardReadCount(rs.getInt("BOARD_READCOUNT"));
+	            board.setBoardOriginalFileName(rs.getString("BOARD_ORIGINAL_FILENAME"));
+	            board.setBoardOriginalFileName(rs.getString("BOARD_RENAMED_FILENAME"));
+	            board.setTransport(rs.getString("TRANSPORT"));
+	            board.setTravelMoney(rs.getString("TRAVEL_MONEY"));
+	            board.setBoardScore(rs.getInt("BOARD_SCORE"));
+	            board.setBoardCreateDate(rs.getDate("BOARD_CREATE_DATE"));
+	            board.setBoardCreateDate(rs.getDate("BOARD_MODIFY_DATE"));
+	            
+	         }         
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close(rs);
+	         close(pstmt);
+	      }      
+	      
+	      return board;
+	   }
 
 
    public int updateReadCount(Connection conn, Board board) {
