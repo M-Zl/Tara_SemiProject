@@ -19,8 +19,10 @@
 			<div>
 				<h1 class="profile__title">Profile</h2>
 				<div class="profile__photo">
-					<div><!-- loginMember.getUserimg() --></div>
-					<span><a href="<%=request.getContextPath()%>">
+					<div>
+					<img class="profile" src="/profile/<%=loginMember.getUserimg()%>"> 
+					</div>
+					<span><a href="<%=request.getContextPath()%>/member/profile?userId=<%=loginMember.getUserId()%>">
 					<i class="fas fa-camera-retro fa-3x"></i></a></span>
 				</div>
 				<div class="profile__info">

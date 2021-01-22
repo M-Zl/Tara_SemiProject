@@ -103,6 +103,11 @@ a {
 	border-radius: 50%;
 	background-color: rgba(0, 0, 0, 0.1);
 }
+.profile{
+	width: 400px;
+	height: 400px;
+	border-radius: 50%;
+}
 
 .mypage-main>div:last-child {
 	display: flex;
