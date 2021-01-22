@@ -216,7 +216,7 @@
 			<%} %>			
             <%if(loginMember != null) {%>
 			<button type="button" id="btn-add"
-			onclick="location.href ='<%=request.getContextPath() %>/board/write'">글쓰기</button>
+			onclick="location.href ='<%=request.getContextPath() %>/board/upload'">글쓰기</button>
 	     	<%}%>
         </div>
         
