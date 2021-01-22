@@ -185,6 +185,29 @@ public class BoardService {
 		return list;
 	}
 	
+	public int cke_saveBoard(Board board) {
+		int result = 0;
+		Connection conn = getConnection();
+		
+		if(board.getBoardNo() != 0) {
+			result = new BoardDAO().cke_updateBoard(conn,board);
+		} else {
+			result = new BoardDAO().cke_insertBoard(conn,board);
+		}
+		
+		result = new BoardDAO().cke_insertBoard(conn, board);
+		
+		if (result > 0) {
+			commit(conn);
+		} else {
+			rollback(conn);
+		}
+
+		close(conn);
+		
+		return result;
+	}
+	
 	
 }
 
