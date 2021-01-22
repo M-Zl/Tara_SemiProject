@@ -686,19 +686,19 @@ public class BoardDAO {
 		
 		try {
 			pstmt = conn.prepareStatement(
-					"INSERT INTO BOARD VALUES(INSERT INTO BOARD VALUES(SEQ_BOARD_NO.NEXTVAL,?,?,?,?,?,DEFAULT,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT)");
+					"INSERT INTO BOARD VALUES(INSERT INTO BOARD VALUES(SEQ_BOARD_NO.NEXTVAL,?,?,?,?,DEFAULT,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT)");
 			
-			pstmt.setInt(1, board.getBoardNo());
-			pstmt.setInt(2, board.getBoardWriteNo());
-			pstmt.setString(3, board.getLocName());
-			pstmt.setString(4, board.getBoardName());
-			pstmt.setString(5, board.getBoardTitle());
+		
+			pstmt.setInt(1, board.getBoardWriteNo());
+			pstmt.setString(2, board.getLocName());
+			pstmt.setString(3, board.getBoardName());
+			pstmt.setString(4, board.getBoardTitle());
 			
-			pstmt.setString(6, board.getBoardOriginalFileName());
-			pstmt.setString(7, board.getBoardRenamedFileName());
-			pstmt.setString(8, board.getTransport());
-			pstmt.setString(9, board.getTravelMoney());
-			pstmt.setFloat(10, board.getBoardScore());
+			pstmt.setString(5, board.getBoardOriginalFileName());
+			pstmt.setString(6, board.getBoardRenamedFileName());
+			pstmt.setString(7, board.getTransport());
+			pstmt.setString(8, board.getTravelMoney());
+			pstmt.setFloat(9, board.getBoardScore());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
