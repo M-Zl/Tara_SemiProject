@@ -52,7 +52,7 @@
 	</form>
 		<br><br><br>
         <p align="center" id="questions">여행지까지 이동할때 이용했던 교통수단을 체크해주세요.</p><br>
-<form>
+<form id="uploadPage" action="<%= request.getContextPath() %>/board/upload" method="post" enctype="multipart/form-data">
 	<div>
         <div class="Transportation_all">
             <div class="Transportation" id="border1">
