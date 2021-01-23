@@ -43,7 +43,7 @@
 				<div class="board-write">
 					<div class="board-write__title">
 						<h3 class="board-write__title-text">작성한 글목록</h3>
-						<span><a href=""><i class="fas fa-bars fa-2x"></i></a></span>
+						<span><a href="<%=request.getContextPath()%>/member/board/list"><i class="fas fa-bars fa-2x"></i></a></span>
 					</div>
 					<div class="board-write__list">
 						
@@ -55,17 +55,16 @@
 								i++;
 						%><div>
 							<div class="listbox-left">
-								<div class="board-write__list-photo">
-									사진
-								</div>
+							<a href="<%=request.getContextPath()%>/board/detail?boardNo=<%=board.getBoardNo()%>">
 								<div class="board-write__list-content">
-									<h3><%=board.getBoardTitle()%></h1>
+									<h1><%=board.getBoardTitle()%></h1>
 									<div><%=board.getBoardContent()%></div>
 								</div>
+							</a>
 							</div>
 							<div class="listbox-right">
-								<span><a href=""><i class="fas fa-pen-fancy fa-2x"></i></a></span>
-								<span><a href=""><i class="fas fa-trash-alt fa-2x"></i></a></span>
+								<span><a href="<%=request.getContextPath()%>/board/update?boardNo=<%=board.getBoardNo()%>"><i class="fas fa-pen-fancy fa-2x"></i></a></span>
+								<span><a href="<%=request.getContextPath()%>/board/delete?boardNo=<%=board.getBoardNo()%>"><i class="fas fa-trash-alt fa-2x"></i></a></span>
 							</div>
 						</div>
 						<%	if(i==2)break;} 
@@ -83,21 +82,22 @@
 						<%if(likeList.isEmpty()) {%>
 							<div>조회된 게시글이 없습니다.</div>
 							<%} else{
+								int i=0;
 								for(Board board:likeList){
+									i++;
 							%>
 						<div class="board-like__content">
-							<div class="board-like__content-photo">
-								사진
-							</div>
+						<a href="<%=request.getContextPath()%>/board/detail?boardNo=<%=board.getBoardNo()%>">
 							<div class="board-like__content-text">
-								<h3>
+								<h1>
 									<%=board.getBoardTitle()%>
 								</h3>
 								<span>
 									<%=board.getBoardContent()%>
 								</span>
 							</div>
-						</div><%}
+							</a>
+						</div><%if(i==3)break;}
 						} %>
 					</div>
 				</div>

@@ -147,7 +147,7 @@ a {
 }
 
 .board-write__list-content {
-	width: 60%;
+	width: 100%;
 	padding-left : 15px;
 }
 
@@ -172,9 +172,6 @@ a {
 	right: 0;
 }
 
-i{
-	
-}
 i:hover {
 	color: darkgray;
 }
@@ -195,17 +192,10 @@ i:hover {
 	height: 100%;
 }
 
-.board-like__content-photo {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border: 1px solid black;
-	height: 70%;
-}
 
 .board-like__content-text {
-	border: 1px solid black;
-	height: 30%;
+	height: 100%;
+	overflow: hidden;
 }
 
 .board-like__content-text h5 {
@@ -258,7 +248,7 @@ i:hover {
 	margin:0 0 15px 0;
 	color:#4169E1;
 }
-.board-write__list-content>h3
+.board-write__list-content>h1
 {
 	margin:5px 0;
 	overflow: hidden;
@@ -271,7 +261,7 @@ i:hover {
 .board-like__content-text{
 	overflow: hidden;
 }
-.board-like__content-text>h3{
+.board-like__content-text>h1{
 	margin:5px 0;
 }
 .board-write__list>div:first-child{
