@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp" %>
-    
+
 <script type="text/javascript" src="<%= request.getContextPath() %>/ckeditor/ckeditor.js"></script>    
 <style>
 	.ckedit{
@@ -43,10 +43,11 @@
             </select>
             <input id="titleName" name="titleName" type="text" placeholder="제목을 입력해주세요." size="66" required>
 		</div>
-		
+
 		<br>
-		
+
 		<div class="ckedit">
+			<!-- 파이널프로젝트때 CKEditor 사용하실려면 여기 링크 참고하세용  =>  https://blog.naver.com/jeep8038/221359752944 -->
 			<textarea class="form-control" id="ck_content" name="ck_content"></textarea>
 		</div>
 
@@ -76,9 +77,9 @@
                 <span id="Tpt_choice"><input type="radio" name="choice" value="비행기"></span>
             </div>
         </div>
-        
+
         <br><br><br>
-        
+
             <p align="center" id="questions"><span id="money">경비를 입력해주세요.</span></p>
             <div class="inputMoney">
                 <input type="range" id="moneyRange" name="moneyRange" value="50000" min="0" max="300000" step="1000" name="moneyValue" oninput="document.getElementById('moneyInfo').innerHTML=this.value;" required ><br>
@@ -86,25 +87,33 @@
 		<div class="infoMoney">
 			<span id="moneyInfo">50,000</span><span>원</span>
 		</div>
-		
+
 		<br><br><br>
-		
+
 		<div>
 		<p align="center" id="questions"><span>당신의 평가는?</span>	&nbsp;&nbsp;&nbsp; <span id="grade" style="font-size: 18pt;">0</span><span style="font-size: 18pt;"> / 5</span></p>
-	
-		<p align="center" id="star_grade">                         
+	 	<p align="center">
+		<select name="starGrade" style="color: #4169E1; font-size: 18pt; padding-bottom: 5px;" id="star_grade" required>
+			<option value="0" style="color: #4169E1; font-size: 15pt">☆☆☆☆☆</option>
+			<option value="1" style="color: #4169E1; font-size: 15pt">★☆☆☆☆</option>
+			<option value="2" style="color: #4169E1; font-size: 15pt">★★☆☆☆</option>
+			<option value="3" style="color: #4169E1; font-size: 15pt">★★★☆☆</option>
+			<option value="4" style="color: #4169E1; font-size: 15pt">★★★★☆</option>
+			<option value="5" style="color: #4169E1; font-size: 15pt">★★★★★</option>		
+		</select>
+		</p> 
+	 <!-- 	<p align="center" id="star_grade">                         
 			<a href="#" name="starGrade" id="starGrade" value="1" style="font-size: 25pt;">★</a> 
 			<a href="#" name="starGrade" id="starGrade" value="2" style="font-size: 25pt;">★</a> 
 			<a href="#" name="starGrade" id="starGrade" value="3" style="font-size: 25pt;">★</a>
 			<a href="#" name="starGrade" id="starGrade" value="4" style="font-size: 25pt;">★</a> 
 			<a href="#" name="starGrade" id="starGrade" value="5" style="font-size: 25pt;">★</a> 
-		</p>
-             
+		</p>        -->     
 		</div>
 	</div>
 
         <br>		
-		
+
 		<div class="row_btn">
             <div id="row_1">
                 <input id="row_btn1" type="reset" value="취소">
@@ -112,14 +121,15 @@
                 <input id="row_btn2" type="submit" value="다음">
             </div>
         </div>
-        
+
         <div id="row_2">
             <span><input id="row_btn3" type="submit" value="&lt; 이전페이지" onclick="javascript:history.back();"></span>
         </div>
-</form>
+	</form>
 </div>
+
 <br>
-	
+
 <script>
 		$(document).ready(function () {
 			CKEDITOR.replace('ck_content', {
@@ -135,12 +145,21 @@
 	      $("#grade").text($(this).attr("value"));
 	        return false;
 	    });
-	    
+		
+		$("#star_grade").change(function() {
+			
+			$("#grade").text($(this).children("option:selected").val());
+			
+			});
+		
+	   $("#row_btn2").click(function() {
+		 if  ($("#grade").text() == 0) {
+			 alert("별점을 주세요.");
+			 return false;
+		 }
+	   });
 	    
 </script>
 
 
-
-
-<%@ include file="/views/common/footer.jsp" %> 
-    
+<%@ include file="/views/common/footer.jsp" %>
