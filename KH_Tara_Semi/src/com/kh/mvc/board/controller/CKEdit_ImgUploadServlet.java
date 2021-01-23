@@ -47,6 +47,7 @@ public class CKEdit_ImgUploadServlet extends HttpServlet {
 	
 		
 		response.getWriter().print(jsonObject);	
+		
 	
 	}
 

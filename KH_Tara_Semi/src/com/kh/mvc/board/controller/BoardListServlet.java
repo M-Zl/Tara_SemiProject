@@ -37,7 +37,6 @@ public class BoardListServlet extends HttpServlet {
 		String boardTitle = request.getParameter("boardTitle");
 		String boardContent = request.getParameter("boardContent");
 		String recommend = request.getParameter("recommend");
-
 		
 		try {
 			page = Integer.parseInt(request.getParameter("page"));
@@ -45,7 +44,7 @@ public class BoardListServlet extends HttpServlet {
 			page = 1;
 		}		   
 
-	
+
 		
         if(recommend != null) {
         		if(boardName == null ) {

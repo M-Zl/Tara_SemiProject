@@ -10,10 +10,12 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 
+import com.google.gson.JsonObject;
 import com.kh.mvc.board.model.service.BoardService;
 import com.kh.mvc.board.model.vo.Board;
 import com.kh.mvc.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @WebServlet("/board/upload")
 public class BoardUploadView extends HttpServlet {
@@ -34,15 +36,37 @@ public class BoardUploadView extends HttpServlet {
    }
 
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String path = getServletContext().getRealPath("/ckedit_down");
+		int maxSize = 1024 * 1024 * 10;
+		String img = null;
+		String encoding = "UTF-8";
+		MultipartRequest mr = new MultipartRequest(request, path, maxSize, encoding, new DefaultFileRenamePolicy());
+		
+     
+     
       
-      request.setCharacterEncoding("UTF-8");
+      String locName = mr.getParameter("LocalboardCode");
+      String boardName = mr.getParameter("boardCode");
+      String boardTitle = mr.getParameter("titleName");
+      String boardContent = mr.getParameter("ck_content");
+      String transport = mr.getParameter("choice");
+      String travelMoney = mr.getParameter("moneyRange");
       
-      String locName = request.getParameter("LocalboardCode");
-      String boardName = request.getParameter("boardCode");
-      String boardTitle = request.getParameter("titleName");
-      String boardContent = request.getParameter("ck_content");
-      String transport = request.getParameter("choice");
-      String travelMoney = request.getParameter("moneyRange");
+      String fileName = mr.getFilesystemName("upload");
+	  String upfileName = mr.getOriginalFileName("upload");		
+				
+		response.setContentType("application/json; charset=utf-8");
+		
+		JsonObject jsonObject = new JsonObject();
+		
+		String url = request.getContextPath() + "/ckedit_down/" + upfileName;
+		
+		jsonObject.addProperty("uploaded", 1);
+		jsonObject.addProperty("fileName", fileName);
+		jsonObject.addProperty("url", url);		
+		response.getWriter().print(jsonObject);	
+      
+      
 //      int boardScore = Integer.parseInt(request.getParameter("star_grade"));
       int boardScore = 1;
       String msg = null;
@@ -63,6 +87,7 @@ public class BoardUploadView extends HttpServlet {
             board.setBoardName(boardName);
             board.setBoardTitle(boardTitle);
             board.setBoardContent(boardContent);
+            board.setBoardOriginalFileName(fileName);
             board.setTransport(transport);
             board.setTravelMoney(travelMoney);
             board.setBoardScore(boardScore);

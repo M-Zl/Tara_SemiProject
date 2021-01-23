@@ -123,7 +123,7 @@
 <script>
 		$(document).ready(function () {
 			CKEDITOR.replace('ck_content', {
-				filebrowserUploadUrl:'<%=request.getContextPath() %>/imageUpload',
+				filebrowserUploadUrl:'<%=request.getContextPath() %>/board/upload',
 				height:500
 			});
 		});
