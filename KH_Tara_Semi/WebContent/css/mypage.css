@@ -122,7 +122,7 @@ a {
 
 .board-write__title, .board-like__title {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 	align-items: center;
 }
 

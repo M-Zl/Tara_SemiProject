@@ -43,7 +43,6 @@
 				<div class="board-write">
 					<div class="board-write__title">
 						<h3 class="board-write__title-text">작성한 글목록</h3>
-						<span><a href="<%=request.getContextPath()%>/member/board/list"><i class="fas fa-bars fa-2x"></i></a></span>
 					</div>
 					<div class="board-write__list">
 						
@@ -76,7 +75,6 @@
 				<div class="board-like">
 					<div class="board-like__title">
 						<h3 class="board-like__title-text">내가 찜한 게시물</h3>
-						<span><a href=""><i class="fas fa-bars fa-2x"></i></a></span>
 					</div>
 					<div class="board-like__list">
 						<%if(likeList.isEmpty()) {%>
