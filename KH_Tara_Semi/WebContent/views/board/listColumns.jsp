@@ -102,7 +102,7 @@
 										<div class="board_list_div">
 										    <span id="board_list_menu_span"><span id="board_div_menu_p"><%=board.getRowNum()%>  &nbsp; &nbsp; &nbsp;</span> <%= board.getBoardName() %>게시판</span>
 										    <div class="board_list_div_img">
-												<img src="../images/logo/logo3.png" class="board_list_image">
+												<img src="../ckedit_down/<%=board.getBoardOriginalFileName()%>" class="board_list_image">
                           					</div>  
                           					         
                           					<div class="board_list_count">
@@ -131,7 +131,7 @@
 										<div class="board_list_div">
 										    <span id="board_list_menu_span"><span id="board_div_menu_p"><%=board.getRowNum()%>  &nbsp; &nbsp; &nbsp;</span> <%= board.getBoardName() %>게시판</span>
 										    <div class="board_list_div_img">
-												<img src="../images/logo/logo3.png" class="board_list_image">
+												<img src="../ckedit_down/<%=board.getBoardOriginalFileName()%>" class="board_list_image">
                           					</div>  
                           					         
                           					<div class="board_list_count">
@@ -158,7 +158,7 @@
 										<div class="board_list_div">
 										    <span id="board_list_menu_span"><span id="board_div_menu_p"><%=board.getRowNum()%>  &nbsp; &nbsp; &nbsp;</span> <%= board.getBoardName() %>게시판</span>
 										    <div class="board_list_div_img">
-												<img src="../images/logo/logo3.png" class="board_list_image">
+												<img src="../ckedit_down/<%=board.getBoardOriginalFileName()%>" class="board_list_image">
                           					</div>  
                           					         
                           					<div class="board_list_count">

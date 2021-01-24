@@ -244,8 +244,5 @@ public class BoardService {
 		close(conn);
 
 	}
-	
-
-   
 }
   

@@ -44,7 +44,6 @@ public class CKEdit_ImgUploadServlet extends HttpServlet {
 		jsonObject.addProperty("uploaded", 1);
 		jsonObject.addProperty("fileName", fileName);
 		jsonObject.addProperty("url", url);		
-	
 		
 		response.getWriter().print(jsonObject);	
 		
