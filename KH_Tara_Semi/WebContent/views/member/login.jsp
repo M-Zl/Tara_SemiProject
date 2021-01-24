@@ -4,7 +4,6 @@
 <%@ include file="/views/common/header.jsp" %>    
 
 <style>
-
 #loginfrm input {
    margin: 2px;
 }
@@ -27,7 +26,6 @@
 #loginfrm {
    text-align: center;
 }
-
 #userId,#userPwd{
    height:27px;
    border: 1px solid gray;

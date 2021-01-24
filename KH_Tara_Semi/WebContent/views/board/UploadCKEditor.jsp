@@ -50,11 +50,11 @@
 			<!-- 파이널프로젝트때 CKEditor 사용하실려면 여기 링크 참고하세용  =>  https://blog.naver.com/jeep8038/221359752944 -->
 			<textarea class="form-control" id="ck_content" name="ck_content"></textarea>
 		</div>
-<!--		
+		
 		<br>
             <p align="center" id="questions">업로드 할 이미지를 선택해주세요.</p>
 		<div class="fileUpload">
-            <input type="file"  name="upfile_img"> -->
+            <input type="file"  name="upfile_img"> 
         </div>
 
 		<br><br><br>
