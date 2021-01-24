@@ -630,7 +630,7 @@ public class BoardDAO {
       List<Board> list = new ArrayList<>();
       PreparedStatement pstmt = null;
       ResultSet rs = null;
-      String query ="SELECT BOARD_NO, BOARD_TITLE, BOARD_CONTENT FROM BOARD WHERE BOARD_WRITER_NO = ?";
+      String query ="SELECT * FROM BOARD WHERE BOARD_WRITER_NO = ? AND STATUS='Y'";
       
       try {
          pstmt = conn.prepareStatement(query);
@@ -661,9 +661,9 @@ public class BoardDAO {
       List<Board> list = new ArrayList<>();
       PreparedStatement pstmt = null;
       ResultSet rs = null;
-      String query ="SELECT B.BOARD_NO, BOARD_TITLE, BOARD_CONTENT "
+      String query ="SELECT * "
             + "FROM BOARD B, LIKECOUNT L "
-            + "WHERE B.BOARD_NO = L.BOARD_NO AND L.STATUS = 'Y' AND USER_NO = ?";
+            + "WHERE B.BOARD_NO = L.BOARD_NO AND L.STATUS = 'Y' AND USER_NO = ? AND B.STATUS='Y'";
       try {
          pstmt = conn.prepareStatement(query);
          
