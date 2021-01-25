@@ -182,7 +182,7 @@
       <div class="board__count">
         <button onclick="likeUpdate()"><img src="<%= request.getContextPath() %>/logo/heart.jpg" alt=""></button>&nbsp; <%=board.getlCount() %> &nbsp;
         <img src="<%= request.getContextPath() %>/logo/조회수1.png" alt="">&nbsp;<%= board.getBoardReadCount() %> &nbsp;
-        <img src="<%= request.getContextPath() %>/logo/댓글1.png" alt="">&nbsp; 댓글수 &nbsp;
+        <img src="<%= request.getContextPath() %>/logo/댓글1.png" alt="">&nbsp; <%= board.getcCount() %> &nbsp;
       </div>
       <hr>
       <% if(loginMember != null && (loginMember.getUserId().equals(board.getUserId()) 
