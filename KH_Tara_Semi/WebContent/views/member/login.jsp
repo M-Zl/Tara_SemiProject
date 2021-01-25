@@ -12,12 +12,14 @@
    color: white;
    border: 0px;
    font-weight: bold;
+   cusrsor: pointer;
 }
 #btn2 {
    background-color: lightgray;
    color: rgb(80, 52, 52);
    border: 0px;
    font-weight: bold;
+   cursor: pointer;
 }
 #logintitle>img {
    width: 150px;
