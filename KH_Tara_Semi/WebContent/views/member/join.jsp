@@ -235,9 +235,7 @@ th {
        <tr></tr>             
        <tr></tr>             
        <tr>  
-             <th >
-             	휴대전화 <img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/ico_required.gif" class="" alt="필수"/> 
-             </th>
+             <th >휴대전화 </th>
              <td>
              	<select id="mobile1" name="mobile1"  style="height: 22px;">
                      <option value="010">010</option>
@@ -254,7 +252,7 @@ th {
       <tr></tr> 
       <tr></tr> 
       <tr>
-            <th >이메일 </th>
+            <th >이메일 <img src="http://img.echosting.cafe24.com/skin/base_ko_KR/member/ico_required.gif" class="" alt="필수"/>  </th>
             <td><input id="email1" name="email1" size="10" value="" type="text" required > 
                 <select id="email2" name="email2" style="width: 100px; height: 21px;">
                     <option value="@naver.com">@naver.com</option>
@@ -314,6 +312,7 @@ th {
     <form name="idCheckForm">
 		<input type ="hidden" name="userId">
 	</form>
+	
 	<br>
     <hr>   
 </section>
@@ -352,36 +351,35 @@ $(document).ready(() => {
 		         return false;
 		}
 		
-		  if(chknum < 0 || chkeng < 0)
-		    {
-		        alert('비밀번호는 숫자와 영문자를 혼용하여야 합니다.');
-		        $("#pass1").val("");
-				$(e.target).val("");
-				$("#pass1").focus();
-		        return false;
-		    }
+	   if(chknum < 0 || chkeng < 0) {
+	        alert('비밀번호는 숫자와 영문자를 혼용하여야 합니다.');
+	        $("#pass1").val("");
+			$(e.target).val("");
+			$("#pass1").focus();
+	        return false;
+	    }
 		    
-		    if(/(\w)\1\1\1/.test($("#pass1").val()))
+	    if(/(\w)\1\1\1/.test($("#pass1").val()))
 
-		    {
-		        alert('비밀번호에 같은 문자를 4번 이상 사용하실 수 없습니다.'); 
-		        $("#pass1").val("");
-				$(e.target).val("");
-				$("#pass1").focus();
-		        return false;
-		    }
+	    {
+	        alert('비밀번호에 같은 문자를 4번 이상 사용하실 수 없습니다.'); 
+	        $("#pass1").val("");
+			$(e.target).val("");
+			$("#pass1").focus();
+	        return false;
+	    }
 
-		    if(pass1.search($("#newId").val() ) > -1)
+	    if(pass1.search($("#newId").val() ) > -1)
 
-		    {
-		        alert('ID가 포함된 비밀번호는 사용하실 수 없습니다.'); 
-		        $("#pass1").val("");
-				$(e.target).val("");
-				$("#pass1").focus();
-		        return false;
-		    }
+	    {
+	        alert('ID가 포함된 비밀번호는 사용하실 수 없습니다.'); 
+	        $("#pass1").val("");
+			$(e.target).val("");
+			$("#pass1").focus();
+	        return false;
+	    }
 
-		    return true;
+		return true;
 				
 	});		
 	
@@ -403,12 +401,14 @@ $("#idCheck").on("click", () => {
         
      }
      
-     if (chknum < 0 || chkeng < 0) {
-	        alert('아이디는 영문자, 숫자를 포함해야 합니다.');
-	        $("#newId").val("");
-	        $("#newId").focus();
-	        return false;
-	    }
+    if (chknum < 0 || chkeng < 0) {
+    	 
+        alert('아이디는 영문자, 숫자를 포함해야 합니다.');
+        $("#newId").val("");
+        $("#newId").focus();
+        return false;
+        
+    }
    
 	// 중복 확인할 새창 띄우기
 	const url = "<%=request.getContextPath()%>/member/idCheck";
@@ -464,7 +464,8 @@ $("#joinbtn").click(function checkForm() {
 	        userId.focus();
 	      
 	        return false; 
-	    }
+	}
+	    
 	    var userPwd = $('#pass1').val();
 	    // 암호 입력 유무 체크
 	    if(userPwd == ''){
@@ -513,7 +514,7 @@ $("#joinbtn").click(function checkForm() {
 		        alert("여행지를 선택해주세요.");
 		       	console.log("선택 안 됨");
 		       	return false;
-       }
+    }
     
 	    if ($("#agreeCheck").is(":checked") == false || $("#privacyCheck").is(":checked") == false) {
 		    	
