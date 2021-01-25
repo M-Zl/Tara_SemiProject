@@ -4,7 +4,6 @@
 <%@ include file="/views/common/header.jsp" %>    
 
 <style>
-
 #loginfrm input {
    margin: 2px;
 }
@@ -13,12 +12,14 @@
    color: white;
    border: 0px;
    font-weight: bold;
+   cusrsor: pointer;
 }
 #btn2 {
    background-color: lightgray;
    color: rgb(80, 52, 52);
    border: 0px;
    font-weight: bold;
+   cursor: pointer;
 }
 #logintitle>img {
    width: 150px;
@@ -27,7 +28,6 @@
 #loginfrm {
    text-align: center;
 }
-
 #userId,#userPwd{
    height:27px;
    border: 1px solid gray;
@@ -57,23 +57,25 @@
       
    <div class="titleArea">
       <hr>
+      <br><br>
         <div id="logintitle"><img src="<%= request.getContextPath()%>/images/logo/logo3.png"/></div>
    </div>
 
    <div class="login">
       <form action="<%=request.getContextPath() %>/login" id="loginfrm" method="POST">
-         <label> <input id="userId" name="userId" type="text" placeholder="아이디를 입력해주세요." size="30" value="<%=saveId == null ? "" : saveId%>"> </label> <br>
+         <label> <input id="userId" name="userId" type="text" placeholder="아이디를 입력해주세요." size="30"  value="<%= saveId == null ? "" : saveId %>"> </label> <br>
          <label> <input id="userPwd" name="userPwd" type="password" placeholder="패스워드를 입력해주세요." size="30"> </label> <br>
          
-         <label id="checksaveId"> <input type="checkbox" name="saveId" <%= saveId == null ? "" : "checked" %>>아이디 저장</label><br><br>  <!--  saveId == null ? "" : "checked" -->
+         <label id="checksaveId"> <input type="checkbox" name="saveId" <%= saveId == null ? "" : "checked" %>>아이디 저장</label><br><br>
          
                      
             <label> <input id="btn1" type="submit"  value="로그인" style="width:230px; height:30px;"></label> <br>
          <a href="<%=request.getContextPath() %>/views/member/join.jsp"><input id="btn2" type="button"style="width:230px; height:30px;" value="회원가입"></input></a> <br><br>
       
-         <a href="https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com#"><img alt="" width="200px" height="30px" src="<%=request.getContextPath()%>/images/login/네이버 로그인.png" > </a> <br>
-         <a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fcs.kakao.com%2Fhelps%3Fcategory%3D25%26service%3D8"> <img alt="" width="202px" height="27px" src="<%=request.getContextPath()%>/images/login/카카오계정로그인.png" ></a> <br>
+         <a href="https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com#"><img alt="" width="230px" height="30px" src="<%=request.getContextPath()%>/images/login/네이버-로그인.png" > </a> <br>
+         <a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fcs.kakao.com%2Fhelps%3Fcategory%3D25%26service%3D8"> <img alt="" width="230px" height="30px" src="<%=request.getContextPath()%>/images/login/카카오-계정로그인.png" ></a> <br>
                <span id="find">
+               <br>
          <a href="<%=request.getContextPath() %>/views/member/findId.jsp" id="findId">아이디 찾기 |</a>  
          <a href="<%=request.getContextPath() %>/views/member/findPwd.jsp" id="findPwd">비밀번호 찾기</a></span>                                 
       </form>
