@@ -116,7 +116,6 @@
         <input type="text" name="title" id="title" value="<%= board.getBoardTitle() %>">
       </div>
       <div class="board__contents">
-        <img src="" alt="">게시판 사진 업로드 해야함 <br><br>
         <div id= "여행 tip">
           <label>교통수단 : <input type="text" name="transport" value="<%= board.getTransport() %>"></label><br>
           <label>여행경비 : <input type="text" name="travelMoney" value="<%= board.getTravelMoney() %>"></label><br>
