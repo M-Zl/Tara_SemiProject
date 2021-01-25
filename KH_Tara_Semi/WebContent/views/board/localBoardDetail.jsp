@@ -149,6 +149,11 @@
 	background: royalblue;
 	color: white;
 }
+
+#tip{
+	font-weight: 600;
+}
+
 </style>
   
 <section>
@@ -164,11 +169,10 @@
         <%= board.getBoardTitle() %>
       </div>
       <div class="board__contents">
-        <img src="" alt="">게시판 사진 업로드 해야함 <br><br>
-        <div id= "여행 tip">
+        <div id= "tip">
           교통수단 : <%= board.getTransport() %><br>
-          여행경비 : <%= board.getTravelMoney() %><br>
-          총 점수 : <%= board.getBoardScore() %><br><br>
+          여행경비 : <%= board.getTravelMoney() %>원<br>
+          총 점수 : <%= board.getBoardScore() %>점<br><br>
         </div>
         <div id="content">
           <%= board.getBoardContent() %>
