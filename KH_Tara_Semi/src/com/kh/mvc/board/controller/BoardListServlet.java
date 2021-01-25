@@ -30,18 +30,22 @@ public class BoardListServlet extends HttpServlet {
 
 		PageInfo info = null;
 		List<Board> list = null;
+		List<Board> imglist = null;
 		String locName = request.getParameter("local");
 		String boardName = request.getParameter("menu");
 		String boardUserId = request.getParameter("boardUserId");
 		String boardTitle = request.getParameter("boardTitle");
 		String boardContent = request.getParameter("boardContent");
 		String recommend = request.getParameter("recommend");
+		
 		try {
 			page = Integer.parseInt(request.getParameter("page"));
 		}catch(NumberFormatException e) {
 			page = 1;
 		}		   
 
+
+		
         if(recommend != null) {
         		if(boardName == null ) {
         			listCount = new BoardService().getBoardCount();
@@ -54,7 +58,8 @@ public class BoardListServlet extends HttpServlet {
 			    		request.setAttribute("boardTitle", boardTitle);
 			    		request.setAttribute("boardContent", boardContent);
 			    		request.getRequestDispatcher("/views/board/listColumns.jsp").forward(request, response);  
-			    		System.out.println("444444444444444444444444" + list);
+			    		
+
         		}else {
         			listCount = new BoardService().getBoardCount();
         			info = new PageInfo(page, 10, listCount, 8);  
@@ -68,7 +73,7 @@ public class BoardListServlet extends HttpServlet {
 						request.setAttribute("boardTitle", boardTitle);
 						request.setAttribute("boardContent", boardContent);    		    	
 						request.getRequestDispatcher("/views/board/listColumns.jsp").forward(request, response); 
-						System.out.println("33333333333333" + list);
+					
         		}
         }else {        	
         	if(boardName == null ) {
@@ -84,7 +89,9 @@ public class BoardListServlet extends HttpServlet {
 			    		request.setAttribute("boardContent", boardContent);
 			    		request.getRequestDispatcher("/views/board/listColumns.jsp").forward(request, response);    
 			    		
-			    		System.out.println("222222222222" + list);
+                      
+                          
+   
 			    		
         	}else {	
 					listCount = new BoardService().getBoardCount();
@@ -99,10 +106,7 @@ public class BoardListServlet extends HttpServlet {
 						request.setAttribute("boardTitle", boardTitle);
 						request.setAttribute("boardContent", boardContent);    		    	
 						request.getRequestDispatcher("/views/board/listColumns.jsp").forward(request, response); 
-						
-						
-					System.out.println("11111111111" + list);
-						
+				        
         	}	 			
 
         }

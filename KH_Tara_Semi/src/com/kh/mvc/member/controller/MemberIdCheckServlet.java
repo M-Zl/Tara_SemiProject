@@ -26,7 +26,7 @@ public class MemberIdCheckServlet extends HttpServlet {
 		
 		Member memberStatus = new MemberService().findMemberById(userId);
 		
-		System.out.println("userId : " + userId);
+	
 		
 		boolean valid = new MemberService().validate(userId);
 		

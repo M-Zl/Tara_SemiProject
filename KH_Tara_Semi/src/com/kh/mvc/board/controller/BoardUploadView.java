@@ -14,6 +14,7 @@ import com.kh.mvc.board.model.service.BoardService;
 import com.kh.mvc.board.model.vo.Board;
 import com.kh.mvc.member.model.vo.Member;
 import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @WebServlet("/board/upload")
 public class BoardUploadView extends HttpServlet {
@@ -37,17 +38,34 @@ public class BoardUploadView extends HttpServlet {
       
       request.setCharacterEncoding("UTF-8");
       
-      String locName = request.getParameter("LocalboardCode");
-      String boardName = request.getParameter("boardCode");
-      String boardTitle = request.getParameter("titleName");
-      String boardContent = request.getParameter("ck_content");
-      String transport = request.getParameter("choice");
-      String travelMoney = request.getParameter("moneyRange");
-//      int boardScore = Integer.parseInt(request.getParameter("star_grade"));
-      int boardScore = 1;
-      String msg = null;
+      // 업로드 관련
+      if(!ServletFileUpload.isMultipartContent(request)) {
+			// enctype이 multipart/from-data가 아닌 경우 메시지 전송 
+			request.setAttribute("msg", "관리자에게 문의하세요.");			
+			request.setAttribute("location", "/board/listColumns");	
+			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+			
+			return;			
+      }
       
-      System.out.println("boardScore : " + boardScore);
+      String path = getServletContext().getRealPath("/ckedit_down");
+      
+      int maxSize = 1024 * 1024 * 10;
+      
+      MultipartRequest mr = new MultipartRequest(request, path, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+
+      String fileName = mr.getFilesystemName("upfile_img");
+      String upfileName = mr.getOriginalFileName("upfile_img");
+      
+      // 글 업로드
+      String locName = mr.getParameter("LocalboardCode");
+      String boardName = mr.getParameter("boardCode");
+      String boardTitle = mr.getParameter("titleName");
+      String boardContent = mr.getParameter("ck_content");
+      String transport = mr.getParameter("choice");
+      String travelMoney = mr.getParameter("moneyRange");
+      int boardScore = Integer.parseInt(mr.getParameter("starGrade"));
+      String msg = null;
      
       
       HttpSession session = request.getSession(false);
@@ -67,6 +85,8 @@ public class BoardUploadView extends HttpServlet {
             board.setTransport(transport);
             board.setTravelMoney(travelMoney);
             board.setBoardScore(boardScore);
+            board.setBoardOriginalFileName(fileName);
+            board.setBoardRenamedFileName(upfileName);
             int result = new BoardService().cke_saveBoard(board);
             
             if(result > 0) {

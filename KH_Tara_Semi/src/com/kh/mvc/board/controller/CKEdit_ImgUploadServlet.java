@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.JsonObject;
+import com.kh.mvc.board.model.service.BoardService;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -26,6 +27,7 @@ public class CKEdit_ImgUploadServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String path = getServletContext().getRealPath("/ckedit_down");
 		int maxSize = 1024 * 1024 * 10;
+		String img = null;
 		String encoding = "UTF-8";
 		
 		MultipartRequest mr = new MultipartRequest(request, path, maxSize, encoding, new DefaultFileRenamePolicy());
@@ -43,12 +45,9 @@ public class CKEdit_ImgUploadServlet extends HttpServlet {
 		jsonObject.addProperty("fileName", fileName);
 		jsonObject.addProperty("url", url);		
 		
-		System.out.println(jsonObject);
-		
 		response.getWriter().print(jsonObject);	
 		
-		System.out.println("111" + fileName);
-		System.out.println("22222222"+ url);
+	
 	}
 
 }

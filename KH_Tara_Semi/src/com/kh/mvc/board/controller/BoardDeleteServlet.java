@@ -19,7 +19,11 @@ public class BoardDeleteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String msg = "";
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
-		
+		String locName = request.getParameter("local");
+		String boardName = request.getParameter("menu");
+
+		request.setAttribute("local", locName);
+		request.setAttribute("menu", boardName);
 		// 이 부분에 로그인한 사람이랑 작성자랑 일치하는지 확인하는 코드 필요 
 		
 		int result = new BoardService().deleteBoard(boardNo);
@@ -29,9 +33,10 @@ public class BoardDeleteServlet extends HttpServlet {
 		} else {
 			msg = "삭제에 실패하였습니다.";
 		}
-		
+		System.out.println(locName);
+		System.out.println(boardName);
 		request.setAttribute("msg", msg);
-		request.setAttribute("location", "/board/list");
+		request.setAttribute("location", "/");
 		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 		
 	}
