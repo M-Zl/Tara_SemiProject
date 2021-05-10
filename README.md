@@ -91,7 +91,7 @@
 * 주제(숙박/맛집/포토존)를 선택하여 작성자, 제목, 내용으로 게시글 검색이 가능합니다.
 <br>
 
-![슬라이드15](https://user-images.githubusercontent.com/76435884/117600691-6352bc80-b187-11eb-91f5-18ed35eb3383.PNG)
+![슬라이드16](https://user-images.githubusercontent.com/76435884/117606514-f9d9aa80-b194-11eb-965b-f39895d81c12.PNG)
 
 * 게시글 업로드 페이지입니다.
 * 로그인한 회원만 제공되는 기능입니다.   
