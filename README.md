@@ -57,31 +57,27 @@
 
 ![슬라이드11](https://user-images.githubusercontent.com/76435884/117600685-6188f900-b187-11eb-8509-a0ab0fbad6eb.PNG)
 
-* 로그인/회원가입 페이지입니다. (NAVER, KAKAO REST API 로그인 미구현)   
-<br>
-
-![슬라이드12](https://user-images.githubusercontent.com/76435884/117600686-62218f80-b187-11eb-96ff-58d772131f56.PNG)
-
+* 로그인/회원가입 페이지입니다. (NAVER, KAKAO REST API 로그인 미구현)
 * ID/PASSWORD 찾기 페이지입니다.   
 * ID찾기는 사용자가 가입시 입력한 이름과 이메일을 통해 찾을 수 있습니다.
 * PASSWORD는 사용자의 이름, 가입한 아이디, 가입시 입력한 이메일을 통해 비밀번호를 변경할 수 있습니다.
 <br>
 
-![슬라이드13](https://user-images.githubusercontent.com/76435884/117600687-62ba2600-b187-11eb-8ca8-b04b89fb422a.PNG)
+![슬라이드12](https://user-images.githubusercontent.com/76435884/117600686-62218f80-b187-11eb-96ff-58d772131f56.PNG)
 
 * 마이페이지입니다.   
 * 사용자 프로필 이미지를 변경과 회원탈퇴를 할 수 있습니다.
 * 작성한 글 목록을 볼 수 있으며 수정/삭제가 가능합니다.
 <br>
 
-![슬라이드14](https://user-images.githubusercontent.com/76435884/117600689-62ba2600-b187-11eb-9138-eb388dc0ecaa.PNG)
+![슬라이드13](https://user-images.githubusercontent.com/76435884/117600687-62ba2600-b187-11eb-8ca8-b04b89fb422a.PNG)
 
 * 관리자 페이지입니다.   
 * 검색창을 사용하여 회원번호, 회원 ID, 회원 이름으로 회원을 검색할 수 있습니다.
 * 회원 회원관리(수정/탈퇴)를 할 수 있습니다.   
 <br>
 
-![슬라이드15](https://user-images.githubusercontent.com/76435884/117600691-6352bc80-b187-11eb-91f5-18ed35eb3383.PNG)
+![슬라이드14](https://user-images.githubusercontent.com/76435884/117600689-62ba2600-b187-11eb-9138-eb388dc0ecaa.PNG)
 
 * 각 지역 게시판입니다.    
 * 숙박/맛집/포토존 버튼을 클릭하면 주제에 맞는 게시글이 조회되며,    
@@ -89,7 +85,7 @@
 * 주제(숙박/맛집/포토존)를 선택하여 작성자, 제목, 내용으로 게시글 검색이 가능합니다.
 <br>
 
-![슬라이드16](https://user-images.githubusercontent.com/76435884/117600693-6352bc80-b187-11eb-9f77-9a2041726028.PNG)
+![슬라이드15](https://user-images.githubusercontent.com/76435884/117600691-6352bc80-b187-11eb-91f5-18ed35eb3383.PNG)
 
 * 게시글 업로드 페이지입니다.   
 * 지역과 숙박/맛집/포토존 선택이 가능합니다.
